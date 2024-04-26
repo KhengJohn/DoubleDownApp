@@ -10,6 +10,8 @@ const pr1 = `${process.env.PUBLIC_URL}/assets/images/pr1.svg`;
 const pr2 = `${process.env.PUBLIC_URL}/assets/images/pr2.png`;
 const pr3 = `${process.env.PUBLIC_URL}/assets/images/pr3.svg`;
 const welcomeTextImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text.svg`;
+const bgImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text-bg.svg`;
+
 const Home = () => {
   const leftImageRef = useRef(null);
   const rightImageRef = useRef(null);
@@ -54,13 +56,15 @@ const Home = () => {
     gsap.set(leftImage2, { x: 0, y: "-200%" });
     gsap.set(rightImage2, { x: 0, y: "-200%" });
     gsap.set(welcomeText, { opacity: 0 });
-    gsap.set(bg, {});
+    gsap.set(bg, { opacity: 0 });
 
-    // // LEFT Animation
-    // gsap.to({
-    //   delay: 5,
+    gsap.to(bg, {
+      delay: 5,
+      opacity: 1,
+      duration: 2,
+    });
+    // LEFT Animation
 
-    // })
     gsap.to(leftImage, {
       x: 200,
       y: -100,
@@ -91,7 +95,7 @@ const Home = () => {
               zIndex: 3,
               onComplete: () => {
                 gsap.to(leftImage, {
-                  x: 240,
+                  x: 170,
                   y: -240,
                   scale: 2.7,
                   duration: 2,
@@ -138,12 +142,12 @@ const Home = () => {
               rotation: 354,
               onComplete: () => {
                 gsap.to(rightImage, {
-                  x: -240,
-                  y: -140,
+                  x: -120,
+                  y: -100,
                   scale: 2.7,
                   duration: 2,
                   rotationY: 160,
-                  rotation: 0,
+                  rotation: -20,
                   filter: "blur(1px)",
                   ease: "power2",
                 });
@@ -326,117 +330,121 @@ const Home = () => {
         display: "flex",
       }}
     >
+      <img
+        ref={leftImageRef2}
+        src={leftImage} 
+        alt="Animated"
+        style={{
+          position: "absolute",
+          top: "16px",
+          left: "3.5%",
+          transform: " rotate(-29.11deg)",
+          zIndex: 2,
+        }}
+      />
+      <img
+        ref={rightImageRef2}
+        src={rightImage} 
+        alt="Animated"
+        style={{
+          position: "absolute",
+          top: "14px",
+          left: "5%",
+          transform: " rotate(-29.11deg)",
+          zIndex: 1,
+        }}
+      />
+      <img
+        ref={leftImageRef}
+        src={leftImage} 
+        alt="Animated"
+        style={{
+          position: "absolute",
+          bottom: "20%",
+          left: 0,
+          transform: " rotate(-29.11deg)",
+        }}
+      />
+
+      <img
+        ref={rightImageRef}
+        src={rightImage} 
+        alt="Animated"
+        style={{
+          position: "absolute",
+          bottom: "20%",
+          right: 0,
+          transform: " rotate(-29.11deg)",
+        }}
+      />
+      <img
+        ref={logoImageRef}
+        src={logo} 
+        alt="logo"
+        style={{ width: "300px", display: "flex", margin: "auto" }}
+      />
+      <img
+        ref={pl1Ref}
+        src={pl1} 
+        alt="pl1"
+        style={{ position: "absolute", top: "25%", left: "33%" }}
+      />
+      <img
+        ref={pl2Ref}
+        src={pl2} 
+        alt="pl2"
+        style={{ position: "absolute", top: "32%", left: "40%" }}
+      />
+      <img
+        ref={pl3Ref}
+        src={pl3} 
+        alt="pl3"
+        style={{ position: "absolute", top: "45%", left: "30%" }}
+      />
+      <img
+        ref={pr1Ref}
+        src={pr1} 
+        alt="pr1"
+        style={{ position: "absolute", top: "50%", right: "35%" }}
+      />
+      <img
+        ref={pr2Ref}
+        src={pr2} 
+        alt="pr2"
+        style={{ position: "absolute", top: "65%", right: "40%" }}
+      />
+      <img
+        ref={pr3Ref}
+        src={pr3} 
+        alt="pr3"
+        style={{ position: "absolute", top: "77%", right: "38%" }}
+      />
       <div
+        ref={bgRef}
         style={{
           display: "flex",
-          position: "relative",
+          position: "absolute",
           width: "100%",
           height: "100vh",
           overflow: "hidden",
           backgroundColor: "#00000",
           margin: "auto",
+          backgroundImage: `url(${bgImage})`, 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <img
-          ref={leftImageRef2}
-          src={leftImage} // Replace with your leftImage path
-          alt="Animated"
-          style={{
-            position: "absolute",
-            top: "16px",
-            left: "3.5%",
-            transform: " rotate(-29.11deg)",
-            zIndex: 2,
-          }}
-        />
-        <img
-          ref={rightImageRef2}
-          src={rightImage} // Replace with your leftImage path
-          alt="Animated"
-          style={{
-            position: "absolute",
-            top: "14px",
-            left: "5%",
-            transform: " rotate(-29.11deg)",
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={leftImageRef}
-          src={leftImage} // Replace with your leftImage path
-          alt="Animated"
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            left: 0,
-            transform: " rotate(-29.11deg)",
-          }}
-        />
-
-        <img
-          ref={rightImageRef}
-          src={rightImage} // Replace with your leftImage path
-          alt="Animated"
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            right: 0,
-            transform: " rotate(-29.11deg)",
-          }}
-        />
-        <img
-          ref={logoImageRef}
-          src={logo} // Replace with your leftImage path
-          alt="logo"
-          style={{ width: "300px", display: "flex", margin: "auto" }}
-        />
-        <img
-          ref={pl1Ref}
-          src={pl1} // Replace with your leftImage path
-          alt="pl1"
-          style={{ position: "absolute", top: "25%", left: "33%" }}
-        />
-        <img
-          ref={pl2Ref}
-          src={pl2} // Replace with your leftImage path
-          alt="pl2"
-          style={{ position: "absolute", top: "32%", left: "40%" }}
-        />
-        <img
-          ref={pl3Ref}
-          src={pl3} // Replace with your leftImage path
-          alt="pl3"
-          style={{ position: "absolute", top: "45%", left: "30%" }}
-        />
-        <img
-          ref={pr1Ref}
-          src={pr1} // Replace with your leftImage path
-          alt="pr1"
-          style={{ position: "absolute", top: "50%", right: "35%" }}
-        />
-        <img
-          ref={pr2Ref}
-          src={pr2} // Replace with your leftImage path
-          alt="pr2"
-          style={{ position: "absolute", top: "65%", right: "40%" }}
-        />
-        <img
-          ref={pr3Ref}
-          src={pr3} // Replace with your leftImage path
-          alt="pr3"
-          style={{ position: "absolute", top: "77%", right: "38%" }}
-        />
-        {/* <img
           ref={welcomeTextRef}
-          src={welcomeTextImage} // Replace with your leftImage path
+          src={welcomeTextImage} 
           alt="logo"
           style={{
             position: "absolute",
-            width: "80%",
-            top: "10%",
-            left: "10%",
+            width: "70%",
+            top: "15%",
+            left: "15%",
           }}
-        /> */}
+        />
       </div>
     </div>
   );
