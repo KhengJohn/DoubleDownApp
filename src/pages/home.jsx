@@ -1,5 +1,17 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import './styles.css';
+import { Pagination } from 'swiper/modules';
+
+const pagination = {
+  clickable: true,
+  renderBullet: function (index, className) {
+    return '<span class="' + className + '">' + (index + 1) + '</span>';
+  },
+};
 const leftImage = `${process.env.PUBLIC_URL}/assets/images/spades-card.svg`;
 const rightImage = `${process.env.PUBLIC_URL}/assets/images/hearts-card.svg`;
 const logo = `${process.env.PUBLIC_URL}/assets/images/logo.svg`;
@@ -11,8 +23,24 @@ const pr2 = `${process.env.PUBLIC_URL}/assets/images/pr2.png`;
 const pr3 = `${process.env.PUBLIC_URL}/assets/images/pr3.svg`;
 const welcomeTextImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text.svg`;
 const bgImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text-bg.svg`;
+const shadeShape = `${process.env.PUBLIC_URL}/assets/images/spades-shape.svg`;
+const heartShape = `${process.env.PUBLIC_URL}/assets/images/hearts-shape.svg`;
+const scroll = `${process.env.PUBLIC_URL}/assets/images/scroll.svg`;
+const slideBase = `${process.env.PUBLIC_URL}/assets/images/slide-base.svg`;
+const slide1 = `${process.env.PUBLIC_URL}/assets/images/slide1.svg`;
+const hamburger = `${process.env.PUBLIC_URL}/assets/images/hamburger.svg`;
+const close = `${process.env.PUBLIC_URL}/assets/images/close.svg`;
+const cloverShape = `${process.env.PUBLIC_URL}/assets/images/clover-Shape.svg`;
+const xIcon = `${process.env.PUBLIC_URL}/assets/images/X-icon.png`;
+const fbIcon = `${process.env.PUBLIC_URL}/assets/images/fb-icon.png`;
+const igIcon = `${process.env.PUBLIC_URL}/assets/images/ig-icon.png`;
 
 const Home = () => {
+  const [menu, setMenue] = useState(true);
+  const toggleMenu = () => {
+    setMenue(!menu);
+  };
+
   const leftImageRef = useRef(null);
   const rightImageRef = useRef(null);
   const logoImageRef = useRef(null);
@@ -26,6 +54,12 @@ const Home = () => {
   const leftImageRef2 = useRef(null);
   const welcomeTextRef = useRef(null);
   const bgRef = useRef(null);
+  const shadeShapeRef = useRef(null);
+  const heartShapeRef = useRef(null);
+  const scrollRef = useRef(null);
+  const slideBaseRef = useRef(null);
+  const slide1Ref = useRef(null);
+  const hamburgerRef = useRef(null);
 
   useEffect(() => {
     const leftImage = leftImageRef.current;
@@ -41,8 +75,14 @@ const Home = () => {
     const leftImage2 = leftImageRef2.current;
     const welcomeText = welcomeTextRef.current;
     const bg = bgRef.current;
+    const shadeShape = shadeShapeRef.current;
+    const heartShape = heartShapeRef.current;
+    const scroll = scrollRef.current;
+    const slideBase = slideBaseRef.current;
+    const slide1 = slide1Ref.current;
+    const hamburger = hamburgerRef.current;
 
-    // Set initial position of the leftImage
+    // Set initial position of the Images
 
     gsap.set(leftImage, { x: "-100%", y: 0, rotationY: 0 });
     gsap.set(rightImage, { x: "-100%", y: 0, rotationY: 0 });
@@ -57,14 +97,63 @@ const Home = () => {
     gsap.set(rightImage2, { x: 0, y: "-200%" });
     gsap.set(welcomeText, { opacity: 0 });
     gsap.set(bg, { opacity: 0 });
+    gsap.set(shadeShape, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
+    gsap.set(heartShape, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
+    gsap.set(scroll, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
+    gsap.set(slideBase, { filter: "blur(10px)", opacity: 0, scale: 0.4 });
+    gsap.set(slide1, { filter: "blur(10px)", opacity: 0, scale: 0.4 });
+    gsap.set(hamburger, { opacity: 0, scale: 0.4 });
 
     gsap.to(bg, {
       delay: 5,
       opacity: 1,
       duration: 2,
     });
+    gsap.to(hamburger, {
+      delay: 5,
+      opacity: 1,
+      duration: 2,
+      scale: 0.7,
+    });
+    gsap.to(shadeShape, {
+      delay: 5,
+      opacity: 1,
+      duration: 2,
+      x: -160,
+      y: 160,
+      filter: "blur(0px)",
+      scale: 0.5,
+    });
+    gsap.to(slide1, {
+      delay: 5,
+      opacity: 0.4,
+      duration: 2,
+      filter: "blur(15px)",
+      scale: 0.5,
+    });
+    gsap.to(scroll, {
+      delay: 5,
+      opacity: 1,
+      duration: 2,
+      scale: 0.5,
+    });
+    gsap.to(slideBase, {
+      delay: 5,
+      opacity: 0.4,
+      duration: 2,
+      filter: "blur(15px)",
+      scale: 0.5,
+    });
+    gsap.to(heartShape, {
+      delay: 5,
+      opacity: 1,
+      duration: 2,
+      x: 20,
+      y: 20,
+      filter: "blur(0px)",
+      scale: 0.5,
+    });
     // LEFT Animation
-
     gsap.to(leftImage, {
       x: 200,
       y: -100,
@@ -85,7 +174,7 @@ const Home = () => {
           rotate: 10,
           onComplete: () => {
             gsap.to(leftImage, {
-              x: 585,
+              x: "47.5vw",
               y: -240,
               scale: 2.5,
               duration: 2,
@@ -132,7 +221,7 @@ const Home = () => {
           rotate: 10,
           onComplete: () => {
             gsap.to(rightImage, {
-              x: "-585",
+              x: "-47.5vw",
               y: -250,
               scale: 2.5,
               duration: 2,
@@ -167,8 +256,8 @@ const Home = () => {
       y: 40,
       onComplete: () => {
         gsap.to(logoImage, {
-          x: -460,
-          y: -280,
+          x: "-36vw",
+          y: "-21.6vw",
           scale: 0.5,
           duration: 2,
           ease: "power2",
@@ -330,9 +419,94 @@ const Home = () => {
         display: "flex",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: menu ? "0" : "100vh",
+          overflow: "hidden",
+          backgroundColor: "#000",
+          display: menu ? "block" : "hidden",
+          transition: "transform 3s ease",
+          transform: !menu ? "translateY(0)" : "translateY(-100%)",
+          zIndex: 10,
+        }}
+      >
+        <div>
+          <img
+            src={close}
+            alt="close"
+            style={{
+              position: "absolute",
+              top: "22px",
+              right: "5%",
+              cursor: "pointer",
+              width: "30px",
+            }}
+            onClick={toggleMenu}
+          />
+          <img
+            src={cloverShape}
+            alt="cloverShape"
+            style={{
+              position: "absolute",
+              bottom: "0",
+              right: "0",
+              width: "50%",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-evenly",
+              margin: "50px",
+              height: "100vh",
+            }}
+          >
+            <ul
+              style={{
+                background:
+                  "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #C09852 73%, #F4E285 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "self-start",
+                justifyContent: "flex-start",
+                fontSize: "40px",
+                listStyle: "none",
+                gap: "30px",
+                marginLeft: 0,
+                paddingLeft: 0,
+              }}
+            >
+              <li>CONTACT US</li>
+              <li>GAMING TABLES</li>
+            </ul>
+            <div style={{ display: "flex", flexDirection: "row", gap: "30px" }}>
+              <img
+                src={xIcon}
+                alt="xIcon"
+                style={{ cursor: "pointer", width: "50px" }}
+              />
+              <img
+                src={fbIcon}
+                alt="fbIcon"
+                style={{ cursor: "pointer", width: "50px" }}
+              />
+              <img
+                src={igIcon}
+                alt="igIcon"
+                style={{ cursor: "pointer", width: "50px" }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <img
         ref={leftImageRef2}
-        src={leftImage} 
+        src={leftImage}
         alt="Animated"
         style={{
           position: "absolute",
@@ -344,7 +518,7 @@ const Home = () => {
       />
       <img
         ref={rightImageRef2}
-        src={rightImage} 
+        src={rightImage}
         alt="Animated"
         style={{
           position: "absolute",
@@ -356,7 +530,7 @@ const Home = () => {
       />
       <img
         ref={leftImageRef}
-        src={leftImage} 
+        src={leftImage}
         alt="Animated"
         style={{
           position: "absolute",
@@ -368,7 +542,7 @@ const Home = () => {
 
       <img
         ref={rightImageRef}
-        src={rightImage} 
+        src={rightImage}
         alt="Animated"
         style={{
           position: "absolute",
@@ -379,43 +553,43 @@ const Home = () => {
       />
       <img
         ref={logoImageRef}
-        src={logo} 
+        src={logo}
         alt="logo"
         style={{ width: "300px", display: "flex", margin: "auto" }}
       />
       <img
         ref={pl1Ref}
-        src={pl1} 
+        src={pl1}
         alt="pl1"
         style={{ position: "absolute", top: "25%", left: "33%" }}
       />
       <img
         ref={pl2Ref}
-        src={pl2} 
+        src={pl2}
         alt="pl2"
         style={{ position: "absolute", top: "32%", left: "40%" }}
       />
       <img
         ref={pl3Ref}
-        src={pl3} 
+        src={pl3}
         alt="pl3"
         style={{ position: "absolute", top: "45%", left: "30%" }}
       />
       <img
         ref={pr1Ref}
-        src={pr1} 
+        src={pr1}
         alt="pr1"
         style={{ position: "absolute", top: "50%", right: "35%" }}
       />
       <img
         ref={pr2Ref}
-        src={pr2} 
+        src={pr2}
         alt="pr2"
         style={{ position: "absolute", top: "65%", right: "40%" }}
       />
       <img
         ref={pr3Ref}
-        src={pr3} 
+        src={pr3}
         alt="pr3"
         style={{ position: "absolute", top: "77%", right: "38%" }}
       />
@@ -429,14 +603,79 @@ const Home = () => {
           overflow: "hidden",
           backgroundColor: "#00000",
           margin: "auto",
-          backgroundImage: `url(${bgImage})`, 
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <img
+          ref={hamburgerRef}
+          src={hamburger}
+          alt="logo"
+          style={{
+            position: "absolute",
+            top: "22px",
+            right: "5%",
+            cursor: "pointer",
+            ":hover": {
+              cursor: "pointer",
+            },
+          }}
+          onClick={toggleMenu}
+        />
+        <img
+          ref={shadeShapeRef}
+          src={shadeShape}
+          alt="logo"
+          style={{
+            position: "absolute",
+            top: "15%",
+            left: "15%",
+          }}
+        />
+        <img
+          ref={slide1Ref}
+          src={slide1}
+          alt="logo"
+          style={{
+            position: "absolute",
+            bottom: "17%",
+            left: "30%",
+          }}
+        />
+        <img
+          ref={slideBaseRef}
+          src={slideBase}
+          alt="logo"
+          style={{
+            position: "absolute",
+            bottom: "8%",
+            left: "26%",
+          }}
+        />
+        <img
+          ref={scrollRef}
+          src={scroll}
+          alt="logo"
+          style={{
+            position: "absolute",
+            bottom: "-8%",
+            left: "50%",
+          }}
+        />
+        <img
+          ref={heartShapeRef}
+          src={heartShape}
+          alt="logo"
+          style={{
+            position: "absolute",
+            top: "15%",
+            right: "15%",
+          }}
+        />
+        <img
           ref={welcomeTextRef}
-          src={welcomeTextImage} 
+          src={welcomeTextImage}
           alt="logo"
           style={{
             position: "absolute",
@@ -446,6 +685,23 @@ const Home = () => {
           }}
         />
       </div>
+       {/* <>
+      <Swiper
+        pagination={pagination}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+        <SwiperSlide>Slide 5</SwiperSlide>
+        <SwiperSlide>Slide 6</SwiperSlide>
+        <SwiperSlide>Slide 7</SwiperSlide>
+        <SwiperSlide>Slide 8</SwiperSlide>
+        <SwiperSlide>Slide 9</SwiperSlide>
+      </Swiper>
+    </> */}
     </div>
   );
 };
