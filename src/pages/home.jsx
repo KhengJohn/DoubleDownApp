@@ -1,39 +1,35 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import './styles.css';
-import { Pagination } from 'swiper/modules';
+import {
+  leftImage,
+  rightImage,
+  logo,
+  pl1,
+  pl2,
+  pl3,
+  pr1,
+  pr2,
+  pr3,
+  welcomeTextImage,
+  bgImage,
+  shadeShape,
+  heartShape,
+  scroll,
+  hamburger,
+  close,
+  cloverShape,
+  xIcon,
+  fbIcon,
+  igIcon,
+  slideBase,
+  slide1,
+} from "../common/assets/images";
+import Slider from "../components/home/Slider";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import NavBar from "../components/home/NavBar";
 
-const pagination = {
-  clickable: true,
-  renderBullet: function (index, className) {
-    return '<span class="' + className + '">' + (index + 1) + '</span>';
-  },
-};
-const leftImage = `${process.env.PUBLIC_URL}/assets/images/spades-card.svg`;
-const rightImage = `${process.env.PUBLIC_URL}/assets/images/hearts-card.svg`;
-const logo = `${process.env.PUBLIC_URL}/assets/images/logo.svg`;
-const pl1 = `${process.env.PUBLIC_URL}/assets/images/pl1.svg`;
-const pl2 = `${process.env.PUBLIC_URL}/assets/images/pl2.svg`;
-const pl3 = `${process.env.PUBLIC_URL}/assets/images/pl3.svg`;
-const pr1 = `${process.env.PUBLIC_URL}/assets/images/pr1.svg`;
-const pr2 = `${process.env.PUBLIC_URL}/assets/images/pr2.png`;
-const pr3 = `${process.env.PUBLIC_URL}/assets/images/pr3.svg`;
-const welcomeTextImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text.svg`;
-const bgImage = `${process.env.PUBLIC_URL}/assets/images/welcome-text-bg.svg`;
-const shadeShape = `${process.env.PUBLIC_URL}/assets/images/spades-shape.svg`;
-const heartShape = `${process.env.PUBLIC_URL}/assets/images/hearts-shape.svg`;
-const scroll = `${process.env.PUBLIC_URL}/assets/images/scroll.svg`;
-const slideBase = `${process.env.PUBLIC_URL}/assets/images/slide-base.svg`;
-const slide1 = `${process.env.PUBLIC_URL}/assets/images/slide1.svg`;
-const hamburger = `${process.env.PUBLIC_URL}/assets/images/hamburger.svg`;
-const close = `${process.env.PUBLIC_URL}/assets/images/close.svg`;
-const cloverShape = `${process.env.PUBLIC_URL}/assets/images/clover-Shape.svg`;
-const xIcon = `${process.env.PUBLIC_URL}/assets/images/X-icon.png`;
-const fbIcon = `${process.env.PUBLIC_URL}/assets/images/fb-icon.png`;
-const igIcon = `${process.env.PUBLIC_URL}/assets/images/ig-icon.png`;
+gsap.registerPlugin(ScrollTrigger);
+gsap.config({ trialWarn: false });
 
 const Home = () => {
   const [menu, setMenue] = useState(true);
@@ -192,6 +188,25 @@ const Home = () => {
                   rotation: 190,
                   filter: "blur(1px)",
                   ease: "power2",
+                  onComplete: () => {
+                    gsap.to(leftImage, {
+                      x: 0,
+                      y: 0,
+                      scale: 2.7,
+                      duration: 7,
+                      rotationY: 160,
+                      rotation: 190,
+                      filter: "blur(5px)",
+                      ease: "power2",
+                      scrollTrigger: {
+                        trigger: ".container",
+                        start: "top top",
+                        end: "+=1000",
+                        toggleActions: "play play reverse pause",
+                        scrub: true,
+                      },
+                    });
+                  },
                 });
               },
             });
@@ -417,93 +432,10 @@ const Home = () => {
         overflow: "hidden",
         backgroundColor: "#000",
         display: "flex",
+        zIndex:'100'
       }}
+      className="container"
     >
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: menu ? "0" : "100vh",
-          overflow: "hidden",
-          backgroundColor: "#000",
-          display: menu ? "block" : "hidden",
-          transition: "transform 3s ease",
-          transform: !menu ? "translateY(0)" : "translateY(-100%)",
-          zIndex: 10,
-        }}
-      >
-        <div>
-          <img
-            src={close}
-            alt="close"
-            style={{
-              position: "absolute",
-              top: "22px",
-              right: "5%",
-              cursor: "pointer",
-              width: "30px",
-            }}
-            onClick={toggleMenu}
-          />
-          <img
-            src={cloverShape}
-            alt="cloverShape"
-            style={{
-              position: "absolute",
-              bottom: "0",
-              right: "0",
-              width: "50%",
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-evenly",
-              margin: "50px",
-              height: "100vh",
-            }}
-          >
-            <ul
-              style={{
-                background:
-                  "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #C09852 73%, #F4E285 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "self-start",
-                justifyContent: "flex-start",
-                fontSize: "40px",
-                listStyle: "none",
-                gap: "30px",
-                marginLeft: 0,
-                paddingLeft: 0,
-              }}
-            >
-              <li>CONTACT US</li>
-              <li>GAMING TABLES</li>
-            </ul>
-            <div style={{ display: "flex", flexDirection: "row", gap: "30px" }}>
-              <img
-                src={xIcon}
-                alt="xIcon"
-                style={{ cursor: "pointer", width: "50px" }}
-              />
-              <img
-                src={fbIcon}
-                alt="fbIcon"
-                style={{ cursor: "pointer", width: "50px" }}
-              />
-              <img
-                src={igIcon}
-                alt="igIcon"
-                style={{ cursor: "pointer", width: "50px" }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <img
         ref={leftImageRef2}
         src={leftImage}
@@ -539,7 +471,6 @@ const Home = () => {
           transform: " rotate(-29.11deg)",
         }}
       />
-
       <img
         ref={rightImageRef}
         src={rightImage}
@@ -623,6 +554,7 @@ const Home = () => {
           }}
           onClick={toggleMenu}
         />
+        <NavBar toggleMenu={toggleMenu} menu={menu}/>
         <img
           ref={shadeShapeRef}
           src={shadeShape}
@@ -642,6 +574,7 @@ const Home = () => {
             bottom: "17%",
             left: "30%",
           }}
+          className="floating-img"
         />
         <img
           ref={slideBaseRef}
@@ -660,7 +593,7 @@ const Home = () => {
           style={{
             position: "absolute",
             bottom: "-8%",
-            left: "50%",
+            left: "49.7%",
           }}
         />
         <img
@@ -685,23 +618,6 @@ const Home = () => {
           }}
         />
       </div>
-       {/* <>
-      <Swiper
-        pagination={pagination}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-      </Swiper>
-    </> */}
     </div>
   );
 };
