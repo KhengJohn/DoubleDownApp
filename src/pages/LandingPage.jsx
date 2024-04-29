@@ -16,22 +16,16 @@ import {
   heartShape,
   scroll,
   hamburger,
-  close,
-  cloverShape,
-  xIcon,
-  fbIcon,
-  igIcon,
   slideBase,
   slide1,
 } from "../common/assets/images";
-import Slider from "../components/home/Slider";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "../components/home/NavBar";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ trialWarn: false });
 
-const Home = () => {
+const LandingPage = () => {
   const [menu, setMenue] = useState(true);
   const toggleMenu = () => {
     setMenue(!menu);
@@ -432,7 +426,7 @@ const Home = () => {
         overflow: "hidden",
         backgroundColor: "#000",
         display: "flex",
-        zIndex:'100'
+        zIndex: "100",
       }}
       className="container"
     >
@@ -554,7 +548,7 @@ const Home = () => {
           }}
           onClick={toggleMenu}
         />
-        <NavBar toggleMenu={toggleMenu} menu={menu}/>
+        <NavBar toggleMenu={toggleMenu} menu={menu} />
         <img
           ref={shadeShapeRef}
           src={shadeShape}
@@ -622,4 +616,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;

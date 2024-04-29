@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./pages/home";
+import LandingPage from "./pages/LandingPage";
 import Slider from "./components/home/Slider";
 import SecondSection from "./components/home/SecondSection";
 import "./pages/styles.css";
@@ -8,7 +8,7 @@ import { blackJackBG } from "./common/assets/images";
 function App() {
   return (
     <div className="App">
-      <Home />
+      <LandingPage />
       <div
         style={{
           width: "100%",
@@ -16,7 +16,7 @@ function App() {
           overflow: "hidden",
           margin: "auto",
           backgroundImage: `url(${blackJackBG})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           gap: "0px",

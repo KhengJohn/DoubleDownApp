@@ -8,11 +8,13 @@ import {
   slideBase,
   heartsButton,
   bottomHeart,
-  bottomSpade,lightBG
+  bottomSpade,
+  lightBG,
 } from "../../common/assets/images";
 const SecondSection = () => {
   return (
-    <div  style={{
+    <div
+      style={{
         width: "100%",
         height: "450vh",
         overflow: "hidden",
@@ -20,10 +22,11 @@ const SecondSection = () => {
         backgroundImage: `url(${lightBG})`,
         backgroundSize: "contain",
         backgroundPosition: "center",
-        backgroundRepeat: 'no-repeat',
+        backgroundRepeat: "no-repeat",
         gap: "0px",
         position: "relative",
-      }}>
+      }}
+    >
       <div
         style={{
           width: "100%",
@@ -67,8 +70,8 @@ const SecondSection = () => {
             </span>
             <p
               style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
+                fontWeight: 100 /* Light font weight */,
+                // fontStyle: "italic" /* Italic style */,
                 fontSize: "13px",
                 textAlign: "start",
                 width: "90%",
@@ -108,6 +111,7 @@ const SecondSection = () => {
             </button>
           </div>
         </div>
+
         <div
           style={{
             height: "50vh",
@@ -131,8 +135,8 @@ const SecondSection = () => {
           >
             <span
               style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
+                fontWeight: 100 /* Light font weight */,
+                // fontStyle: "italic" /* Italic style */,
                 fontSize: "26px",
                 textAlign: "start",
                 width: "90%",
@@ -190,52 +194,56 @@ const SecondSection = () => {
           </div>
         </div>
         {/* LINE */}
-        <div
-          style={{
-            height: "150vh",
-            width: "3px",
-            backgroundColor: "#E7B960",
-            position: "absolute",
-            top: "0",
-            left: "50%",
-            boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
-          }}
-        ></div>
-        {/* DOT I */}
-        <div
-          style={{
-            height: "50px",
-            width: "50px",
-            borderRadius: "100%",
-            backgroundColor: "#E7B960",
-            position: "absolute",
-            top: "12.5%",
-            left: "48.2%",
-            boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
-          }}
-        ></div>
-        {/* DOTII */}
-        <div
-          style={{
-            height: "50px",
-            width: "50px",
-            borderRadius: "100%",
-            backgroundColor: "#E7B960",
-            position: "absolute",
-            top: "35%",
-            left: "48.2%",
-            boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
-          }}
-        ></div>
+        <div style={{ position: "absolute", left: "50vw", top: 0 }}>
+          <div style={{ display: "flex", position: "relative", width: "45px" }}>
+            <div
+              style={{
+                height: "150vh",
+                width: "3px",
+                backgroundColor: "#E7B960",
+                // position: "absolute",
+                // top: "0",
+                // left: "50vw",
+                boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
+              }}
+            ></div>
+            {/* DOT I */}
+            <div
+              style={{
+                height: "50px",
+                width: "50px",
+                borderRadius: "100%",
+                backgroundColor: "#E7B960",
+                position: "absolute",
+                top: "22vh",
+                left: "-50%",
+                boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
+              }}
+            ></div>
+            {/* DOTII */}
+            <div
+              style={{
+                height: "50px",
+                width: "50px",
+                borderRadius: "100%",
+                backgroundColor: "#E7B960",
+                position: "absolute",
+                top: "70vh",
+                left: "-50%",
+                boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
+              }}
+            ></div>
+          </div>
+        </div>
       </div>
       {/* Three Items */}
-      <div style={{ }}>
+      <div style={{}}>
         <div
           style={{
             display: "flex",
             justifyContent: "space-evenly",
             gap: "20px",
-            height: '100vh'
+            height: "100vh",
           }}
         >
           <div
@@ -244,12 +252,12 @@ const SecondSection = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: "-30px",
+              gap: "50px",
             }}
           >
             <img
               src={diamondCard}
-              style={{ width: "250px" }}
+              style={{ width: "150px" }}
               alt="diamondCard"
             />
             <img src={slideBase} style={{ width: "250px" }} alt="diamondCard" />
@@ -323,7 +331,7 @@ const SecondSection = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: "70px",
+              gap: "50px",
             }}
           >
             <img src={dice} style={{ width: "150px" }} alt="dice" />
@@ -397,7 +405,7 @@ const SecondSection = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: "40px",
+              gap: "50px",
             }}
           >
             <img src={coin} style={{ width: "150px" }} alt="coin" />
@@ -520,7 +528,12 @@ const SecondSection = () => {
           </div>
 
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "30px", height: '40vh' }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "30px",
+              height: "40vh",
+            }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span
@@ -562,7 +575,7 @@ const SecondSection = () => {
                   position: "absolute",
                   left: "0%",
                   width: "16rem",
-                  bottom: '-320px'
+                  bottom: "-320px",
                 }}
                 alt=""
               />
@@ -574,7 +587,7 @@ const SecondSection = () => {
                   position: "absolute",
                   right: "0%",
                   width: "16rem",
-                  bottom: '-320px'
+                  bottom: "-320px",
                 }}
                 alt=""
               />

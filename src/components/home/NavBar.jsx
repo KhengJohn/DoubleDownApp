@@ -1,20 +1,26 @@
 import React from "react";
-import { xIcon, fbIcon, igIcon, cloverShape, close } from "../../common/assets/images";
-const NavBar = ({toggleMenu, menu}) => {
+import {
+  xIcon,
+  fbIcon,
+  igIcon,
+  cloverShape,
+  close,
+} from "../../common/assets/images";
+const NavBar = ({ toggleMenu, menu }) => {
   return (
     <div
-    style={{
-      position: "absolute",
-      width: "100%",
-      height: menu ? "0" : "100vh",
-      overflow: "hidden",
-      backgroundColor: "#000",
-      display: menu ? "block" : "hidden",
-      transition: "transform 3s ease",
-      transform: !menu ? "translateY(0)" : "translateY(-100%)",
-      zIndex: 10,
-    }}
-  >
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: menu ? "0" : "100vh",
+        overflow: "hidden",
+        backgroundColor: "#000",
+        display: menu ? "block" : "hidden",
+        transition: "transform 3s ease",
+        transform: !menu ? "translateY(0)" : "translateY(-100%)",
+        zIndex: 10,
+      }}
+    >
       <img
         src={close}
         alt="close"
@@ -61,7 +67,7 @@ const NavBar = ({toggleMenu, menu}) => {
             gap: "30px",
             marginLeft: 0,
             paddingLeft: 0,
-          }}
+          }} className="cormorant-font"
         >
           <li>CONTACT US</li>
           <li>GAMING TABLES</li>
