@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <LandingPage />
-      <div
+      {/* <div
         style={{
           width: "100%",
           height: "100vh",
@@ -25,7 +25,7 @@ function App() {
       >
         <Slider />
       </div>
-      <SecondSection />
+      <SecondSection /> */}
     </div>
   );
 }

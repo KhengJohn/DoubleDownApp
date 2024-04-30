@@ -20,6 +20,12 @@ import { Pagination, Autoplay, EffectFade, Navigation,Keyboard } from "swiper/mo
 import "swiper/css";
 import "swiper/css/effect-fade";
 import 'swiper/css/navigation';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 const pagination = {
   clickable: true,
   renderBullet: function (index, className) {
@@ -88,7 +94,9 @@ const SliderData = [
       "Experience the elegance of Baccarat in a fast-paced game! Bet on the player, banker, or a tie and see if luck is on your side in Mini Baccarat.",
   },
 ];
+
 const Slider = () => {
+  
   return (
     <>
       <Swiper

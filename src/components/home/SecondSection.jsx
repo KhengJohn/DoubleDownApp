@@ -1,7 +1,6 @@
 import React from "react";
 import {
   requestDice,
-  tbg,
   diamondCard,
   dice,
   coin,
@@ -11,6 +10,7 @@ import {
   bottomSpade,
   lightBG,
 } from "../../common/assets/images";
+
 const SecondSection = () => {
   return (
     <div

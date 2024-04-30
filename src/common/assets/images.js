@@ -41,3 +41,4 @@ export const bottomSpade = `${process.env.PUBLIC_URL}/assets/images/bottom-spade
 export const bottomHeart = `${process.env.PUBLIC_URL}/assets/images/bottom-heart-card.svg`;
 export const lightBG = `${process.env.PUBLIC_URL}/assets/images/light-effect-bg.svg`;
 export const blackJackBG = `${process.env.PUBLIC_URL}/assets/images/Blackjack-bg.svg`;
+export const shoppingCart = `${process.env.PUBLIC_URL}/assets/images/shopping-cart.svg`;
