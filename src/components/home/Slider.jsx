@@ -16,16 +16,10 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay, EffectFade, Navigation,Keyboard } from "swiper/modules";
+import { Pagination, Autoplay, EffectFade, Navigation,Keyboard, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import 'swiper/css/navigation';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { gsap } from "gsap";
-
-gsap.registerPlugin(ScrollTrigger);
-
-
 const pagination = {
   clickable: true,
   renderBullet: function (index, className) {
@@ -94,14 +88,12 @@ const SliderData = [
       "Experience the elegance of Baccarat in a fast-paced game! Bet on the player, banker, or a tie and see if luck is on your side in Mini Baccarat.",
   },
 ];
-
 const Slider = () => {
-  
   return (
     <>
       <Swiper
         pagination={pagination}
-        modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
+        modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard, Mousewheel]}
         className="mySwiper"
         effect="fade" // Set effect to fade
         fadeEffect={{ crossFade: true }} // Enable cross fade effect
@@ -114,6 +106,9 @@ const Slider = () => {
           enabled: true,
         }}
         
+        mousewheel={true}        direction={'horizontal'}
+        slidesPerView={1}
+        spaceBetween={30}
       >
         {SliderData.map((items, index) => (
           <SwiperSlide key={index}>
@@ -147,7 +142,7 @@ const Slider = () => {
                   fontStyle: "normal" /* Italic style */,
                   fontSize: "14px",
                   color: "#fff",
-                  fontWeight: 100
+                  fontWeight: ""
                 }}
               >
                 {items.description}
@@ -202,7 +197,7 @@ const Slider = () => {
             width: "400px",
             height: "300px",
             position: "absolute",
-            bottom: "1vh",
+            bottom: "3vh",
             left: "36vw",
           }}
         />

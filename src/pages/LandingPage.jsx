@@ -46,6 +46,10 @@ import {
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
+import About from "../components/home/About";
+import Contact from "../components/home/Contact";
+import Footer from "../components/home/Footer";
+import Products from "../components/home/Products";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -141,6 +145,11 @@ const LandingPage = () => {
   const welcomeTextRef = useRef(null);
   const bgRef = useRef(null);
   const bg2Ref = useRef(null);
+  const bg3Ref = useRef(null);
+  const bg4Ref = useRef(null);
+  const bg5Ref = useRef(null);
+  const bg6Ref = useRef(null);
+  const bg7Ref = useRef(null);
   const shadeShapeRef = useRef(null);
   const heartShapeRef = useRef(null);
   const scrollRef = useRef(null);
@@ -165,6 +174,11 @@ const LandingPage = () => {
     const welcomeText = welcomeTextRef.current;
     const bg = bgRef.current;
     const bg2 = bg2Ref.current;
+    const bg3 = bg3Ref.current;
+    const bg4 = bg4Ref.current;
+    const bg5 = bg5Ref.current;
+    const bg6 = bg6Ref.current;
+    const bg7 = bg7Ref.current;
     const shadeShape = shadeShapeRef.current;
     const heartShape = heartShapeRef.current;
     const scroll = scrollRef.current;
@@ -189,7 +203,16 @@ const LandingPage = () => {
     gsap.set(rightImage2, { x: 0, y: "-200%" });
     gsap.set(welcomeText, { opacity: 0 });
     gsap.set(bg, { opacity: 0, backgroundImage: `url(${bgImage})` });
-    gsap.set(bg2, { opacity: 0, backgroundImage: `url(${blackJackBG})` });
+    gsap.set(bg2, {
+      zIndex: 0,
+      opacity: 0,
+      backgroundImage: `url(${blackJackBG})`,
+    });
+    gsap.set(bg3, { opacity: 0, x: 0, y: 0 });
+    gsap.set(bg5, { opacity: 0, x: 0, y: 0 });
+    gsap.set(bg6, { opacity: 0, x: 0, y: 0 });
+    gsap.set(bg7, { opacity: 0, x: 0, y: 0 });
+    gsap.set(bg4, { opacity: 0 });
     gsap.set(shadeShape, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
     gsap.set(heartShape, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
     gsap.set(scroll, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
@@ -210,13 +233,11 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+            end: "900",
+
             scrub: true,
-            markers: true,
+
             pin: bg,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -225,26 +246,185 @@ const LandingPage = () => {
     gsap.to(bg2, {
       delay: 5,
       opacity: 0,
+      zIndex: 0,
       backgroundImage: `url(${blackJackBG})`,
-      duration: 2,
       onComplete: () => {
         gsap.to(bg2, {
           backgroundImage: `url(${blackJackBG})`,
+          zIndex: 10,
           opacity: 1,
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
             scrub: true,
-            markers: true,
             pin: bg2,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
+          },
+          onComplete: () => {
+            gsap.to(bg2, {
+              opacity: 0,
+              zIndex: 0,
+              scrollTrigger: {
+                trigger: ".container",
+                start: "1800",
+                scrub: true,
+                pin: bg2,
+              },
+            });
           },
         });
       },
     });
+
+    gsap.to(bg3, {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      onComplete: () => {
+        gsap.to(bg3, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          zIndex: 10,
+          scrollTrigger: {
+            trigger: ".container",
+            start: "1800",
+            scrub: true,
+            pin: bg3,
+          },
+          onComplete: () => {
+            gsap.to(bg3, {
+              x: 0,
+              y: 0,
+              opacity: 0,
+              zIndex: 0,
+              scrollTrigger: {
+                trigger: ".container",
+                start: "3600",
+                scrub: true,
+                pin: bg3,
+              },
+            });
+          },
+        });
+      },
+    });
+
+    gsap.to(bg5, {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      onComplete: () => {
+        gsap.to(bg5, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          zIndex: 10,
+          scrollTrigger: {
+            trigger: ".container",
+            start: "3600",
+            scrub: true,
+            pin: bg5,
+          },
+          onComplete: () => {
+            gsap.to(bg5, {
+              x: 0,
+              y: 0,
+              opacity: 0,
+              zIndex: 0,
+              scrollTrigger: {
+                trigger: ".container",
+                start: "5400",
+                scrub: true,
+                pin: bg5,
+              },
+            });
+          },
+        });
+      },
+    });
+
+    gsap.to(bg6, {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      onComplete: () => {
+        gsap.to(bg6, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          zIndex: 10,
+          scrollTrigger: {
+            trigger: ".container",
+            start: "5400",
+            scrub: true,
+            pin: bg6,
+          },
+          onComplete: () => {
+            gsap.to(bg6, {
+              x: 0,
+              y: 0,
+              opacity: 0,
+              zIndex: 0,
+              scrollTrigger: {
+                trigger: ".container",
+                start: "7200",
+                scrub: true,
+                pin: bg6,
+              },
+            });
+          },
+        });
+      },
+    });
+
+    gsap.to(bg7, {
+      opacity: 0,
+      x: 0,
+      y: 0,
+      onComplete: () => {
+        gsap.to(bg7, {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          zIndex: 10,
+          scrollTrigger: {
+            trigger: ".container",
+            start: "7200",
+            end: "bottom 10%",
+            scrub: true,
+            pin: bg7,
+          },
+        });
+      },
+    });
+    gsap.to(bg4, {
+      opacity: 0,
+      duration: 2,
+      onComplete: () => {
+        gsap.to(bg4, {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: ".container",
+            start: "top 1",
+
+            scrub: true,
+
+            pin: bg4,
+          },
+          onComplete: () => {
+            gsap.to(bg4, {
+              opacity: 0,
+              scrollTrigger: {
+                trigger: ".container",
+                start: "top 0%",
+                scrub: true,
+              },
+            });
+          },
+        });
+      },
+    });
+
     gsap.to(hamburger, {
       delay: 5,
       opacity: 1,
@@ -258,13 +438,10 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: hamburger,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -282,13 +459,10 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: signInButton,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -306,13 +480,8 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
             scrub: true,
-            markers: true,
             pin: shoppingCart,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -328,19 +497,16 @@ const LandingPage = () => {
       onComplete: () => {
         gsap.to(shadeShape, {
           opacity: 1,
-          x: -360,
+          x: -300,
           y: 340,
           scale: 1.4,
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: shadeShape,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -358,13 +524,11 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+            end: "900",
+
             scrub: true,
-            markers: true,
+
             pin: slide1,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -381,13 +545,11 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+            end: "900",
+
             scrub: true,
-            markers: true,
+
             pin: scroll,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -405,13 +567,11 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+            end: "900",
+
             scrub: true,
-            markers: true,
+
             pin: slideBase,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -427,19 +587,16 @@ const LandingPage = () => {
       onComplete: () => {
         gsap.to(heartShape, {
           opacity: 1,
-          x: 280,
+          x: 220,
           y: 28,
           scale: 1,
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: heartShape,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -485,10 +642,10 @@ const LandingPage = () => {
                   ease: "power2",
                   onComplete: () => {
                     gsap.to(leftImage, {
-                      x: 160,
+                      x: 120,
                       y: -320,
                       scale: 2.7,
-                      duration: 7,
+                      duration: 2.5,
                       rotationY: 160,
                       rotation: 220,
                       filter: "blur(2px)",
@@ -496,13 +653,9 @@ const LandingPage = () => {
                       scrollTrigger: {
                         trigger: ".container",
                         start: "top 1px",
-                        end: "bottom 50%",
-                        // toggleActions: 'play pause reverse none',
+                        end: "1800",
                         scrub: true,
-                        markers: true,
                         pin: leftImage,
-                        // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                        // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
                       },
                     });
                   },
@@ -558,7 +711,7 @@ const LandingPage = () => {
                       x: 20,
                       y: 20,
                       scale: 2.7,
-                      duration: 7,
+                      duration: 2.5,
                       rotationY: 160,
                       rotation: 20,
                       filter: "blur(2px)",
@@ -568,12 +721,10 @@ const LandingPage = () => {
                         trigger: ".container",
                         start: "top 1px",
                         end: "bottom 50%",
-                        // toggleActions: 'play pause reverse none',
+
                         scrub: true,
-                        markers: true,
+
                         pin: rightImage,
-                        // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                        // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
                       },
                     });
                   },
@@ -623,7 +774,7 @@ const LandingPage = () => {
               x: 250,
               y: 240,
               scale: 2.7,
-              duration: 7,
+              duration: 2.5,
               rotationY: 160,
               rotation: 20,
               filter: "blur(2px)",
@@ -632,13 +783,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pl1Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -666,7 +815,7 @@ const LandingPage = () => {
               x: -575,
               y: -0,
               scale: 2.7,
-              duration: 7,
+              duration: 2.5,
               rotationY: 160,
               rotation: 20,
               filter: "blur(2px)",
@@ -675,13 +824,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pl2Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -709,7 +856,7 @@ const LandingPage = () => {
               x: -0,
               y: -130,
               scale: 0.5,
-              duration: 7,
+              duration: 2.5,
               rotationY: 160,
               rotation: 20,
               filter: "blur(2px)",
@@ -718,13 +865,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pl3Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -752,7 +897,7 @@ const LandingPage = () => {
               x: -580,
               y: 330,
               scale: 4,
-              duration: 7,
+              duration: 2.5,
               rotationY: 160,
               rotation: 310,
               filter: "blur(2px)",
@@ -761,13 +906,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pr1Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -795,7 +938,7 @@ const LandingPage = () => {
               x: 250,
               y: 0,
               scale: 2.1,
-              duration: 7,
+              duration: 2.5,
               rotationY: 180,
               rotation: 20,
               filter: "blur(2px)",
@@ -804,13 +947,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pr2Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -838,7 +979,7 @@ const LandingPage = () => {
               x: 450,
               y: 120,
               scale: 2.1,
-              duration: 7,
+              duration: 2.5,
               rotationY: 180,
               rotation: 20,
               filter: "blur(2px)",
@@ -847,13 +988,11 @@ const LandingPage = () => {
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
-                end: "bottom 50%",
-                // toggleActions: 'play pause reverse none',
+                // end: "bottom 50%",
+
                 scrub: true,
-                markers: true,
+
                 pin: pr3Image,
-                // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-                // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
               },
             });
           },
@@ -878,13 +1017,10 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: rightImage2,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -906,13 +1042,10 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+
             scrub: true,
-            markers: true,
+
             pin: leftImage2,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -932,13 +1065,11 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "bottom 50%",
-            // toggleActions: 'play pause reverse none',
+            end: "900",
+
             scrub: true,
-            markers: true,
+
             pin: true,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
@@ -1014,9 +1145,9 @@ const LandingPage = () => {
   return (
     <div
       style={{
-        position: "absolute",
+        position: "relative",
         width: "100%",
-        height: "900px",
+        height: "9000px",
         overflow: "hidden",
         backgroundColor: "#000",
         top: 0,
@@ -1026,7 +1157,7 @@ const LandingPage = () => {
       <NavBar toggleMenu={toggleMenu} menu={menu} />
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           top: "0",
           left: "0",
           width: "100%",
@@ -1224,8 +1355,9 @@ const LandingPage = () => {
             alt="logo"
             style={{
               position: "absolute",
-              bottom: "17%",
-              left: "30%",
+              bottom: "37vh",
+              left: "39vw",
+              width: "300px",
             }}
             className="floating-img hero-section"
           />
@@ -1235,8 +1367,8 @@ const LandingPage = () => {
             alt="logo"
             style={{
               position: "absolute",
-              bottom: "8%",
-              left: "26%",
+              bottom: "10vh",
+              left: "28vw",
             }}
             className="hero-section"
           />
@@ -1265,141 +1397,175 @@ const LandingPage = () => {
             className="hero-section"
           />
         </div>
-      </div>
-      {/* <div
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100vh",
-          backgroundImage: `url(${blackJackBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="ss"
-      ></div> */}
-      <div
-        ref={bg2Ref}
-        style={{
-          display: "flex",
-          position: "absolute",
-          width: "100%",
-          height: "100vh",
-          overflow: "hidden",
-          margin: "auto",
-          backgroundImage: `url(${blackJackBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="slider-section"
-      >
-        <Swiper
-          pagination={pagination}
-          modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
-          className="mySwiper"
-          effect="fade" // Set effect to fade
-          fadeEffect={{ crossFade: true }} // Enable cross fade effect
-          autoplay={{
-            delay: 10000,
-            disableOnInteraction: false,
+        <div
+          ref={bg2Ref}
+          style={{
+            display: "flex",
+            position: "absolute",
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+            margin: "auto",
+            backgroundImage: `url(${blackJackBG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            top: "0px",
           }}
-          navigation={false}
-          keyboard={{
-            enabled: true,
+          className="slider-section"
+        >
+          <Swiper
+            pagination={pagination}
+            modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
+            className="mySwiper"
+            effect="fade" // Set effect to fade
+            fadeEffect={{ crossFade: true }} // Enable cross fade effect
+            autoplay={{
+              delay: 10000,
+              disableOnInteraction: false,
+            }}
+            navigation={false}
+            keyboard={{
+              enabled: true,
+            }}
+            style={{ zIndex: 10 }}
+          >
+            {SliderData.map((items, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-start",
+                    width: "30%",
+                    textAlign: "start",
+                    gap: "10px",
+                    marginLeft: "10vh",
+                    marginBottom: " 45vh",
+                    height: "100%",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: 300 /* Light font weight */,
+                      fontStyle: "italic" /* Italic style */,
+                      fontSize: "40px",
+                      color: "#E7B960",
+                    }}
+                    className="cormorant-font"
+                  >
+                    {items.title}
+                  </span>
+                  <span
+                    style={{
+                      fontStyle: "normal" /* Italic style */,
+                      fontSize: "14px",
+                      color: "#fff",
+                      fontWeight: 100,
+                    }}
+                  >
+                    {items.description}
+                  </span>
+                  <button
+                    style={{
+                      border: "1px solid transparent",
+                      borderImage:
+                        "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
+                      borderImageSlice: "1",
+                      borderImageRepeat: "stretch",
+                      backgroundColor: "initial",
+                      color: "#E7B960",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-around",
+                      gap: "8px",
+                      padding: "05px 20px",
+                      cursor: "pointer",
+                      marginTop: "10px",
+                    }}
+                    className="cormorant-font"
+                  >
+                    RENT NOW{" "}
+                    <img
+                      alt="heartsButton"
+                      src={heartsButton}
+                      style={{ width: "30px" }}
+                    />
+                  </button>
+                </div>
+                <img
+                  src={items.img}
+                  alt="logo"
+                  style={{
+                    width: items === slide2 ? "600px" : "300px",
+                    height: "300px",
+                    display: "flex",
+                    margin: "auto",
+                  }}
+                  className="floating-img slider-img"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div ref={bg4Ref}>
+            <img
+              src={slideBase}
+              alt="logo"
+              style={{
+                width: "400px",
+                height: "300px",
+                position: "absolute",
+                bottom: "1vh",
+                left: "36vw",
+              }}
+            />
+          </div>
+        </div>
+        <div
+          ref={bg3Ref}
+          style={{
+            zIndex: 10,
+            position: "absolute",
+            width: "100%",
+            top: "1800px",
           }}
         >
-          {SliderData.map((items, index) => (
-            <SwiperSlide key={index}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  alignItems: "flex-start",
-                  width: "30%",
-                  textAlign: "start",
-                  gap: "10px",
-                  marginLeft: "10vh",
-                  marginBottom: " 45vh",
-                  height: "100%",
-                }}
-              >
-                <span
-                  style={{
-                    fontWeight: 300 /* Light font weight */,
-                    fontStyle: "italic" /* Italic style */,
-                    fontSize: "40px",
-                    color: "#E7B960",
-                  }}
-                  className="cormorant-font"
-                >
-                  {items.title}
-                </span>
-                <span
-                  style={{
-                    fontStyle: "normal" /* Italic style */,
-                    fontSize: "14px",
-                    color: "#fff",
-                    fontWeight: 100,
-                  }}
-                >
-                  {items.description}
-                </span>
-                <button
-                  style={{
-                    border: "1px solid transparent",
-                    borderImage:
-                      "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
-                    borderImageSlice: "1",
-                    borderImageRepeat: "stretch",
-                    backgroundColor: "initial",
-                    color: "#E7B960",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                    gap: "8px",
-                    padding: "05px 20px",
-                    cursor: "pointer",
-                    marginTop: "10px",
-                  }}
-                  className="cormorant-font"
-                >
-                  RENT NOW{" "}
-                  <img
-                    alt="heartsButton"
-                    src={heartsButton}
-                    style={{ width: "30px" }}
-                  />
-                </button>
-              </div>
-              <img
-                src={items.img}
-                alt="logo"
-                style={{
-                  width: items === slide2 ? "600px" : "300px",
-                  height: "300px",
-                  display: "flex",
-                  margin: "auto",
-                }}
-                className="floating-img slider-img"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div>
-          <img
-            src={slideBase}
-            alt="logo"
-            style={{
-              width: "400px",
-              height: "300px",
-              position: "absolute",
-              bottom: "1vh",
-              left: "36vw",
-            }}
-          />
+          <About />
+        </div>
+        <div
+          ref={bg5Ref}
+          style={{
+            zIndex: 10,
+            position: "absolute",
+            top: "3600px",
+            width: "100%",
+            backgroundColor: "#000",
+          }}
+        >
+          <Products />
+        </div>
+        <div
+          ref={bg6Ref}
+          style={{
+            zIndex: 10,
+            position: "absolute",
+            top: "5400px",
+            width: "100%",
+          }}
+        >
+          <Contact />
+        </div>
+        <div
+          ref={bg7Ref}
+          style={{
+            color: "#FFF",
+            zIndex: 10,
+            position: "absolute",
+            top: "7200px",
+            width: "100%",
+          }}
+        >
+          <Footer />
         </div>
       </div>
     </div>

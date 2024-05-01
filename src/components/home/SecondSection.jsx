@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {
   requestDice,
   diamondCard,
@@ -11,7 +11,9 @@ import {
   lightBG,
 } from "../../common/assets/images";
 
-const SecondSection = () => {
+const SecondSection = () => {    
+
+  
   return (
     <div
       style={{
@@ -20,11 +22,13 @@ const SecondSection = () => {
         overflow: "hidden",
         margin: "auto",
         backgroundImage: `url(${lightBG})`,
+        backgroundColor: "#000",
         backgroundSize: "contain",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         gap: "0px",
         position: "relative",
+        zIndex: 4
       }}
     >
       <div
