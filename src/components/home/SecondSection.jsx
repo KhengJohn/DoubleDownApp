@@ -27,6 +27,8 @@ const SecondSection = () => {
   gsap.set(".I3C", { scale: 0, y: -300, x: 0 });
   gsap.set(".Contact", { scale: 0, y: -300, x: 0 });
   gsap.set(".B1", { scale: 1, y: 300, x: 0 });
+  gsap.set(".BI1", { scale: 1, y: 300, rotation: -23 });
+  gsap.set(".BI2", { scale: 1, y: 300, rotation: -23 });
 
   useEffect(() => {
     gsap.to(".I1", {
@@ -157,9 +159,9 @@ const SecondSection = () => {
     });
     gsap.to(".BI1", {
       y: -300,
-      x: 0,
+      x: 100,
       duration: 2,
-      rotate: -188.11,
+      rotate: -196.11,
       scrollTrigger: {
         trigger: ".scrollElement",
         start: "3150",
@@ -170,9 +172,9 @@ const SecondSection = () => {
     });
     gsap.to(".BI2", {
       y: -300,
-      x: 0,
+      x: -100,
       duration: 2,
-      rotate: -178.11,
+      rotate: -186.11,
       scrollTrigger: {
         trigger: ".scrollElement",
         start: "3150",
@@ -191,7 +193,7 @@ const SecondSection = () => {
         start: "2500",
         end: "2700",
         scrub: 2,
-        // toggleActions: "play none none none",
+        toggleActions: "play none none none",
       },
     });
   }, []);
@@ -200,7 +202,7 @@ const SecondSection = () => {
     <div
       style={{
         width: "100%",
-        height: "3700px",
+        height: "4300px",
         overflow: "hidden",
         margin: "auto",
         backgroundImage: `url(${lightBG})`,
@@ -739,13 +741,13 @@ const SecondSection = () => {
             className="Contact"
           >
             <span
-              style={{ fontSize: "120px", color: "#E7B960", fontWeight: "bold" }}
+              style={{ fontSize: "120px", color: "#E7B960", fontWeight: "bold", letterSpacing: "10px" }}
               className="cormorant-font"
             >
               CALL US TODAY !
             </span>
             <span
-              style={{ fontSize: "90px", color: "#E7B960" }}
+              style={{ fontSize: "90px", color: "#E7B960", letterSpacing: "8px" }}
               className="cormorant-font"
             >
               +1 (512)-945-2363
@@ -829,7 +831,7 @@ const SecondSection = () => {
               <img
                 src={bottomSpade}
                 style={{
-                  transform: " rotate(-102.11deg)",
+                  transform: " rotate(-122.11deg)",
                   zIndex: 2,
                   position: "absolute",
                   left: "0%",
