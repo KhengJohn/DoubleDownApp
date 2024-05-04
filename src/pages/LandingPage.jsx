@@ -34,6 +34,7 @@ import {
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "../components/home/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from 'react-router-dom';
 import "swiper/css";
 import "swiper/css/pagination";
 import {
@@ -121,10 +122,7 @@ const SliderData = [
 gsap.config({ trialWarn: false });
 
 const LandingPage = () => {
-  const [menu, setMenue] = useState(true);
-  const toggleMenu = () => {
-    setMenue(!menu);
-  };
+  const navigate = useNavigate();
 
   const leftImageRef = useRef(null);
   const rightImageRef = useRef(null);
@@ -150,6 +148,7 @@ const LandingPage = () => {
   const hamburgerRef = useRef(null);
   const shoppingCartRef = useRef(null);
   const signInButtonRef = useRef(null);
+  const [menu, setMenue] = useState(true);
 
   useEffect(() => {
     const leftImage = leftImageRef.current;
@@ -1088,6 +1087,14 @@ const LandingPage = () => {
     // });
   }, []);
 
+  const toggleMenu = () => {
+    setMenue(!menu);
+  };
+
+  const handleSignUpButtonClick = () => {
+    navigate('/signup');
+  }
+
   return (
     <div
       style={{
@@ -1247,6 +1254,7 @@ const LandingPage = () => {
             marginTop: "10px",
           }}
           className="cormorant-font"
+          onClick={handleSignUpButtonClick}
         >
           SIGN UP
         </button>
