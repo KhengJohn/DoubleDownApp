@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 
 import {
   requestDice,
@@ -16,6 +17,8 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const SecondSection = () => {
+  const navigate = useNavigate();
+
   gsap.set(".I1", { scale: 0, y: -300, x: 0 });
   gsap.set(".I1B", { scale: 0, y: -300, x: 0 });
   gsap.set(".I1C", { scale: 0, y: -300, x: 0 });
@@ -198,6 +201,10 @@ const SecondSection = () => {
     });
   }, []);
 
+  const handleRequestQuote = () => {
+    navigate('/contactus')
+  }
+
   return (
     <div
       style={{
@@ -304,6 +311,7 @@ const SecondSection = () => {
                 alignSelf: "end",
               }}
               className="cormorant-font"
+              onClick={handleRequestQuote}
             >
               REQUEST A QUOTE <img alt="request-dice" src={requestDice} />
             </button>
@@ -766,9 +774,11 @@ const SecondSection = () => {
                 justifyContent: "space-around",
                 gap: "8px",
                 padding: "10px 25px",
-                fontSize: "20px"
+                fontSize: "20px",
+                cursor: "pointer"
               }}
               className="cormorant-font"
+              onClick={handleRequestQuote}
             >
               REQUEST A QUOTE <img alt="request-dice" src={requestDice} />
             </button>

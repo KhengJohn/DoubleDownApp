@@ -161,6 +161,7 @@ body {
   background: transparent;
   border-radius: 4px;
   border: solid 1.5px #6a6357;
+  font-size: 16px;
 }
 
 .form-submit {
@@ -176,7 +177,7 @@ body {
 .google-signup-btn {
   padding: 20px 15px;
   display: flex;
-  border: solid 1px #D1A757;
+  border: solid 1px #d1a757;
   color: #fff;
   font-size: 15px;
   letter-spacing: 21px;
@@ -218,4 +219,43 @@ body {
 
 .signup-form-divider::after {
   margin-left: var(--signup-form-divider-gap);
+}
+
+.contactus-page {
+  display: flex;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  background-image: url("/public/assets/images/contactus-bg.svg");
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+}
+
+.contactus-title {
+  font-size: 70px;
+  color: #efce76;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.contactus-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 180px;
+  gap: 50px;
+}
+
+.contact-form-control {
+  padding: 20px 15px;
+  width: 500px;
+  background: transparent;
+  border-radius: 4px;
+  border: solid 2px #6a6357;
+  font-size: 16px;
+  color: #efce76;
 }
