@@ -1,4 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import {
   requestDice,
   diamondCard,
@@ -10,15 +13,184 @@ import {
   bottomSpade,
   lightBG,
 } from "../../common/assets/images";
+gsap.registerPlugin(ScrollTrigger);
 
-const SecondSection = () => {    
+const SecondSection = () => {
+  gsap.set(".I1", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I1B", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I1C", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I2", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I2B", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I3", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I3B", { scale: 0, y: -300, x: 0 });
+  gsap.set(".B1", { scale: 1, y: 300, x: 0 });
 
+  useEffect(() => {
+    gsap.to(".I1", {
+      scale: 1.3,
+      y: -130,
+      x: 60,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I1B", {
+      scale: 1.3,
+      y: -120,
+      x: 50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I1C", {
+      y: -120,
+      x: 50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I2", {
+      scale: 1.3,
+      y: -120,
+      x: 0,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I2B", {
+      scale: 1.3,
+      y: -105,
+      x: 0,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I2C", {
+      y: -105,
+      x: 0,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.to(".I3", {
+      scale: 1.3,
+      duration: 2,
+      y: -130,
+      x: -60,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+    gsap.to(".I3B", {
+      scale: 1.3,
+      y: -120,
+      x: -50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.to(".I3C", {
+      y: -120,
+      x: -50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2260",
+        end: "2330",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.to(".B1", {
+      y: -300,
+      x: 0,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "3050",
+        end: "3450",
+        scrub: 2,
+        toggleActions: "play none none none",
   
+      },
+    });
+    gsap.to(".BI1", {
+      y: -300,
+      x: 0,
+      duration: 2,
+      rotate: -188.11,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "3150",
+        end: "3450",
+        scrub: 2,
+        toggleActions: "play none none none",
+  
+      },
+    });
+
+    gsap.to(".BI2", {
+      y: -300,
+      x: 0,
+      duration: 2,
+      rotate: -178.11,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "3150",
+        end: "3450",
+        scrub: 2,
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
+
   return (
     <div
       style={{
         width: "100%",
-        height: "450vh",
+        height: "2600px",
         overflow: "hidden",
         margin: "auto",
         backgroundImage: `url(${lightBG})`,
@@ -28,16 +200,18 @@ const SecondSection = () => {
         backgroundRepeat: "no-repeat",
         gap: "0px",
         position: "relative",
-        zIndex: 4
+        zIndex: 4,
       }}
+      className="scrollElement"
     >
       <div
         style={{
           width: "100%",
           height: "200vh",
-          overflow: "hidden",
+          overflow: "auto",
           margin: "auto",
           gap: "0px",
+          marginTop: "200px",
           position: "relative",
         }}
       >
@@ -64,23 +238,27 @@ const SecondSection = () => {
               style={{
                 fontWeight: 300 /* Light font weight */,
                 fontStyle: "italic" /* Italic style */,
-                fontSize: "26px",
+                fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
+                fontWeight: "100",
+                marginLeft: "200px"
               }}
               className="cormorant-font"
             >
-              With over 15 years of experience in the casino party industry.
+              With over 15 years of <br /> experience in the casino <br /> party industry.
             </span>
             <p
               style={{
                 fontWeight: 100 /* Light font weight */,
                 // fontStyle: "italic" /* Italic style */,
-                fontSize: "13px",
+                fontSize: "20px",
                 textAlign: "start",
                 width: "90%",
                 color: "#fff",
                 paddingLeft: "30px",
+                lineHeight: "1.5",
+                marginLeft: "250px"
               }}
             >
               We guarantee you will feel like you're in Vegas!  Whether you're
@@ -88,8 +266,9 @@ const SecondSection = () => {
               person corporate event, Double Down Casino Events is committed to
               providing you with the highest quality equipment and best service
               available. All of our events are ran by a professionally trained
-              pit boss  to ensure your event runs flawlessly. What is the
-              difference between Double Down Casino Events and all of the other
+              pit boss  to ensure your event runs flawlessly. 
+              <br />
+              What is the difference between Double Down Casino Events and all of the other
               casino party companies? Reliability, competitive pricing, and
               state of the art equipment. Request a quote today to see why we
               are the best in casino rentals in Texas!
@@ -107,7 +286,9 @@ const SecondSection = () => {
                 alignItems: "center",
                 justifyContent: "space-around",
                 gap: "8px",
-                padding: "10px 25px",
+                padding: "18px 50px",
+                fontSize: "20px",
+                alignSelf: "end"
               }}
               className="cormorant-font"
             >
@@ -134,16 +315,17 @@ const SecondSection = () => {
               margin: "auto",
               width: "70%",
               alignItems: "center",
-              marginTop: "-190px",
+              marginTop: "-225px",
             }}
           >
             <span
               style={{
                 fontWeight: 100 /* Light font weight */,
-                // fontStyle: "italic" /* Italic style */,
-                fontSize: "26px",
+                fontStyle: "italic" /* Italic style */,
+                fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
+                marginRight: "100px"
               }}
               className="cormorant-font"
             >
@@ -152,12 +334,13 @@ const SecondSection = () => {
             <p
               style={{
                 fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
-                fontSize: "13px",
+                fontStyle: "gordita" /* Italic style */,
+                fontSize: "20px",
                 textAlign: "start",
                 width: "90%",
                 color: "#fff",
                 paddingLeft: "30px",
+                lineHeight: "1.5",
               }}
             >
               Host a Vegas style casino night for your friends and colleagues
@@ -189,7 +372,8 @@ const SecondSection = () => {
                 alignItems: "center",
                 justifyContent: "space-around",
                 gap: "8px",
-                padding: "15px 35px",
+                padding: "18px 50px",
+                fontSize: "20px"
               }}
               className="cormorant-font"
             >
@@ -202,7 +386,7 @@ const SecondSection = () => {
           <div style={{ display: "flex", position: "relative", width: "45px" }}>
             <div
               style={{
-                height: "150vh",
+                height: "155vh",
                 width: "3px",
                 backgroundColor: "#E7B960",
                 // position: "absolute",
@@ -232,7 +416,7 @@ const SecondSection = () => {
                 borderRadius: "100%",
                 backgroundColor: "#E7B960",
                 position: "absolute",
-                top: "70vh",
+                top: "76vh",
                 left: "-50%",
                 boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
               }}
@@ -241,30 +425,38 @@ const SecondSection = () => {
         </div>
       </div>
       {/* Three Items */}
-      <div style={{}}>
+      <div style={{ marginTop: "-120px" }}>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "space-between",
             gap: "20px",
             height: "100vh",
+            paddingLeft: "70px",
+            paddingRight: "70px",
           }}
         >
+
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
               gap: "50px",
             }}
           >
             <img
               src={diamondCard}
-              style={{ width: "150px" }}
+              style={{ width: "180px", marginBottom: "80px", marginLeft: "50px" }}
               alt="diamondCard"
+              className="I1 floating-img"
             />
-            <img src={slideBase} style={{ width: "250px" }} alt="diamondCard" />
+            <img
+              src={slideBase}
+              style={{ width: "400px" }}
+              alt="diamondCard"
+              className="I1B"
+            />
             <div
               style={{
                 display: "flex",
@@ -273,12 +465,13 @@ const SecondSection = () => {
                 justifyContent: "center",
                 gap: "0px",
               }}
+              className="I1C"
             >
               <span
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "26px",
+                  fontSize: "50px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -289,7 +482,7 @@ const SecondSection = () => {
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
+                  fontSize: "32px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -299,7 +492,7 @@ const SecondSection = () => {
               <ul
                 style={{
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
+                  fontSize: "18px",
                   color: "#fff",
                 }}
               >
@@ -322,6 +515,7 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
+                  fontSize: "20px"
                 }}
                 className="cormorant-font"
               >
@@ -329,17 +523,27 @@ const SecondSection = () => {
               </button>
             </div>
           </div>
+
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
               gap: "50px",
             }}
           >
-            <img src={dice} style={{ width: "150px" }} alt="dice" />
-            <img src={slideBase} style={{ width: "250px" }} alt="diamondCard" />
+            <img
+              src={dice}
+              style={{ width: "180px", marginBottom: "100px", marginLeft: "30px" }}
+              alt="dice"
+              className="I2 floating-img"
+            />
+            <img
+              src={slideBase}
+              style={{ width: "400px" }}
+              alt="diamondCard"
+              className="I2B"
+            />
             <div
               style={{
                 display: "flex",
@@ -348,12 +552,13 @@ const SecondSection = () => {
                 justifyContent: "center",
                 gap: "0px",
               }}
+              className="I2C"
             >
               <span
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "26px",
+                  fontSize: "50px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -364,7 +569,7 @@ const SecondSection = () => {
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
+                  fontSize: "32px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -374,7 +579,7 @@ const SecondSection = () => {
               <ul
                 style={{
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
+                  fontSize: "18px",
                   color: "#fff",
                 }}
               >
@@ -397,37 +602,48 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
+                  fontSize: "20px"
                 }}
               >
                 RENT NOW <img alt="heartsButton" src={heartsButton} />
               </button>
             </div>
           </div>
+
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
               gap: "50px",
             }}
           >
-            <img src={coin} style={{ width: "150px" }} alt="coin" />
-            <img src={slideBase} style={{ width: "250px" }} alt="diamondCard" />
+            <img
+              src={coin}
+              style={{ width: "180px", marginBottom: "80px", marginRight: "100px" }}
+              alt="coin"
+              className="I3 floating-img"
+            />
+            <img
+              src={slideBase}
+              style={{ width: "400px" }}
+              alt="diamondCard"
+              className="I3B"
+            />
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "center",
                 gap: "0px",
               }}
+              className="I3C"
             >
               <span
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "26px",
+                  fontSize: "50px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -438,7 +654,7 @@ const SecondSection = () => {
                 style={{
                   fontWeight: 300 /* Light font weight */,
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
+                  fontSize: "32px",
                   color: "#E7B960",
                 }}
                 className="cormorant-font"
@@ -448,7 +664,7 @@ const SecondSection = () => {
               <ul
                 style={{
                   fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
+                  fontSize: "18px",
                   color: "#fff",
                 }}
               >
@@ -471,6 +687,7 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
+                  fontSize: "20px"
                 }}
                 className="cormorant-font"
               >
@@ -482,7 +699,7 @@ const SecondSection = () => {
         {/* CALL US SECTION */}
         <div
           style={{
-            height: "150vh",
+            height: "190vh",
             margin: "auto",
             overflow: "hidden",
           }}
@@ -536,10 +753,23 @@ const SecondSection = () => {
               display: "flex",
               flexDirection: "column",
               gap: "30px",
-              height: "40vh",
+              height: "90vh",
+              position: "relative",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "absolute",
+                top: "300px",
+              }}
+              className="B1"
+            >
               <span
                 style={{
                   fontWeight: 300 /* Light font weight */,
@@ -567,33 +797,36 @@ const SecondSection = () => {
               style={{
                 position: "relative",
                 display: "flex",
-                margin: "auto",
+                marginTop: "0",
                 width: "32%",
+                backgroundColor: "green",
               }}
             >
               <img
                 src={bottomSpade}
                 style={{
-                  transform: " rotate(162.11deg)",
+                  transform: " rotate(-102.11deg)",
                   zIndex: 2,
                   position: "absolute",
                   left: "0%",
                   width: "16rem",
-                  bottom: "-320px",
+                  bottom: "-520px",
                 }}
                 alt=""
+                className="BI1"
               />
               <img
                 src={bottomHeart}
                 style={{
-                  transform: " rotate(0.11deg)",
+                  transform: " rotate(-102.11deg)",
                   zIndex: 1,
                   position: "absolute",
                   right: "0%",
                   width: "16rem",
-                  bottom: "-320px",
+                  bottom: "-520px",
                 }}
                 alt=""
+                className="BI2"
               />
             </div>
           </div>
