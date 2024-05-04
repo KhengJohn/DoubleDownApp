@@ -19,10 +19,13 @@ const SecondSection = () => {
   gsap.set(".I1", { scale: 0, y: -300, x: 0 });
   gsap.set(".I1B", { scale: 0, y: -300, x: 0 });
   gsap.set(".I1C", { scale: 0, y: -300, x: 0 });
-  gsap.set(".I2", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I2 ", { scale: 0, y: -300, x: 0 });
   gsap.set(".I2B", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I2C", { scale: 0, y: -300, x: 0 });
   gsap.set(".I3", { scale: 0, y: -300, x: 0 });
   gsap.set(".I3B", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I3C", { scale: 0, y: -300, x: 0 });
+  gsap.set(".Contact", { scale: 0, y: -300, x: 0 });
   gsap.set(".B1", { scale: 1, y: 300, x: 0 });
 
   useEffect(() => {
@@ -102,7 +105,6 @@ const SecondSection = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.to(".I3", {
       scale: 1.3,
       duration: 2,
@@ -129,7 +131,6 @@ const SecondSection = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.to(".I3C", {
       y: -120,
       x: -50,
@@ -142,7 +143,6 @@ const SecondSection = () => {
         toggleActions: "play none none none",
       },
     });
-
     gsap.to(".B1", {
       y: -300,
       x: 0,
@@ -153,7 +153,6 @@ const SecondSection = () => {
         end: "3450",
         scrub: 2,
         toggleActions: "play none none none",
-  
       },
     });
     gsap.to(".BI1", {
@@ -167,10 +166,8 @@ const SecondSection = () => {
         end: "3450",
         scrub: 2,
         toggleActions: "play none none none",
-  
       },
     });
-
     gsap.to(".BI2", {
       y: -300,
       x: 0,
@@ -184,13 +181,26 @@ const SecondSection = () => {
         toggleActions: "play none none none",
       },
     });
+    gsap.to(".Contact", {
+      scale: 1.3,
+      y: -120,
+      x: -50,
+      duration: 2,
+      scrollTrigger: {
+        trigger: ".scrollElement",
+        start: "2500",
+        end: "2700",
+        scrub: 2,
+        // toggleActions: "play none none none",
+      },
+    });
   }, []);
 
   return (
     <div
       style={{
         width: "100%",
-        height: "2600px",
+        height: "3700px",
         overflow: "hidden",
         margin: "auto",
         backgroundImage: `url(${lightBG})`,
@@ -242,11 +252,12 @@ const SecondSection = () => {
                 textAlign: "start",
                 width: "90%",
                 fontWeight: "100",
-                marginLeft: "200px"
+                marginLeft: "200px",
               }}
               className="cormorant-font"
             >
-              With over 15 years of <br /> experience in the casino <br /> party industry.
+              With over 15 years of <br /> experience in the casino <br /> party
+              industry.
             </span>
             <p
               style={{
@@ -258,7 +269,7 @@ const SecondSection = () => {
                 color: "#fff",
                 paddingLeft: "30px",
                 lineHeight: "1.5",
-                marginLeft: "250px"
+                marginLeft: "250px",
               }}
             >
               We guarantee you will feel like you're in Vegas!  Whether you're
@@ -266,12 +277,12 @@ const SecondSection = () => {
               person corporate event, Double Down Casino Events is committed to
               providing you with the highest quality equipment and best service
               available. All of our events are ran by a professionally trained
-              pit boss  to ensure your event runs flawlessly. 
+              pit boss  to ensure your event runs flawlessly.
               <br />
-              What is the difference between Double Down Casino Events and all of the other
-              casino party companies? Reliability, competitive pricing, and
-              state of the art equipment. Request a quote today to see why we
-              are the best in casino rentals in Texas!
+              What is the difference between Double Down Casino Events and all
+              of the other casino party companies? Reliability, competitive
+              pricing, and state of the art equipment. Request a quote today to
+              see why we are the best in casino rentals in Texas!
             </p>
             <button
               style={{
@@ -288,7 +299,7 @@ const SecondSection = () => {
                 gap: "8px",
                 padding: "18px 50px",
                 fontSize: "20px",
-                alignSelf: "end"
+                alignSelf: "end",
               }}
               className="cormorant-font"
             >
@@ -325,7 +336,7 @@ const SecondSection = () => {
                 fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
-                marginRight: "100px"
+                marginRight: "100px",
               }}
               className="cormorant-font"
             >
@@ -373,7 +384,7 @@ const SecondSection = () => {
                 justifyContent: "space-around",
                 gap: "8px",
                 padding: "18px 50px",
-                fontSize: "20px"
+                fontSize: "20px",
               }}
               className="cormorant-font"
             >
@@ -436,7 +447,6 @@ const SecondSection = () => {
             paddingRight: "70px",
           }}
         >
-
           <div
             style={{
               display: "flex",
@@ -447,7 +457,11 @@ const SecondSection = () => {
           >
             <img
               src={diamondCard}
-              style={{ width: "180px", marginBottom: "80px", marginLeft: "50px" }}
+              style={{
+                width: "180px",
+                marginBottom: "80px",
+                marginLeft: "50px",
+              }}
               alt="diamondCard"
               className="I1 floating-img"
             />
@@ -515,7 +529,7 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
-                  fontSize: "20px"
+                  fontSize: "20px",
                 }}
                 className="cormorant-font"
               >
@@ -534,14 +548,18 @@ const SecondSection = () => {
           >
             <img
               src={dice}
-              style={{ width: "180px", marginBottom: "100px", marginLeft: "30px" }}
+              style={{
+                width: "180px",
+                marginBottom: "100px",
+                marginLeft: "30px",
+              }}
               alt="dice"
               className="I2 floating-img"
             />
             <img
               src={slideBase}
               style={{ width: "400px" }}
-              alt="diamondCard"
+              alt="diceSlideBase"
               className="I2B"
             />
             <div
@@ -602,7 +620,7 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
-                  fontSize: "20px"
+                  fontSize: "20px",
                 }}
               >
                 RENT NOW <img alt="heartsButton" src={heartsButton} />
@@ -620,7 +638,11 @@ const SecondSection = () => {
           >
             <img
               src={coin}
-              style={{ width: "180px", marginBottom: "80px", marginRight: "100px" }}
+              style={{
+                width: "180px",
+                marginBottom: "80px",
+                marginRight: "100px",
+              }}
               alt="coin"
               className="I3 floating-img"
             />
@@ -687,7 +709,7 @@ const SecondSection = () => {
                   justifyContent: "space-around",
                   gap: "8px",
                   padding: "10px 25px",
-                  fontSize: "20px"
+                  fontSize: "20px",
                 }}
                 className="cormorant-font"
               >
@@ -714,15 +736,16 @@ const SecondSection = () => {
               justifyContent: "center",
               alignItems: "center",
             }}
+            className="Contact"
           >
             <span
-              style={{ fontSize: "100px", color: "#E7B960" }}
+              style={{ fontSize: "120px", color: "#E7B960", fontWeight: "bold" }}
               className="cormorant-font"
             >
               CALL US TODAY !
             </span>
             <span
-              style={{ fontSize: "50px", color: "#E7B960" }}
+              style={{ fontSize: "90px", color: "#E7B960" }}
               className="cormorant-font"
             >
               +1 (512)-945-2363
@@ -741,6 +764,7 @@ const SecondSection = () => {
                 justifyContent: "space-around",
                 gap: "8px",
                 padding: "10px 25px",
+                fontSize: "20px"
               }}
               className="cormorant-font"
             >
