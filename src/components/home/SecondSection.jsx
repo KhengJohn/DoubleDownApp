@@ -230,7 +230,6 @@ const SecondSection = () => {
           overflow: "auto",
           margin: "auto",
           gap: "0px",
-          marginTop: "200px",
           position: "relative",
         }}
       >

@@ -53,7 +53,7 @@ gsap.registerPlugin(ScrollTrigger);
 const pagination = {
   clickable: true,
   renderBullet: function (index, className) {
-    return '<span class="' + className + '">' + (index + 1) + "</span>";
+    return '<div class="' + className + '"><span>' + (index + 1) + "</span></div>";
   },
 };
 const SliderData = [
@@ -1364,6 +1364,7 @@ const LandingPage = () => {
           backgroundImage: `url(${blackJackBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          zIndex: 20
         }}
         className="slider-section"
       >
@@ -1371,17 +1372,12 @@ const LandingPage = () => {
           pagination={pagination}
           modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
           className="mySwiper"
-          effect="fade" // Set effect to fade
-          fadeEffect={{ crossFade: true }} // Enable cross fade effect
-          autoplay={{
-            delay: 10000,
-            disableOnInteraction: false,
-          }}
+          effect="fade"
+          fadeEffect={{ crossFade: true }} 
           navigation={false}
           keyboard={{
             enabled: true,
           }}
-          style={{ zIndex: 20 }}
         >
           {SliderData.map((items, index) => (
             <SwiperSlide key={index}>

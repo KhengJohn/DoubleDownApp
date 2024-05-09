@@ -46,8 +46,8 @@ function App() {
       zIndex: 10,
       scrollTrigger: {
         trigger: ".container",
-        start: "1400",
-        end: "1505",
+        start: "1200",
+        end: "1305",
         // toggleActions: 'play pause reverse none',
         scrub: true,
         pin: bg3,
