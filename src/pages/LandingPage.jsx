@@ -30,11 +30,12 @@ import {
   heartsButton,
   shoppingCart,
   blackJackBG,
+  rouletteRentButton,
 } from "../common/assets/images";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "../components/home/NavBar";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import {
@@ -53,7 +54,9 @@ gsap.registerPlugin(ScrollTrigger);
 const pagination = {
   clickable: true,
   renderBullet: function (index, className) {
-    return '<div class="' + className + '"><span>' + (index + 1) + "</span></div>";
+    return (
+      '<div class="' + className + '"><span>' + (index + 1) + "</span></div>"
+    );
   },
 };
 const SliderData = [
@@ -361,7 +364,7 @@ const LandingPage = () => {
         });
       },
     });
-    
+
     gsap.to(shoppingCart, {
       opacity: 0,
       x: 0,
@@ -552,7 +555,7 @@ const LandingPage = () => {
               onComplete: () => {
                 gsap.to(leftImage, {
                   x: 170,
-                  y: -240,
+                  y: -410,
                   scale: 2.7,
                   duration: 2,
                   rotationY: 160,
@@ -562,7 +565,7 @@ const LandingPage = () => {
                   onComplete: () => {
                     gsap.to(leftImage, {
                       x: 160,
-                      y: -320,
+                      y: -420,
                       scale: 2.7,
                       duration: 7,
                       rotationY: 160,
@@ -1092,8 +1095,8 @@ const LandingPage = () => {
   };
 
   const handleSignUpButtonClick = () => {
-    navigate('/signup');
-  }
+    navigate("/signup");
+  };
 
   return (
     <div
@@ -1364,7 +1367,7 @@ const LandingPage = () => {
           backgroundImage: `url(${blackJackBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          zIndex: 20
+          zIndex: 20,
         }}
         className="slider-section"
       >
@@ -1373,7 +1376,7 @@ const LandingPage = () => {
           modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
           className="mySwiper"
           effect="fade"
-          fadeEffect={{ crossFade: true }} 
+          fadeEffect={{ crossFade: true }}
           navigation={false}
           keyboard={{
             enabled: true,
@@ -1389,7 +1392,6 @@ const LandingPage = () => {
                   alignItems: "flex-start",
                   width: "30%",
                   textAlign: "start",
-                  gap: "10px",
                   marginLeft: "10vh",
                   marginBottom: " 45vh",
                   height: "100%",
@@ -1406,14 +1408,7 @@ const LandingPage = () => {
                 >
                   {items.title}
                 </span>
-                <span
-                  style={{
-                    fontStyle: "normal" /* Italic style */,
-                    fontSize: "18px",
-                    color: "#fff",
-                    fontWeight: 100,
-                  }}
-                >
+                <span className="casino-item-description">
                   {items.description}
                 </span>
                 <button
@@ -1429,16 +1424,19 @@ const LandingPage = () => {
                     alignItems: "center",
                     justifyContent: "space-around",
                     gap: "8px",
-                    padding: "05px 20px",
+                    padding: "5px 20px",
                     cursor: "pointer",
-                    marginTop: "10px",
+                    width: "216px",
+                    height: "64px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
                   }}
                   className="cormorant-font"
                 >
                   RENT NOW{" "}
                   <img
                     alt="heartsButton"
-                    src={heartsButton}
+                    src={index === 0 ? rouletteRentButton : heartsButton}
                     style={{ width: "30px" }}
                   />
                 </button>

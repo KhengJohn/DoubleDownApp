@@ -42,3 +42,4 @@ export const bottomHeart = `${process.env.PUBLIC_URL}/assets/images/bottom-heart
 export const lightBG = `${process.env.PUBLIC_URL}/assets/images/light-effect-bg.svg`;
 export const blackJackBG = `${process.env.PUBLIC_URL}/assets/images/Blackjack-bg.svg`;
 export const shoppingCart = `${process.env.PUBLIC_URL}/assets/images/shopping-cart.svg`;
+export const rouletteRentButton = `${process.env.PUBLIC_URL}/assets/images/roulette-rent-button.svg`;
