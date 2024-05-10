@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
@@ -202,8 +202,8 @@ const SecondSection = () => {
   }, []);
 
   const handleRequestQuote = () => {
-    navigate('/contactus')
-  }
+    navigate("/contactus");
+  };
 
   return (
     <div
@@ -250,7 +250,7 @@ const SecondSection = () => {
               margin: "auto",
               width: "70%",
               alignItems: "center",
-              marginTop: "425px"
+              marginTop: "425px",
             }}
           >
             <span
@@ -260,9 +260,8 @@ const SecondSection = () => {
                 fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
-                fontWeight: "100",
                 marginLeft: "200px",
-                lineHeight: "80%"
+                lineHeight: "80%",
               }}
               className="cormorant-font"
             >
@@ -270,17 +269,8 @@ const SecondSection = () => {
               industry.
             </span>
             <p
-              style={{
-                fontWeight: 100 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
-                fontSize: "20px",
-                textAlign: "start",
-                width: "90%",
-                color: "#fff",
-                paddingLeft: "30px",
-                lineHeight: "1.5",
-                marginLeft: "250px",
-              }}
+              style={{ marginLeft: "250px" }}
+              className="about-us-comment-text"
             >
               We guarantee you will feel like you're in Vegas!  Whether you're
               hosting a small 25 person home birthday party or a large 5000 plus
@@ -353,18 +343,7 @@ const SecondSection = () => {
             >
               Casino Night{" "}
             </span>
-            <p
-              style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "gordita" /* Italic style */,
-                fontSize: "20px",
-                textAlign: "start",
-                width: "90%",
-                color: "#fff",
-                paddingLeft: "30px",
-                lineHeight: "1.5",
-              }}
-            >
+            <p className="about-us-comment-text">
               Host a Vegas style casino night for your friends and colleagues
               with Double Down Casino Events. We provide unsurpassed casino
               night rentals to the great state of Texas. Our 100% handmade in
@@ -750,13 +729,22 @@ const SecondSection = () => {
             className="Contact"
           >
             <span
-              style={{ fontSize: "120px", color: "#E7B960", fontWeight: "bold", letterSpacing: "10px" }}
+              style={{
+                fontSize: "120px",
+                color: "#E7B960",
+                fontWeight: "bold",
+                letterSpacing: "10px",
+              }}
               className="cormorant-font"
             >
               CALL US TODAY !
             </span>
             <span
-              style={{ fontSize: "90px", color: "#E7B960", letterSpacing: "8px" }}
+              style={{
+                fontSize: "90px",
+                color: "#E7B960",
+                letterSpacing: "8px",
+              }}
               className="cormorant-font"
             >
               +1 (512)-945-2363
@@ -776,7 +764,7 @@ const SecondSection = () => {
                 gap: "8px",
                 padding: "10px 25px",
                 fontSize: "20px",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
               className="cormorant-font"
               onClick={handleRequestQuote}
