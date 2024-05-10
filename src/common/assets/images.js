@@ -40,6 +40,7 @@ export const heartsButton = `${process.env.PUBLIC_URL}/assets/images/hearts-butt
 export const bottomSpade = `${process.env.PUBLIC_URL}/assets/images/bottom-spade-card.svg`;
 export const bottomHeart = `${process.env.PUBLIC_URL}/assets/images/bottom-heart-card.svg`;
 export const lightBG = `${process.env.PUBLIC_URL}/assets/images/light-effect-bg.svg`;
+export const lightBG1 = `${process.env.PUBLIC_URL}/assets/images/light-effect-bg1.svg`;
 export const blackJackBG = `${process.env.PUBLIC_URL}/assets/images/Blackjack-bg.svg`;
 export const shoppingCart = `${process.env.PUBLIC_URL}/assets/images/shopping-cart.svg`;
 export const rouletteRentButton = `${process.env.PUBLIC_URL}/assets/images/roulette-rent-button.svg`;

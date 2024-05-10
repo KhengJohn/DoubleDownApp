@@ -25,7 +25,7 @@ const SecondSection = () => {
   gsap.set(".I2 ", { scale: 0, y: -300, x: 0 });
   gsap.set(".I2B", { scale: 0, y: -300, x: 0 });
   gsap.set(".I2C", { scale: 0, y: -300, x: 0 });
-  gsap.set(".I3", { scale: 0, y: -300, x: 0 });
+  gsap.set(".I3", { scale: 0, y: -300, x: 0 });   
   gsap.set(".I3B", { scale: 0, y: -300, x: 0 });
   gsap.set(".I3C", { scale: 0, y: -300, x: 0 });
   gsap.set(".Contact", { scale: 0, y: -300, x: 0 });
@@ -255,7 +255,7 @@ const SecondSection = () => {
           >
             <span
               style={{
-                fontWeight: 300,
+                fontWeight: 100,
                 fontStyle: "italic",
                 fontSize: "50px",
                 textAlign: "start",
@@ -263,7 +263,7 @@ const SecondSection = () => {
                 marginLeft: "200px",
                 lineHeight: "80%",
               }}
-              className="cormorant-font"
+              className="about-us-comment-title"
             >
               With over 15 years of <br /> experience in the casino <br /> party
               industry.
@@ -297,11 +297,11 @@ const SecondSection = () => {
                 alignItems: "center",
                 justifyContent: "space-around",
                 gap: "8px",
-                padding: "18px 50px",
                 fontSize: "20px",
                 alignSelf: "end",
+                width: "306px",
+                height: "64px"
               }}
-              className="cormorant-font"
               onClick={handleRequestQuote}
             >
               REQUEST A QUOTE <img alt="request-dice" src={requestDice} />
@@ -332,14 +332,14 @@ const SecondSection = () => {
           >
             <span
               style={{
-                fontWeight: 100 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
+                fontWeight: 100,
+                fontStyle: "italic",
                 fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
                 marginRight: "100px",
               }}
-              className="cormorant-font"
+              className="about-us-comment-title"
             >
               Casino Night{" "}
             </span>

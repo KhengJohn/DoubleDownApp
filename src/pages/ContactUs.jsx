@@ -1,13 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const ContactUs = () => {
-  const navigate = useNavigate();
   const onSubmit = () => {};
-
-  const handleSignUpBtnClick = () => {
-    navigate("/signup");
-  };
 
   return (
     <div className="contactus-page">
@@ -139,7 +133,7 @@ const ContactUs = () => {
               }}
             >
               <div>SEND MESSAGE</div>
-              <img src={"/assets/images/send-icon.svg"} />
+              <img src={"/assets/images/send-icon.svg"} alt="sendIcon" />
             </button>
           </div>
         </form>

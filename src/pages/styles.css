@@ -117,6 +117,16 @@ body {
   line-height: 150%;
 }
 
+.about-us-comment-title {
+  background-image: linear-gradient(to right, #efce76 0%, #835a27 38%, #c09852 73%, #f4e285 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "Cormorant";
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 @keyframes floatAnimation {
   0% {
     transform: translateY(0);
