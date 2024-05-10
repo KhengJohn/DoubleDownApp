@@ -320,7 +320,7 @@ const LandingPage = () => {
       opacity: 1,
       duration: 2,
       scale: 0.7,
-      zIndex: 5,
+      zIndex: 6,
       onComplete: () => {
         gsap.to(hamburger, {
           x: 0,
@@ -930,13 +930,13 @@ const LandingPage = () => {
       y: 40,
       onComplete: () => {
         gsap.to(logoImage, {
-          x: "-35vw",
+          x: "-33vw",
           y: "-21vw",
           duration: 2,
           ease: "power2",
           onComplete: () => {
             gsap.to(logoImage, {
-              x: "-35vw",
+              x: "-33vw",
               y: "-21vw",
               scrollTrigger: {
                 trigger: ".container",
@@ -1235,11 +1235,9 @@ const LandingPage = () => {
           style={{
             position: "absolute",
             top: "22px",
-            right: "5%",
+            right: "100px",
             cursor: "pointer",
-            ":hover": {
-              cursor: "pointer",
-            },
+            zIndex: 6
           }}
           onClick={toggleMenu}
         />{" "}
@@ -1247,8 +1245,12 @@ const LandingPage = () => {
           ref={signInButtonRef}
           style={{
             position: "absolute",
+            width: "132px",
+            height: "64px",
+            fontSize: "20px",
+            fontWeight: "bold",
             top: "12px",
-            right: "18%",
+            right: "263.3px",
             border: "1px solid transparent",
             borderImage:
               "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
@@ -1263,7 +1265,6 @@ const LandingPage = () => {
             padding: "05px 20px",
             cursor: "pointer",
             zIndex: 10,
-            marginTop: "10px",
           }}
           className="cormorant-font"
           onClick={handleSignUpButtonClick}
@@ -1280,7 +1281,7 @@ const LandingPage = () => {
           style={{
             position: "absolute",
             top: "12px",
-            right: "12%",
+            right: "187.3px",
             cursor: "pointer",
             zIndex: 10,
             ":hover": {
@@ -1402,7 +1403,7 @@ const LandingPage = () => {
                   width: "30%",
                   textAlign: "start",
                   marginLeft: "10vh",
-                  marginBottom: " 45vh",
+                  marginBottom: " 25vh",
                   height: "100%",
                 }}
               >
