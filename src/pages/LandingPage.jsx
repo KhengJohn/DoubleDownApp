@@ -1234,7 +1234,7 @@ const LandingPage = () => {
           alt="logo"
           style={{
             position: "absolute",
-            top: "22px",
+            top: "33px",
             right: "100px",
             cursor: "pointer",
             zIndex: 6
@@ -1280,7 +1280,7 @@ const LandingPage = () => {
           alt="logo"
           style={{
             position: "absolute",
-            top: "12px",
+            top: "23px",
             right: "187.3px",
             cursor: "pointer",
             zIndex: 10,
@@ -1434,7 +1434,10 @@ const LandingPage = () => {
                     alignItems: "center",
                     justifyContent: "space-around",
                     gap: "8px",
-                    padding: "5px 20px",
+                    paddingLeft: "36px",
+                    paddingRight: "24px",
+                    paddingTop: "17px",
+                    paddingBottom: "17px",
                     cursor: "pointer",
                     width: "216px",
                     height: "64px",

@@ -250,17 +250,19 @@ const SecondSection = () => {
               margin: "auto",
               width: "70%",
               alignItems: "center",
+              marginTop: "425px"
             }}
           >
             <span
               style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
+                fontWeight: 300,
+                fontStyle: "italic",
                 fontSize: "50px",
                 textAlign: "start",
                 width: "90%",
                 fontWeight: "100",
                 marginLeft: "200px",
+                lineHeight: "80%"
               }}
               className="cormorant-font"
             >
@@ -270,7 +272,7 @@ const SecondSection = () => {
             <p
               style={{
                 fontWeight: 100 /* Light font weight */,
-                // fontStyle: "italic" /* Italic style */,
+                fontStyle: "italic" /* Italic style */,
                 fontSize: "20px",
                 textAlign: "start",
                 width: "90%",
@@ -335,7 +337,7 @@ const SecondSection = () => {
               margin: "auto",
               width: "70%",
               alignItems: "center",
-              marginTop: "-225px",
+              marginTop: "-5px",
             }}
           >
             <span
@@ -423,7 +425,7 @@ const SecondSection = () => {
                 borderRadius: "100%",
                 backgroundColor: "#E7B960",
                 position: "absolute",
-                top: "22vh",
+                top: "50vh",
                 left: "-50%",
                 boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
               }}
@@ -436,7 +438,7 @@ const SecondSection = () => {
                 borderRadius: "100%",
                 backgroundColor: "#E7B960",
                 position: "absolute",
-                top: "76vh",
+                top: "100vh",
                 left: "-50%",
                 boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
               }}
