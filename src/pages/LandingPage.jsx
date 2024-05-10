@@ -663,24 +663,6 @@ const LandingPage = () => {
         });
       },
     });
-
-    // Logo Animation
-    gsap.to(logoImage, {
-      opacity: 1,
-      delay: 1.5,
-      duration: 3,
-      ease: "none",
-      y: 40,
-      onComplete: () => {
-        gsap.to(logoImage, {
-          x: "-36vw",
-          y: "-21.6vw",
-          scale: 0.5,
-          duration: 2,
-          ease: "power2",
-        });
-      },
-    });
     // pl1Image Animation
     gsap.to(pl1Image, {
       opacity: 1,
@@ -939,16 +921,44 @@ const LandingPage = () => {
         });
       },
     });
+    // Logo Animation
+    gsap.to(logoImage, {
+      opacity: 1,
+      delay: 1.5,
+      duration: 3,
+      ease: "none",
+      y: 40,
+      onComplete: () => {
+        gsap.to(logoImage, {
+          x: "-35vw",
+          y: "-21vw",
+          duration: 2,
+          ease: "power2",
+          onComplete: () => {
+            gsap.to(logoImage, {
+              x: "-35vw",
+              y: "-21vw",
+              scrollTrigger: {
+                trigger: ".container",
+                start: "top 1px",
+                scrub: true,
+    
+                pin: logoImage,
+              },
+            });
+          },
+        });
+      },
+    });
     // Right2 Animation
     gsap.to(rightImage2, {
       x: 0,
       y: 0,
       delay: 4.5,
       duration: 2,
-      rotate: -9,
+      rotate: -7,
       rotateZ: 39,
       ease: "bounce.in",
-      zIndex: 4,
       display: "fixed",
       onComplete: () => {
         gsap.to(rightImage2, {
@@ -974,10 +984,9 @@ const LandingPage = () => {
       y: 0,
       delay: 4,
       duration: 2,
-      rotate: -9,
+      rotate: -25,
       rotateZ: 39,
       ease: "bounce.in",
-      zIndex: 5,
       onComplete: () => {
         gsap.to(leftImage2, {
           x: 0,
@@ -1127,10 +1136,10 @@ const LandingPage = () => {
           alt="Animated"
           style={{
             position: "absolute",
-            top: "16px",
-            left: "3.5%",
-            transform: " rotate(-29.11deg)",
-            zIndex: 2,
+            top: "26.84px",
+            left: "88.11px",
+            transform: " rotate(-136.45deg)",
+            zIndex: 10,
           }}
         />
         <img
@@ -1139,10 +1148,10 @@ const LandingPage = () => {
           alt="Animated"
           style={{
             position: "absolute",
-            top: "14px",
-            left: "5%",
-            transform: " rotate(-29.11deg)",
-            zIndex: 1,
+            top: "20.84px",
+            left: "108.99px",
+            transform: " rotate(-170.98deg)",
+            zIndex: 6,
           }}
         />
         <img
@@ -1171,7 +1180,7 @@ const LandingPage = () => {
           ref={logoImageRef}
           src={logo}
           alt="logo"
-          style={{ width: "300px", display: "flex", margin: "auto" }}
+          style={{ width: "304px", height: "108px", display: "absolute", margin: "auto", zIndex: 6 }}
         />
         <img
           ref={pl1Ref}
@@ -1367,7 +1376,7 @@ const LandingPage = () => {
           backgroundImage: `url(${blackJackBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          zIndex: 20,
+          zIndex: 5
         }}
         className="slider-section"
       >
@@ -1387,7 +1396,7 @@ const LandingPage = () => {
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: " column",
                   justifyContent: "flex-end",
                   alignItems: "flex-start",
                   width: "30%",

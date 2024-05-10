@@ -68,6 +68,7 @@ body {
 }
 
 .swiper-pagination-bullet {
+  display: absolute;
   width: 12px;
   height: 12px;
   text-align: center;
@@ -83,6 +84,7 @@ body {
   );
   color: #be9f60;
   font-size: 0;
+  z-index: 20;
 }
 
 .swiper-pagination-bullet-active {
