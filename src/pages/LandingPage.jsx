@@ -1364,8 +1364,10 @@ const LandingPage = () => {
             style={{
               position: "absolute",
               width: "70%",
-              top: "15%",
-              left: "15%",
+              marginTop: "233px",
+              marginBottom: "233px",
+              marginLeft: "261px",
+              marginRight: "261px"
             }}
             className="hero-section"
           />
