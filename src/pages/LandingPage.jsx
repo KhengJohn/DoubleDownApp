@@ -932,17 +932,21 @@ const LandingPage = () => {
         gsap.to(logoImage, {
           x: "-33vw",
           y: "-21vw",
+          // position: "fixed",
           duration: 2,
           ease: "power2",
+          marginTop: "405px",
+          marginLeft: "772px",
           onComplete: () => {
             gsap.to(logoImage, {
               x: "-33vw",
               y: "-21vw",
+              position: "fixed",
               scrollTrigger: {
                 trigger: ".container",
                 start: "top 1px",
                 scrub: true,
-    
+
                 pin: logoImage,
               },
             });
@@ -1180,7 +1184,13 @@ const LandingPage = () => {
           ref={logoImageRef}
           src={logo}
           alt="logo"
-          style={{ width: "304px", height: "108px", display: "absolute", margin: "auto", zIndex: 6 }}
+          style={{
+            width: "304px",
+            height: "108px",
+            display: "relative",
+            margin: "auto",
+            zIndex: 6,
+          }}
         />
         <img
           ref={pl1Ref}
@@ -1237,7 +1247,7 @@ const LandingPage = () => {
             top: "33px",
             right: "100px",
             cursor: "pointer",
-            zIndex: 6
+            zIndex: 6,
           }}
           onClick={toggleMenu}
         />{" "}
@@ -1271,9 +1281,6 @@ const LandingPage = () => {
         >
           SIGN UP
         </button>
-        {/* <h1 style={{ color: "white", zIndex: 6 }} id="hh">
-        HELLO WORLD
-      </h1> */}
         <img
           ref={shoppingCartRef}
           src={shoppingCart}
@@ -1377,7 +1384,7 @@ const LandingPage = () => {
           backgroundImage: `url(${blackJackBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          zIndex: 5
+          zIndex: 5,
         }}
         className="slider-section"
       >
@@ -1402,7 +1409,7 @@ const LandingPage = () => {
                   alignItems: "flex-start",
                   width: "30%",
                   textAlign: "start",
-                  marginLeft: "10vh",
+                  marginLeft: "88.1px",
                   marginBottom: " 25vh",
                   height: "100%",
                 }}

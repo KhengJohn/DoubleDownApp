@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'Gordita Regular';
-  src: url('/public/assets/fonts/Gordita Regular.otf');
+  font-family: 'Gordita Light';
+  src: url('/public/assets/fonts/Gordita Light.otf');
 }
 
 .casino-item-description {
-  font-family: "Gordita Regular";
+  font-family: "Gordita Light";
   font-size: "18px";
   color: #fff;
   font-weight: 100;
@@ -109,7 +109,7 @@ body {
 
 .about-us-comment-text {
   font-weight: 100;
-  font-family: "Gordita Regular";
+  font-family: "Gordita Light";
   font-size: 18px;
   width: 90%;
   color: #fff;
