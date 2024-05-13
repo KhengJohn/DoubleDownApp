@@ -1189,7 +1189,7 @@ const LandingPage = () => {
             height: "108px",
             display: "relative",
             margin: "auto",
-            zIndex: 6,
+            zIndex: 5,
           }}
         />
         <img
