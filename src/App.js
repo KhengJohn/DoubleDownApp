@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import LandingPage from "./pages/LandingPage";
+import RouteIndex from "./routes/RouteIndex";
 import "./pages/styles.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,7 @@ function App() {
  
   return (
     <div className="main">
-      <LandingPage />
+      <RouteIndex />
     </div>
   );
 }

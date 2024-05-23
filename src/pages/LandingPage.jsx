@@ -51,6 +51,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import { useGSAP } from "@gsap/react";
 import SecondSection from "../components/home/SecondSection";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -308,11 +309,11 @@ const LandingPage = () => {
         .to(secondSection, {
           x: 0,
           y: 0,
-          duration: 0.001,
+          duration: 0.1,
           opacity: 1,
           zIndex: 12,
-        }),
-        // .to(secondSection, { opacity: 1 }),
+        })
+        .to(secondSection, { opacity: 1 }),  
       toggleActions: "play none none none",
     });
     // Set initial position of the Images
@@ -355,32 +356,14 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "900",
-            // toggleActions: 'play pause reverse none',
-            scrub: true,
-
+            end: "900", 
+            scrub: true, 
             pinSpacing: false,
             pin: bg,
-            // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-            // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
           },
         });
       },
     });
-
-    // gsap.to(bg2, {
-    //   backgroundImage: `url(${blackJackBG})`,
-    //   opacity: 1,
-    //   scrollTrigger: {
-    //     trigger: ".container",
-    //     start: "top 1px",
-    //     end: "900",
-    //     // toggleActions: 'play pause reverse none',
-    //     scrub: true,
-    //     pinSpacing: false,
-    //     pin: bg2,
-    //   },
-    // });
 
     ScrollTrigger.create({
       trigger: ".cont",
@@ -394,7 +377,8 @@ const LandingPage = () => {
           opacity: 1,
           duration: 0.01,
         })
-        .to(bg2, { opacity: 1 }),
+        .to(bg2, { opacity: 1 })
+        .to(bg2, { opacity: 0, duration:0.01 }),
       toggleActions: "play none none none",
     });
 
@@ -411,7 +395,8 @@ const LandingPage = () => {
           zIndex: 11,
           duration: 0.01,
         })
-        .to(swiper, { opacity: 1 }),
+        .to(swiper, { opacity: 1 })
+        .to(swiper, { opacity: 0, duration: 0.01 }),
       toggleActions: "play none none none",
     });
 
@@ -427,7 +412,8 @@ const LandingPage = () => {
           opacity: 1,
           duration: 0.01,
         })
-        .to(bg4, { opacity: 1 }),
+        .to(bg4, { opacity: 1 })
+        .to(bg4, { opacity: 0, duration: 0.01 }),
       toggleActions: "play none none none",
     });
     // HAMBURGER
@@ -540,7 +526,7 @@ const LandingPage = () => {
               duration: 0.1,
             })
             .to(shadeShape, { x: -399, y: 250 })
-            .to(shadeShape, { opacity: 0, duration: 0.1 }),
+            .to(shadeShape, { x: -459, y: 250, opacity: 0, duration: 0.1 }),
           toggleActions: "play none none none",
         });
       },
@@ -660,7 +646,7 @@ const LandingPage = () => {
               duration: 0.1,
             })
             .to(heartShape, { x: 230, y: 28 })
-            .to(heartShape, { opacity: 0, duration: 0.1 }),
+            .to(heartShape, {x: 280, y: 28, opacity: 0, duration: 0.1 }),
           toggleActions: "play none none none",
         });
       },
@@ -924,35 +910,6 @@ const LandingPage = () => {
         ease: "power2",
       });
 
-    //       onComplete: () => {
-    //         gsap.to(pl1Image, {
-    //           x: 250,
-    //           y: 240,
-    //           scale: 2.7,
-    //           duration: 7,
-    //           rotationY: 160,
-    //           rotation: 20,
-    //           filter: "blur(2px)",
-    //           ease: "power2",
-    //           zIndex: 1,
-    //           scrollTrigger: {
-    //             trigger: ".container",
-    //             start: "top 1px",
-    //             // end: "bottom 50%",
-    //             // toggleActions: 'play pause reverse none',
-    //             scrub: true,
-
-    //             pinSpacing: false,
-    //             pin: pl1Image,
-    //             // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-    //             // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
-    //           },
-    //         });
-    //       },
-    //     });
-    //   },
-    // });
-
     // pl2Image Animation
     const pl2TL = gsap.timeline({
       onComplete: function () {
@@ -1107,29 +1064,6 @@ const LandingPage = () => {
         filter: "blur(1px)",
         ease: "power2",
       });
-    // .to(pr1Image, {
-    //   x: -580,
-    //   y: 330,
-    //   scale: 4,
-    //   duration: 7,
-    //   rotationY: 160,
-    //   rotation: 310,
-    //   filter: "blur(2px)",
-    //   ease: "power2",
-    //   zIndex: 1,
-    //   scrollTrigger: {
-    //     trigger: ".container",
-    //     start: "top 1px",
-    //     // end: "bottom 50%",
-    //     // toggleActions: 'play pause reverse none',
-    //     scrub: true,
-
-    //     pinSpacing: false,
-    //     pin: pr1Image,
-    //     // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
-    //     // onLeave: function() { gsap.to("#hh", { scaleX: -1, rotation: -15 }) },
-    //   },
-    // });
 
     // plr2Image Animation
     const pr2TL = gsap.timeline({
@@ -1410,7 +1344,7 @@ const LandingPage = () => {
           src={logo}
           alt="logo"
           style={{ width: "300px", display: "flex", margin: "auto" }}
-        />{" "}
+        />
         <img
           ref={logoImageRef2}
           src={logoT}
@@ -1505,7 +1439,7 @@ const LandingPage = () => {
             width: "119.82px",
             height: "109.84px",
           }}
-        />{" "}
+        />
         <img
           ref={hamburgerRef}
           src={hamburger}
@@ -1520,7 +1454,8 @@ const LandingPage = () => {
             },
           }}
           onClick={toggleMenu}
-        />{" "}
+        />
+        <Link to={"sign-up"}>
         <button
           ref={signInButtonRef}
           style={{
@@ -1547,10 +1482,7 @@ const LandingPage = () => {
           className="cormorant-font"
         >
           SIGN UP
-        </button>
-        {/* <h1 style={{ color: "white", zIndex: 6 }} id="hh">
-        HELLO WORLD
-      </h1> */}
+        </button></Link>
         <img
           ref={shoppingCartRef}
           src={shoppingCart}
@@ -1726,7 +1658,7 @@ const LandingPage = () => {
                 </span>
                 <span className="swipper-description">{items.description}</span>
                 <button className="cormorant-font swipper-btn">
-                  RENT NOW{" "}
+                  RENT NOW
                   <img
                     alt="heartsButton"
                     src={heartsButton}

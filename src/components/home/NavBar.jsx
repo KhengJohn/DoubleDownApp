@@ -6,11 +6,14 @@ import {
   cloverShape,
   close,
 } from "../../common/assets/images";
+import { Link } from "react-router-dom";
+
 const NavBar = ({ toggleMenu, menu }) => {
   return (
     <div
       style={{
         position: "fixed",
+        top: 0,
         width: "100%",
         height: menu ? "0" : "100vh",
         overflow: "hidden",
@@ -80,8 +83,8 @@ const NavBar = ({ toggleMenu, menu }) => {
           }}
           className="cormorant-font"
         >
-          <li>CONTACT US</li>
-          <li>GAMING TABLES</li>
+         <Link style={{ cursor: 'pointer'}} to={"/contact-us"}><li className="gradient-text">CONTACT US</li></Link>
+         <Link style={{ cursor: 'pointer'}} to={""}><li className="gradient-text" style={{ cursor: 'pointer'}}>GAMING TABLES</li></Link>
         </ul>
         <div style={{ display: "flex", flexDirection: "row", gap: "30px" }}>
           <img
