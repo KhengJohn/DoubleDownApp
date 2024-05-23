@@ -2,6 +2,7 @@
 export const leftImage = `${process.env.PUBLIC_URL}/assets/images/spades-card.svg`;
 export const rightImage = `${process.env.PUBLIC_URL}/assets/images/hearts-card.svg`;
 export const logo = `${process.env.PUBLIC_URL}/assets/images/logo.svg`;
+export const logoT = `${process.env.PUBLIC_URL}/assets/images/logoT.svg`;
 export const pl1 = `${process.env.PUBLIC_URL}/assets/images/pl1.svg`;
 export const pl2 = `${process.env.PUBLIC_URL}/assets/images/pl2.svg`;
 export const pl3 = `${process.env.PUBLIC_URL}/assets/images/pl3.svg`;

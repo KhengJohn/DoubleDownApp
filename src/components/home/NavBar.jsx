@@ -10,7 +10,7 @@ const NavBar = ({ toggleMenu, menu }) => {
   return (
     <div
       style={{
-        position: "absolute",
+        position: "fixed",
         width: "100%",
         height: menu ? "0" : "100vh",
         overflow: "hidden",
@@ -21,18 +21,28 @@ const NavBar = ({ toggleMenu, menu }) => {
         zIndex: 40,
       }}
     >
-      <img
-        src={close}
-        alt="close"
+      <div
         style={{
           position: "absolute",
           top: "22px",
           right: "5%",
           cursor: "pointer",
+          height: "30px",
           width: "30px",
+          display: "flex",
+          zIndex: 40,
         }}
         onClick={toggleMenu}
-      />
+      >
+        <img
+          src={close}
+          alt="close"
+          style={{
+            width: "30px",
+            margin: "auto",
+          }}
+        />
+      </div>
       <img
         src={cloverShape}
         alt="cloverShape"
@@ -67,7 +77,8 @@ const NavBar = ({ toggleMenu, menu }) => {
             gap: "30px",
             marginLeft: 0,
             paddingLeft: 0,
-          }} className="cormorant-font"
+          }}
+          className="cormorant-font"
         >
           <li>CONTACT US</li>
           <li>GAMING TABLES</li>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,6 +13,7 @@ import {
   bottomSpade,
   lightBG,
 } from "../../common/assets/images";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const SecondSection = () => {
@@ -25,7 +26,7 @@ const SecondSection = () => {
   gsap.set(".I3B", { scale: 0, y: -300, x: 0 });
   gsap.set(".B1", { scale: 1, y: 300, x: 0 });
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.to(".I1", {
       scale: 1.3,
       y: -130,
@@ -33,8 +34,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -46,8 +47,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -58,8 +59,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -71,8 +72,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -84,8 +85,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -96,8 +97,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -110,8 +111,8 @@ const SecondSection = () => {
       x: -60,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -123,8 +124,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -136,8 +137,8 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "2260",
-        end: "2330",
+        start: "9860",
+        end: "9930",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -149,11 +150,10 @@ const SecondSection = () => {
       duration: 2,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "3050",
-        end: "3450",
+        start: "10650",
+        end: "11050",
         scrub: 2,
         toggleActions: "play none none none",
-  
       },
     });
     gsap.to(".BI1", {
@@ -163,11 +163,10 @@ const SecondSection = () => {
       rotate: -188.11,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "3150",
-        end: "3450",
+        start: "10750",
+        end: "11050",
         scrub: 2,
         toggleActions: "play none none none",
-  
       },
     });
 
@@ -178,8 +177,8 @@ const SecondSection = () => {
       rotate: -178.11,
       scrollTrigger: {
         trigger: ".scrollElement",
-        start: "3150",
-        end: "3450",
+        start: "10750",
+        end: "11050",
         scrub: 2,
         toggleActions: "play none none none",
       },
@@ -190,12 +189,11 @@ const SecondSection = () => {
     <div
       style={{
         width: "100%",
-        height: "2600px",
         overflow: "hidden",
         margin: "auto",
         backgroundImage: `url(${lightBG})`,
-        backgroundColor: "#000",
-        backgroundSize: "contain",
+        // backgroundColor: "red",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         gap: "0px",
@@ -221,69 +219,26 @@ const SecondSection = () => {
             gridTemplateColumns: "repeat(2, 1fr)",
           }}
         >
-          <div
-            style={{
-              gap: "25px",
-              color: "#E7B960",
-              display: "flex",
-              flexDirection: "column",
-              marginLeft: "auto",
-              margin: "auto",
-              width: "70%",
-              alignItems: "center",
-            }}
-          >
-            <span
-              style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
-                fontSize: "26px",
-                textAlign: "start",
-                width: "90%",
-              }}
-              className="cormorant-font"
-            >
+          <div className="second-first-div">
+            <span className="cormorant-font second-first-title">
               With over 15 years of experience in the casino party industry.
             </span>
-            <p
-              style={{
-                fontWeight: 100 /* Light font weight */,
-                // fontStyle: "italic" /* Italic style */,
-                fontSize: "13px",
-                textAlign: "start",
-                width: "90%",
-                color: "#fff",
-                paddingLeft: "30px",
-              }}
-            >
+            <p className="second-first-description">
               We guarantee you will feel like you're in Vegas!  Whether you're
               hosting a small 25 person home birthday party or a large 5000 plus
               person corporate event, Double Down Casino Events is committed to
               providing you with the highest quality equipment and best service
               available. All of our events are ran by a professionally trained
-              pit boss  to ensure your event runs flawlessly. What is the
-              difference between Double Down Casino Events and all of the other
-              casino party companies? Reliability, competitive pricing, and
-              state of the art equipment. Request a quote today to see why we
-              are the best in casino rentals in Texas!
+              pit boss  to ensure your event runs flawlessly.
+              <br />
+              <br />
+              <br />
+              What is thedifference between Double Down Casino Events and all of
+              the other casino party companies? Reliability, competitive
+              pricing, and state of the art equipment. Request a quote today to
+              see why we are the best in casino rentals in Texas!
             </p>
-            <button
-              style={{
-                border: "1px solid transparent",
-                borderImage:
-                  "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
-                borderImageSlice: "1",
-                borderImageRepeat: "stretch",
-                backgroundColor: "initial",
-                color: "#E7B960",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-around",
-                gap: "8px",
-                padding: "10px 25px",
-              }}
-              className="cormorant-font"
-            >
+            <button className="cormorant-font second-first-btn">
               REQUEST A QUOTE <img alt="request-dice" src={requestDice} />
             </button>
           </div>
@@ -297,42 +252,11 @@ const SecondSection = () => {
           }}
         >
           <div></div>
-          <div
-            style={{
-              gap: "25px",
-              color: "#E7B960",
-              display: "flex",
-              flexDirection: "column",
-              marginLeft: "auto",
-              margin: "auto",
-              width: "70%",
-              alignItems: "center",
-              marginTop: "-130px",
-            }}
-          >
-            <span
-              style={{
-                fontWeight: 100 /* Light font weight */,
-                // fontStyle: "italic" /* Italic style */,
-                fontSize: "26px",
-                textAlign: "start",
-                width: "90%",
-              }}
-              className="cormorant-font"
-            >
-              Casino Night{" "}
+          <div className="second-first-divII">
+            <span className="cormorant-font second-first-title">
+              Casino Night
             </span>
-            <p
-              style={{
-                fontWeight: 300 /* Light font weight */,
-                fontStyle: "italic" /* Italic style */,
-                fontSize: "13px",
-                textAlign: "start",
-                width: "90%",
-                color: "#fff",
-                paddingLeft: "30px",
-              }}
-            >
+            <p className="second-first-description">
               Host a Vegas style casino night for your friends and colleagues
               with Double Down Casino Events. We provide unsurpassed casino
               night rentals to the great state of Texas. Our 100% handmade in
@@ -381,7 +305,7 @@ const SecondSection = () => {
                 // position: "absolute",
                 // top: "0",
                 // left: "50vw",
-                boxShadow: "0 0 10px #E7B960", // Add a #E7B960 shadow
+                boxShadow: "0 0 3px #E7B960", // Add a #E7B960 shadow
               }}
             ></div>
             {/* DOT I */}
@@ -414,7 +338,7 @@ const SecondSection = () => {
         </div>
       </div>
       {/* Three Items */}
-      <div style={{ marginTop: "-120px" }}>
+      <div className="three-items-div">
         <div
           style={{
             display: "flex",
@@ -425,27 +349,14 @@ const SecondSection = () => {
             paddingRight: "70px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "50px",
-            }}
-          >
+          <div className="three-div">
             <img
               src={diamondCard}
-              style={{ width: "150px" }}
+              style={{ width: "200px", marginBottom: "-20px" }}
               alt="diamondCard"
               className="I1"
             />
-            <img
-              src={slideBase}
-              style={{ width: "250px" }}
-              alt="diamondCard"
-              className="I1B"
-            />
+            <img src={slideBase} alt="diamondCard" className="I1B" />
             <div
               style={{
                 display: "flex",
@@ -456,82 +367,31 @@ const SecondSection = () => {
               }}
               className="I1C"
             >
-              <span
-                style={{
-                  fontWeight: 300 /* Light font weight */,
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "26px",
-                  color: "#E7B960",
-                }}
-                className="cormorant-font"
-              >
+              <span className="cormorant-font gradient-text three-div-title">
                 Royal Flush
               </span>
-              <span
-                style={{
-                  fontWeight: 300 /* Light font weight */,
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
-                  color: "#E7B960",
-                }}
-                className="cormorant-font"
-              >
+              <span className="cormorant-font  gradient-text three-div-subtitle">
                 $3895
               </span>
-              <ul
-                style={{
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
-                  color: "#fff",
-                }}
-              >
+              <ul className="three-div-list">
                 <li>8 Black Jack Tables</li>
                 <li>2 Full Size Craps Tables</li>
                 <li>2 Texas Hold'em Tables</li>
                 <li>2 Roulette Tables</li>
               </ul>
-              <button
-                style={{
-                  border: "1px solid transparent",
-                  borderImage:
-                    "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
-                  borderImageSlice: "1",
-                  borderImageRepeat: "stretch",
-                  backgroundColor: "initial",
-                  color: "#E7B960",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  gap: "8px",
-                  padding: "10px 25px",
-                }}
-                className="cormorant-font"
-              >
+              <button className="cormorant-font three-div-btn">
                 RENT NOW <img alt="heartsButton" src={heartsButton} />
               </button>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "50px",
-            }}
-          >
+          <div className="three-div">
             <img
               src={dice}
               style={{ width: "150px" }}
               alt="dice"
               className="I2"
             />
-            <img
-              src={slideBase}
-              style={{ width: "250px" }}
-              alt="diamondCard"
-              className="I2B"
-            />
+            <img src={slideBase} alt="diamondCard" className="I2B" />
             <div
               style={{
                 display: "flex",
@@ -549,62 +409,25 @@ const SecondSection = () => {
                   fontSize: "26px",
                   color: "#E7B960",
                 }}
-                className="cormorant-font"
+                className="cormorant-font  gradient-text three-div-title"
               >
                 Double Down
               </span>
-              <span
-                style={{
-                  fontWeight: 300 /* Light font weight */,
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
-                  color: "#E7B960",
-                }}
-                className="cormorant-font"
-              >
+              <span className="cormorant-font gradient-text three-div-subtitle">
                 $1495
               </span>
-              <ul
-                style={{
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
-                  color: "#fff",
-                }}
-              >
+              <ul className="three-div-list">
                 <li>2 Black Jacks Tables</li>
                 <li>2 Texas Hold'em Table</li>
                 <li>2 Tables of your choice</li>
                 <li>Large craps not included</li>
               </ul>
-              <button
-                style={{
-                  border: "1px solid transparent",
-                  borderImage:
-                    "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
-                  borderImageSlice: "1",
-                  borderImageRepeat: "stretch",
-                  backgroundColor: "initial",
-                  color: "#E7B960",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  gap: "8px",
-                  padding: "10px 25px",
-                }}
-              >
+              <button className="cormorant-font three-div-btn">
                 RENT NOW <img alt="heartsButton" src={heartsButton} />
               </button>
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "50px",
-            }}
-          >
+          <div className="three-div">
             <img
               src={coin}
               style={{ width: "150px" }}
@@ -627,57 +450,19 @@ const SecondSection = () => {
               }}
               className="I3C"
             >
-              <span
-                style={{
-                  fontWeight: 300 /* Light font weight */,
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "26px",
-                  color: "#E7B960",
-                }}
-                className="cormorant-font"
-              >
+              <span className="cormorant-font gradient-text three-div-title">
                 StraightMoney
               </span>
-              <span
-                style={{
-                  fontWeight: 300 /* Light font weight */,
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "20px",
-                  color: "#E7B960",
-                }}
-                className="cormorant-font"
-              >
+              <span className="cormorant-font gradient-text  three-div-subtitle">
                 $2395
               </span>
-              <ul
-                style={{
-                  fontStyle: "italic" /* Italic style */,
-                  fontSize: "14px",
-                  color: "#fff",
-                }}
-              >
+              <ul className="three-div-list">
                 <li>5 Black Jack Tables</li>
                 <li>2 Texas Hold'em Tables</li>
                 <li>1 Full Size Craps Table</li>
                 <li>1 Roulette Table</li>
               </ul>
-              <button
-                style={{
-                  border: "1px solid transparent",
-                  borderImage:
-                    "linear-gradient(to right, #E7B960 0%, #000 49%, #E7B960 100%) 1",
-                  borderImageSlice: "1",
-                  borderImageRepeat: "stretch",
-                  backgroundColor: "initial",
-                  color: "#E7B960",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  gap: "8px",
-                  padding: "10px 25px",
-                }}
-                className="cormorant-font"
-              >
+              <button className="cormorant-font three-div-btn">
                 RENT NOW <img alt="heartsButton" src={heartsButton} />
               </button>
             </div>
