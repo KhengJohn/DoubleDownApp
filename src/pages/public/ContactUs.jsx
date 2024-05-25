@@ -1,24 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   sendIcon,
   rightContactbg,
   leftContactbg1,
-  leftContactbg2,
-  rightImage,
-  leftImage,
-  logoT,
-  hamburger,
-  shoppingCart,
-} from "../../common/assets/images";
-import { Link } from "react-router-dom";
-import NavBar from "../../components/home/NavBar";
+  leftContactbg2, 
+} from "../../common/assets/images"; 
 
 const ContactUs = () => {
-  const [menu, setMenue] = useState(true);
-
-  const toggleMenu = () => {
-    setMenue(!menu);
-  };
   const onSubmit = (e) => {
     e.preventDefault();
   };
@@ -30,101 +18,6 @@ const ContactUs = () => {
         paddingBottom: "100px",
       }}
     >
-      <NavBar toggleMenu={toggleMenu} menu={menu} />
-      <Link to={"/"}>
-        <div className="logo-container">
-          <img
-            src={leftImage}
-            alt="Animated"
-            style={{
-              position: "absolute",
-              top: "16px",
-              left: "3.5vw",
-              transform: " rotate(-29.11deg)",
-              zIndex: 2,
-            }}
-          />
-          <img
-            src={rightImage}
-            alt="Animated"
-            style={{
-              position: "absolute",
-              top: "14px",
-              left: "5vw",
-              transform: " rotate(-29.11deg)",
-              zIndex: 1,
-            }}
-          />
-          <img
-            src={logoT}
-            alt="logo"
-            style={{
-              width: "150px",
-              position: "absolute",
-              top: "16px",
-              left: "8vw",
-            }}
-          />
-        </div>
-      </Link>
-      <img
-        src={hamburger}
-        alt="logo"
-        style={{
-          position: "absolute",
-          top: "28px",
-          right: "5%",
-          width: "50px",
-          cursor: "pointer",
-          ":hover": {
-            cursor: "pointer",
-          },
-        }}
-        onClick={toggleMenu}
-      />
-      <Link to={"/sign-up"}>
-        <button
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "18%",
-            border: "1px solid transparent",
-            borderImage:
-              "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
-            borderImageSlice: "1",
-            borderImageRepeat: "stretch",
-            backgroundColor: "initial",
-            color: "#E7B960",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            gap: "8px",
-            padding: "05px 20px",
-            cursor: "pointer",
-            zIndex: 10,
-            marginTop: "10px",
-            opacity: 1,
-          }}
-          className="cormorant-font"
-        >
-          SIGN UP
-        </button>
-      </Link>
-      <img
-        src={shoppingCart}
-        alt="logo"
-        style={{
-          position: "absolute",
-          top: "12px",
-          right: "12%",
-          cursor: "pointer",
-          zIndex: 10,
-          opacity: 1,
-          ":hover": {
-            cursor: "pointer",
-          },
-        }}
-      />
       <img
         className="leftContactbg1 contact-floating-img1"
         src={leftContactbg1}

@@ -36,6 +36,7 @@ import {
 } from "../common/assets/images";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "../components/home/NavBar";
+import SideCart from "../components/cart/SideCart";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -128,9 +129,13 @@ gsap.config({ trialWarn: false });
 
 const LandingPage = () => {
   const [menu, setMenue] = useState(true);
+  const [cart, setCart] = useState(true);
 
   const toggleMenu = () => {
     setMenue(!menu);
+  };
+  const toggleCart = () => {
+    setCart(!cart);
   };
   const swiperRef = useRef(null);
   const leftImageRef = useRef(null);
@@ -1280,6 +1285,7 @@ const LandingPage = () => {
       className=".container"
     >
       <NavBar toggleMenu={toggleMenu} menu={menu} />
+      <SideCart toggleCart={toggleCart} cart={cart} />
       <div
         style={{
           position: "absolute",
@@ -1498,7 +1504,7 @@ const LandingPage = () => {
               cursor: "pointer",
             },
           }}
-          onClick={toggleMenu}
+          onClick={toggleCart}
         />
         <img
           ref={shadeShapeRef}

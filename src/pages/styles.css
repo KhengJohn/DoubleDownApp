@@ -14,9 +14,10 @@
   font-family: "Gordita Light";
 }
 
-.logo-container{
+.logo-container {
   cursor: pointer;
 }
+
 #app {
   height: 100%;
 }
@@ -28,7 +29,7 @@ body {
   background-color: #000;
 }
 
-.noScrollBar{
+.noScrollBar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -849,7 +850,7 @@ body {
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(20deg); 
+    transform: rotate(20deg);
   }
   100% {
     transform: rotate(0deg);
@@ -883,21 +884,20 @@ body {
   width: 200px;
 }
 
-
 /* Sign Up */
 .glass-bg {
-/* From https://css.glass */
-color: #fff;
-height: 100%;
-width: 38%;
-background: rgba(255, 255, 255, 0);
-border-radius: 10px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8px);
--webkit-backdrop-filter: blur(8px);
-border: 1px solid #e7b960; 
-  margin:50px auto;
-  display:flex;
+  /* From https://css.glass */
+  color: #fff;
+  height: 100%;
+  width: 38%;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e7b960;
+  margin: 50px auto;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -906,7 +906,7 @@ border: 1px solid #e7b960;
   width: calc(100% - 20px);
   background: transparent;
   border-radius: 2px;
-  border: solid 1px #6A6357;
+  border: solid 1px #6a6357;
   font-size: 10px;
   color: #c7c7c7;
 }
@@ -923,7 +923,7 @@ border: 1px solid #e7b960;
   gap: 7px;
   width: 100%;
 }
-.signup-btn{
+.signup-btn {
   padding: 09px 15px;
   color: #fff;
   background: linear-gradient(45deg, #efce76, #835a27, #c09852, #f4e285);
@@ -933,34 +933,32 @@ border: 1px solid #e7b960;
   border: none;
   font-family: "Cormorant", serif;
 }
-.signupGoogle-btn{
+.signupGoogle-btn {
   display: flex;
-  padding:09px 15px;
+  padding: 09px 15px;
   align-items: center;
   justify-content: center;
   gap: 10px;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #D1A757;
+  border: 1px solid #d1a757;
   color: #fff;
   font-size: 12px;
 }
-.signupGoogle-btn img{
+.signupGoogle-btn img {
   width: 20px;
 }
 
-
 .signup-form-divider {
   font-size: 12px;
-  color: #fff; 
+  color: #fff;
   --signup-form-divider-gap: 0.5rem;
   display: flex;
   align-items: center;
-  letter-spacing: 0.1em; 
+  letter-spacing: 0.1em;
   font-weight: 100;
   /* font-family: "Cormorant", serif; */
 }
-
 
 .signup-form-divider::before,
 .signup-form-divider::after {
@@ -976,4 +974,80 @@ border: 1px solid #e7b960;
 
 .signup-form-divider::after {
   margin-left: var(--signup-form-divider-gap);
+}
+
+.glass-overlay-bg {
+  /* From https://css.glass */
+  height: 100vh;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: absolute;
+  z-index: 1;
+}
+
+/* CART */
+.cart-cs-btn {
+  border: 1px solid transparent;
+  border-image: linear-gradient(to right, #e7b960 0%, #000 49%, #e7b960 100%) 1;
+  border-image-slice: 1;
+  border-image-repeat: stretch;
+  background-color: initial;
+  color: #e7b960;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+/* ACCOUNT */
+.account-name{
+  color: #d1a757 !important;
+  font-size: 20px;
+}
+
+.accout-sidebar {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 02px;
+}
+
+.accout-sidebar li {
+  color: #cbc9c1;
+  padding:5px 10px;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+border-image: linear-gradient(to right, initial 0%, initial 49%, initial 100%) 1;
+border-image-slice: 1;
+border-image-repeat: stretch;
+border: "1px solid initial" !important;
+}
+.accout-sidebar li img{
+width: 11px;
+
+}
+.accout-sidebar-active {
+  background-color: #393830;
+  border: 1px solid transparent;
+  border-image: linear-gradient(to right, #676052 0%, #676052 49%, #676052 100%) 1 !important;
+  border-image-slice: 1;
+  border-image-repeat: stretch;
+  border: "1px solid #676052" !important;
+  color: #d1a757 !important;
+}
+
+.active-svg {
+  color: red !important; /* Change to the desired active color */
 }
