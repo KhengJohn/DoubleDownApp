@@ -11,7 +11,7 @@ const CasinoGames = () => {
         gap: "25px",
       }}
     >
-      <ProductCards ExploreData={CasinoGamesData}/>
+      <ProductCards SliderData={CasinoGamesData}/>
     </div>
   );
 };

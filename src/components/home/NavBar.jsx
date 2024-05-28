@@ -84,7 +84,7 @@ const NavBar = ({ toggleMenu, menu }) => {
           className="cormorant-font"
         >
          <Link style={{ cursor: 'pointer'}} to={"/contact-us"}><li className="gradient-text">CONTACT US</li></Link>
-         <Link style={{ cursor: 'pointer'}} to={""}><li className="gradient-text" style={{ cursor: 'pointer'}}>GAMING TABLES</li></Link>
+         <Link style={{ cursor: 'pointer'}} to={"/products"}><li className="gradient-text" style={{ cursor: 'pointer'}}>GAMING TABLES</li></Link>
         </ul>
         <div style={{ display: "flex", flexDirection: "row", gap: "30px" }}>
           <img

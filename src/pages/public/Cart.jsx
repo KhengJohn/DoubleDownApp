@@ -4,32 +4,21 @@ import {
   leftImage,
   logoT,
   backArrow,
-  slide1,
-  slide2,
   deleteIcon,
 } from "../../common/assets/images";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-const cartData = [
-  {
-    img: slide1,
-    title: "Roullette",
-    category: "Casino Games",
-    price: "50",
-    total: "150",
-  },
-  {
-    img: slide2,
-    title: "Blackjack",
-    category: "Casino Games",
-    price: "30",
-    total: "120",
-  },
-];
+import { removeFromCart } from "../../state/actions";
 const Cart = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartItems);
   const navigate = useNavigate();
   const handleCheckout = () => {
     navigate("/cart/checkout");
+  };
+  const removeItem = (index) => {
+    dispatch(removeFromCart(index)); // Dispatch action to remove item from cart
   };
   return (
     <div
@@ -174,7 +163,7 @@ const Cart = () => {
                   borderImageRepeat: "stretch",
                 }}
               />
-              {cartData.map((items, index) => (
+              {cartItems.map((items, index) => (
                 <div
                   style={{
                     display: "flex",
@@ -250,7 +239,7 @@ const Cart = () => {
                         ${items.price}
                       </span>
                       <span className="gordita-font" style={{ color: "#FFF" }}>
-                        ${items.total}
+                        ${items.price * items.count}
                       </span>
                       <div
                         style={{
@@ -267,6 +256,7 @@ const Cart = () => {
                           style={{ width: "15px" }}
                           src={deleteIcon}
                           alt=""
+                          onClick={() => removeItem(index)}
                         />
                       </div>
                     </div>

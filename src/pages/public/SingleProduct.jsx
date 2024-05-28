@@ -1,23 +1,36 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   signupBg,
-  slide1,
-  slide2,
-  slide3,
-  slide4,
   slideBase,
   rightImage,
   leftImage,
   logoT,
   infoIcon,
   spLightEffect,
-  addtocarticon,
 } from "../../common/assets/images";
 import { Link } from "react-router-dom";
 import ProductCards from "../../common/dummydata/ProductCards";
-import { ExploreData } from "../../common/dummydata/DummyData";
+import { SliderData } from "../../common/dummydata/DummyData"; 
+import { useParams } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
+import { addToCart, showAlert } from "../../state/actions";
 
 const SingleProduct = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cartItems);
+  const showAlertFlag = useSelector(state => state.showAlert);
+  const { id } = useParams();
+  const newData = SliderData[id];
+  useEffect(() => {
+    if (showAlertFlag) {
+      alert("This item is already in the cart!");
+      // Dispatch an action to hide the alert after showing it
+      dispatch(showAlert());
+    }
+  }, [showAlertFlag, dispatch]);
+  const handleAddToCart = () => {
+    dispatch(addToCart(newData)); // Dispatch the addToCart action with the item
+  };
   return (
     <div>
       <div
@@ -94,7 +107,7 @@ const SingleProduct = () => {
             />
             <img
               className="floating-img"
-              src={slide1}
+              src={newData.img}
               style={{ width: "300px" }}
               alt=""
             />
@@ -132,7 +145,7 @@ const SingleProduct = () => {
                 }}
                 className="cormorant-font"
               >
-                Roullete
+                {newData.title}
               </span>
               <span
                 style={{
@@ -143,7 +156,7 @@ const SingleProduct = () => {
                 }}
                 className="cormorant-font gradient-text"
               >
-                50${" "}
+                {newData.price}$
                 <span
                   style={{
                     fontSize: "16px",
@@ -160,9 +173,7 @@ const SingleProduct = () => {
                 className="gordita-font"
                 style={{ color: "#fff", fontSize: "12px" }}
               >
-                Lorem ipsum dolor sit amet consectetur. Tincidunt quisque
-                quisque nullam et vulputate neque risus. Lacinia nunc facilisis
-                convallis amet commodo. Nec nam pharetra commodo et .
+                {newData.description}
               </span>
               <hr
                 style={{
@@ -194,6 +205,7 @@ const SingleProduct = () => {
                   cursor: "pointer",
                 }}
                 className="cormorant-font"
+                onClick={handleAddToCart}
               >
                 Request Now
               </button>
@@ -237,7 +249,7 @@ const SingleProduct = () => {
         >
           Keep exploring
         </span>
-        <ProductCards ExploreData={ExploreData} />
+        <ProductCards SliderData={SliderData} />
       </div>
     </div>
   );

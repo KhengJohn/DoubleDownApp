@@ -23,7 +23,7 @@ const RouteIndex = () => {
       <Route path="/forgot-password" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route
-        path="/single-product"
+        path="/single-product/:id"
         element={
           <NavBarWrapper>
             <SingleProduct />
@@ -46,7 +46,7 @@ const RouteIndex = () => {
           </NavBarWrapper>
         }
       />
-      <Route path="/cart" element={<Cart />} />{" "}
+      <Route path="/cart" element={<Cart />} />
       <Route path="/cart/checkout" element={<Checkout />} />
       <Route path="/cart/success" element={<SuccessfulPayment />} />
     </Routes>

@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 const Tab1 = ({ tabsData }) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState("0");
+
+  useEffect(() => {
+    setActiveTab(0);
+  }, []);
+
   return (
     <div>
       <div
@@ -14,7 +20,7 @@ const Tab1 = ({ tabsData }) => {
           <button
             key={index}
             style={{
-              borderBottom: activeTab === index ? "2px solid  " : "0px solid ",
+              borderBottom: activeTab === index ? "2px solid transparent" : "0px solid transparent",
               paddingBottom: "0.5rem",
               paddingLeft: "1rem",
               paddingRight: "1rem",

@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCards from "../../common/dummydata/ProductCards";
-import { SpecialityGamesData } from "../../common/dummydata/DummyData";
+import {  SpecialityGamesData } from "../../common/dummydata/DummyData";
 
 const SpecialityGames = () => {
   return (
@@ -12,7 +12,7 @@ const SpecialityGames = () => {
         gap: "25px",
       }}
     >
-      <ProductCards ExploreData={SpecialityGamesData} />
+      <ProductCards SliderData={SpecialityGamesData} />
     </div>
   );
 };

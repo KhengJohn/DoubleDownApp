@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import {   rightImage,
-    leftImage,
-    logoT,
-    hamburger,
-    shoppingCart, } from "../../common/assets/images";
-    import { Link } from "react-router-dom";
+import {
+  rightImage,
+  leftImage,
+  logoT,
+  hamburger,
+  shoppingCart,
+} from "../../common/assets/images";
+import { Link } from "react-router-dom";
 import NavBar from "../home/NavBar";
 import SideCart from "../cart/SideCart";
-
+import { useSelector } from "react-redux";
 const NavBarWrapper = ({ children }) => {
   const [menu, setMenue] = useState(true);
   const [cart, setCart] = useState(true);
-
+  const cartItems = useSelector((state) => state.cartItems);
   const toggleMenu = () => {
     setMenue(!menu);
   };
@@ -19,7 +21,7 @@ const NavBarWrapper = ({ children }) => {
     setCart(!cart);
   };
   return (
-    <div style={{position: "absolute", width: '100%'}}>
+    <div style={{ position: "absolute", width: "100%" }}>
       <NavBar toggleMenu={toggleMenu} menu={menu} />
       <SideCart toggleCart={toggleCart} cart={cart} />
       <Link to={"/"}>
@@ -102,9 +104,7 @@ const NavBarWrapper = ({ children }) => {
           SIGN UP
         </button>
       </Link>
-      <img
-        src={shoppingCart}
-        alt="logo"
+      <div
         style={{
           position: "absolute",
           top: "12px",
@@ -116,10 +116,31 @@ const NavBarWrapper = ({ children }) => {
             cursor: "pointer",
           },
         }}
-        onClick={toggleCart}
-      />
-      <div style={{ margin: '0px auto 0 auto'}}>
-      {children}</div>
+      >
+        <img src={shoppingCart} alt="logo" onClick={toggleCart} />
+        {cartItems.length !== 0 && (
+          <span
+            style={{
+              width: "12px",
+              height: "12px",
+              borderRadius: "100%",
+              background: "#B32323",
+              color: "#FFF",
+              fontSize: "7px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "absolute",
+              top: 2,
+              right: 0,
+              fontWeight: "bold",
+            }}
+          >
+            {cartItems.length}
+          </span>
+        )}
+      </div>
+      <div style={{ margin: "0px auto 0 auto" }}>{children}</div>
     </div>
   );
 };

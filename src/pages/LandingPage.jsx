@@ -53,6 +53,9 @@ import "swiper/css/navigation";
 import { useGSAP } from "@gsap/react";
 import SecondSection from "../components/home/SecondSection";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { SliderData } from "../common/dummydata/DummyData";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,75 +65,17 @@ const pagination = {
     return '<span class="' + className + '">' + (index + 1) + "</span>";
   },
 };
-const SliderData = [
-  {
-    img: slide1,
-    title: "Roulette",
-    description:
-      "Add excitement and glamour to your party by renting a casino roulette! Elevate your event with the elegance of blackjack and the thrill of roulette. Surprise your guests with a unique experience that will make your party unforgettable. Contact us now to make your event a success!",
-  },
-  {
-    img: slide2,
-    title: "Texas Hold 'em",
-    description:
-      " Join the ultimate poker showdown! Play your cards right and outsmart your opponents in Texas Hold'em.",
-  },
-  {
-    img: slide3,
-    title: "Black Jack",
-    description:
-      "Spice up family gatherings with our Blackjack card rental service! Bring the thrill of the casino to your event. Book now for unforgettable fun!",
-  },
-  {
-    img: slide4,
-    title: "Short Craps",
-    description:
-      " Experience the thrill of Craps in a fast-paced, action-packed game. Place your bets and roll the dice!  Book now for unforgettable fun!",
-  },
-  {
-    img: slide5,
-    title: "Large Craps",
-    description:
-      "Dive into the excitement of Craps with a wide range of betting options. Roll the dice and watch your fortunes change!",
-  },
-  {
-    img: slide6,
-    title: "Three Card  Poker",
-    description:
-      "Try your luck in Three Card Poker! Make the best poker hand with three cards and beat the dealer for a chance to win.",
-  },
-  {
-    img: slide7,
-    title: "Let it ride",
-    description:
-      "Let the good times roll in Let It Ride! Place your bets, watch the cards unfold, and see if you can win big against the house.",
-  },
-  {
-    img: slide8,
-    title: "Pai Gow Poker",
-    description:
-      "Play like a pro in Pai Gow Poker! Split your seven cards into two hands and beat the dealer for a chance to win big.",
-  },
-  {
-    img: slide9,
-    title: "Wheel of Fortune",
-    description:
-      " Spin the Wheel of Fortune and win big! Bet on your favorite segments and watch as the wheel determines your fate.",
-  },
-  {
-    img: slide10,
-    title: "Mini Baccarat",
-    description:
-      "Experience the elegance of Baccarat in a fast-paced game! Bet on the player, banker, or a tie and see if luck is on your side in Mini Baccarat.",
-  },
-];
+
 
 gsap.config({ trialWarn: false });
 
 const LandingPage = () => {
   const [menu, setMenue] = useState(true);
   const [cart, setCart] = useState(true);
-
+  const navigate = useNavigate();
+  const handleRent = (id) => {
+    navigate(`/single-product/${id}`);
+  };
   const toggleMenu = () => {
     setMenue(!menu);
   };
@@ -318,12 +263,12 @@ const LandingPage = () => {
           opacity: 1,
           zIndex: 12,
         })
-        .to(secondSection, { opacity: 1 }),  
+        .to(secondSection, { opacity: 1 }),
       toggleActions: "play none none none",
     });
     // Set initial position of the Images
     gsap.set(leftImage, { xPercent: "-100", y: 0, rotationY: 0 });
-    gsap.from(rightImage, { opacity: 0 , rotationY: 0 });
+    gsap.from(rightImage, { opacity: 0, rotationY: 0 });
     gsap.set(logoImage, { opacity: 0, y: 60 });
     gsap.set(logoImage2, { opacity: 0, x: 0, y: 0 });
     gsap.from(pl1Image, { opacity: 0 });
@@ -361,8 +306,8 @@ const LandingPage = () => {
           scrollTrigger: {
             trigger: ".container",
             start: "top 1px",
-            end: "900", 
-            scrub: true, 
+            end: "900",
+            scrub: true,
             pinSpacing: false,
             pin: bg,
           },
@@ -383,7 +328,7 @@ const LandingPage = () => {
           duration: 0.01,
         })
         .to(bg2, { opacity: 1 })
-        .to(bg2, { opacity: 0, duration:0.01 }),
+        .to(bg2, { opacity: 0, duration: 0.01 }),
       toggleActions: "play none none none",
     });
 
@@ -651,7 +596,7 @@ const LandingPage = () => {
               duration: 0.1,
             })
             .to(heartShape, { x: 230, y: 28 })
-            .to(heartShape, {x: 280, y: 28, opacity: 0, duration: 0.1 }),
+            .to(heartShape, { x: 280, y: 28, opacity: 0, duration: 0.1 }),
           toggleActions: "play none none none",
         });
       },
@@ -685,7 +630,8 @@ const LandingPage = () => {
               // rotation: 190,
               filter: "blur(1px)",
               ease: "power2",
-              duration: 0.001, zIndex: 200 ,
+              duration: 0.001,
+              zIndex: 200,
             })
 
             .to(leftImage, {
@@ -694,10 +640,26 @@ const LandingPage = () => {
               scale: 1.7,
               y: -260,
               filter: "blur(2px)",
-              duration: 0.1, zIndex: 200 ,
+              duration: 0.1,
+              zIndex: 200,
             })
             .to(leftImage, { x: 140, y: -260 })
-            .to(leftImage, { x: 120, y: -280, opacity: 1, duration: 0.012, zIndex: 40 }),
+            .to(leftImage, {
+              x: 40,
+              y: -264,
+              opacity: 1,
+              duration:0.029,
+              scale: 0.8,
+              zIndex: 40,
+              rotate: 70
+            })
+            .to(leftImage, {
+              x: 40,
+              y: -264,
+              opacity: 1,
+              duration:0.041,
+              zIndex: 40,
+            }),
           toggleActions: "play none none none",
         });
       },
@@ -721,7 +683,9 @@ const LandingPage = () => {
               // rotation: 20,
               duration: 0.001,
               filter: "blur(1px)",
-              ease: "power2", zIndex: 200 ,opacity: 1,
+              ease: "power2",
+              zIndex: 200,
+              opacity: 1,
             })
             .to(rightImage, {
               rotation: 210,
@@ -729,10 +693,19 @@ const LandingPage = () => {
               scale: 1.7,
               filter: "blur(1px)",
               y: 40,
-              duration: 0.1, zIndex: 200 ,opacity: 1,
+              duration: 0.1,
+              zIndex: 200,
+              opacity: 1,
             })
-            .to(rightImage, { opacity: 1,x: -20, y: 40 })
-            .to(rightImage, { opacity: 1, zIndex: 200,x: 20, y: 70, duration: 0.012,filter: "blur(3px)", }),
+            .to(rightImage, { opacity: 1, x: -20, y: 40 })
+            .to(rightImage, {
+              opacity: 1,
+              zIndex: 200,
+              x: 20,
+              y: 70,
+              duration: 0.012,
+              filter: "blur(3px)",
+            }),
           toggleActions: "play none none none",
         });
       },
@@ -874,7 +847,7 @@ const LandingPage = () => {
             .to(pl1Image, {
               x: 150,
               y: 180,
-              scale: 3,
+              scale: 0.8,
               duration: 0.001,
               rotationY: 60,
               rotation: 40,
@@ -890,6 +863,7 @@ const LandingPage = () => {
               opacity: 1,
             })
             .to(pl1Image, { x: 210, y: 175, opacity: 1 })
+            .to(pl1Image, { x: 180, y: 105, opacity: 1,   duration:0.09, scale: 0.7 })
             .to(pl1Image, { opacity: 0, duration: 0.001 }),
           toggleActions: "play none none none",
         });
@@ -907,7 +881,7 @@ const LandingPage = () => {
       .to(pl1Image, {
         x: 150,
         y: 180,
-        scale: 3,
+        scale: 1,
         duration: 2,
         rotationY: 60,
         rotation: 40,
@@ -929,7 +903,7 @@ const LandingPage = () => {
             .to(pl2Image, {
               x: -480,
               y: -0,
-              scale: 3,
+              scale: 0.8,
               duration: 0.001,
               rotationY: 60,
               rotation: 40,
@@ -961,7 +935,7 @@ const LandingPage = () => {
       .to(pl2Image, {
         x: -480,
         y: -0,
-        scale: 3,
+        scale: 1,
         duration: 2,
         rotationY: 60,
         rotation: 40,
@@ -983,7 +957,7 @@ const LandingPage = () => {
             .to(pl3Image, {
               x: -80,
               y: -170,
-              scale: 1,
+              scale: 0.8,
               duration: 0.001,
               filter: "blur(1px)",
               ease: "power2",
@@ -1037,7 +1011,7 @@ const LandingPage = () => {
               duration: 0.001,
               filter: "blur(1px)",
               ease: "power2",
-              opacity: 1,
+              opacity: 1,scale: 0.8,
             })
             .to(pr1Image, {
               x: -580,
@@ -1062,7 +1036,7 @@ const LandingPage = () => {
       .to(pr1Image, {
         x: -580,
         y: 170,
-        scale: 3,
+        scale: 1,
         duration: 2,
         rotationY: 180,
         rotation: 310,
@@ -1088,6 +1062,7 @@ const LandingPage = () => {
               filter: "blur(1px)",
               ease: "power2",
               opacity: 1,
+              scale: 0.8,
             })
             .to(pr2Image, {
               x: 250,
@@ -1112,7 +1087,7 @@ const LandingPage = () => {
       .to(pr2Image, {
         x: 250,
         y: 0,
-        scale: 2,
+        scale: 1,
         duration: 2,
         rotationY: 180,
         rotation: 20,
@@ -1137,7 +1112,7 @@ const LandingPage = () => {
               duration: 0.001,
               filter: "blur(1px)",
               ease: "power2",
-              opacity: 1,
+              opacity: 1,scale: 0.8,
             })
             .to(pr3Image, {
               x: 450,
@@ -1162,7 +1137,7 @@ const LandingPage = () => {
       .to(pr3Image, {
         x: 450,
         y: 120,
-        scale: 2,
+        scale: 1,
         duration: 2,
         rotationY: 180,
         rotation: 20,
@@ -1267,274 +1242,281 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div     style={{
-      width: "100%",
-      // height: "100%",
-      overflow: "hidden",
-      backgroundColor: "#000",
-    }} className="cont">
     <div
       style={{
-        position: "absolute",
         width: "100%",
-        height: "8900px",
+        // height: "100%",
         overflow: "hidden",
         backgroundColor: "#000",
-        top: 0,
       }}
-      className=".container"
+      className="cont"
     >
-      <NavBar toggleMenu={toggleMenu} menu={menu} />
-      <SideCart toggleCart={toggleCart} cart={cart} />
       <div
         style={{
           position: "absolute",
-          top: "0",
-          left: "0",
           width: "100%",
-          height: "100vh",
-          display: "flex",
+          height: "8900px",
+          overflow: "hidden",
+          backgroundColor: "#000",
+          top: 0,
         }}
+        className=".container"
       >
-        <img
-          ref={leftImageRef2}
-          src={leftImage}
-          alt="Animated"
-          style={{
-            position: "absolute",
-            top: "16px",
-            left: "3.5vw",
-            transform: " rotate(-29.11deg)",
-            zIndex: 2,
-          }}
-        />
-        <img
-          ref={rightImageRef2}
-          src={rightImage}
-          alt="Animated"
-          style={{
-            position: "absolute",
-            top: "14px",
-            left: "5vw",
-            transform: " rotate(-29.11deg)",
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={leftImageRef}
-          src={leftImage}
-          alt="Animated"
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            left: 0,
-            transform: " rotate(-29.11deg)",
-          }}
-        />
-        <img
-          ref={rightImageRef}
-          src={rightImage}
-          alt="Animated"
-          style={{
-            position: "absolute",
-            bottom: "20%",
-            right: 0,
-            transform: " rotate(-29.11deg)",
-            x: "-100%",
-            y: 0,
-            opacity: 1
-          }}
-        />
-        <img
-          ref={logoImageRef}
-          src={logo}
-          alt="logo"
-          style={{ width: "300px", display: "flex", margin: "auto" }}
-        />
-        <img
-          ref={logoImageRef2}
-          src={logoT}
-          alt="logo"
-          style={{
-            width: "150px",
-            position: "absolute",
-            top: "16px",
-            left: "8vw",
-          }}
-        />
-        <img
-          ref={pl1Ref}
-          src={pl1}
-          alt="pl1"
-          style={{
-            position: "absolute",
-            top: "25%",
-            left: "33%",
-            opacity: 0,
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={pl2Ref}
-          src={pl2}
-          alt="pl2"
-          style={{
-            position: "absolute",
-            top: "32%",
-            left: "40%",
-            opacity: 0,
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={pl3Ref}
-          src={pl3}
-          alt="pl3"
-          style={{
-            position: "absolute",
-            top: "45%",
-            left: "30%",
-            opacity: 0,
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={pr1Ref}
-          src={pr1}
-          alt="pr1"
-          style={{
-            position: "absolute",
-            top: "50%",
-            right: "35%",
-            opacity: 0,
-            zIndex: 10,
-          }}
-        />
-        <img
-          ref={pr2Ref}
-          src={pr2}
-          alt="pr2"
-          style={{
-            position: "absolute",
-            top: "65%",
-            right: "40%",
-            opacity: 0,
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={pr3Ref}
-          src={pr3}
-          alt="pr3"
-          style={{
-            position: "absolute",
-            top: "77%",
-            right: "38%",
-            opacity: 0,
-            zIndex: 1,
-          }}
-        />
-        <img
-          ref={heartShapeRef}
-          src={heartShape}
-          alt="logo"
-          style={{
-            position: "absolute",
-            top: "15%",
-            right: "15%",
-            width: "119.82px",
-            height: "109.84px",
-          }}
-        />
-        <img
-          ref={hamburgerRef}
-          src={hamburger}
-          alt="logo"
-          style={{
-            position: "absolute",
-            top: "22px",
-            right: "5%",
-            cursor: "pointer",
-            ":hover": {
-              cursor: "pointer",
-            },
-          }}
-          onClick={toggleMenu}
-        />
-        <Link to={"sign-up"}>
-        <button
-          ref={signInButtonRef}
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "18%",
-            border: "1px solid transparent",
-            borderImage:
-              "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
-            borderImageSlice: "1",
-            borderImageRepeat: "stretch",
-            backgroundColor: "initial",
-            color: "#E7B960",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            gap: "8px",
-            padding: "05px 20px",
-            cursor: "pointer",
-            zIndex: 10,
-            marginTop: "10px",
-            opacity: 0,
-          }}
-          className="cormorant-font"
-        >
-          SIGN UP
-        </button></Link>
-        <img
-          ref={shoppingCartRef}
-          src={shoppingCart}
-          alt="logo"
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "12%",
-            cursor: "pointer",
-            zIndex: 10,
-            opacity: 0,
-            ":hover": {
-              cursor: "pointer",
-            },
-          }}
-          onClick={toggleCart}
-        />
-        <img
-          ref={shadeShapeRef}
-          src={shadeShape}
-          alt="logo"
-          style={{
-            position: "absolute",
-            top: "15%",
-            left: "15%",
-            width: "360.47px",
-            height: "289.84px",
-          }}
-        />
+        <NavBar toggleMenu={toggleMenu} menu={menu} />
+        <SideCart toggleCart={toggleCart} cart={cart} />
         <div
-          ref={bgRef}
           style={{
-            display: "flex",
             position: "absolute",
+            top: "0",
+            left: "0",
             width: "100%",
             height: "100vh",
-            overflow: "hidden",
-            // backgroundColor: "#00000",
-            margin: "auto",
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            display: "flex",
           }}
-          className="hero-section"
         >
-          {/* <img
+          <img
+            ref={leftImageRef2}
+            src={leftImage}
+            alt="Animated"
+            style={{
+              position: "absolute",
+              top: "16px",
+              left: "3.5vw",
+              transform: " rotate(-29.11deg)",
+              zIndex: 2,
+            }}
+          />
+          <img
+            ref={rightImageRef2}
+            src={rightImage}
+            alt="Animated"
+            style={{
+              position: "absolute",
+              top: "14px",
+              left: "5vw",
+              transform: " rotate(-29.11deg)",
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={leftImageRef}
+            src={leftImage}
+            alt="Animated"
+            style={{
+              position: "absolute",
+              bottom: "20%",
+              left: 0,
+              transform: " rotate(-29.11deg)",
+            }}
+          />
+          <img
+            ref={rightImageRef}
+            src={rightImage}
+            alt="Animated"
+            style={{
+              position: "absolute",
+              bottom: "20%",
+              right: 0,
+              transform: " rotate(-29.11deg)",
+              x: "-100%",
+              y: 0,
+              opacity: 1,
+            }}
+          />
+          <img
+            ref={logoImageRef}
+            src={logo}
+            alt="logo"
+            style={{ width: "300px", display: "flex", margin: "auto" }}
+          />
+          <img
+            ref={logoImageRef2}
+            src={logoT}
+            alt="logo"
+            style={{
+              width: "150px",
+              position: "absolute",
+              top: "16px",
+              left: "8vw",
+            }}
+          />
+          <img
+            ref={pl1Ref}
+            src={pl1}
+            alt="pl1"
+            style={{
+              position: "absolute",
+              top: "25%",
+              left: "33%",
+              opacity: 0,
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={pl2Ref}
+            src={pl2}
+            alt="pl2"
+            style={{
+              position: "absolute",
+              top: "32%",
+              left: "40%",
+              opacity: 0,
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={pl3Ref}
+            src={pl3}
+            alt="pl3"
+            style={{
+              position: "absolute",
+              top: "45%",
+              left: "30%",
+              opacity: 0,
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={pr1Ref}
+            src={pr1}
+            alt="pr1"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "35%",
+              opacity: 0,
+              zIndex: 10,
+            }}
+          />
+          <img
+            ref={pr2Ref}
+            src={pr2}
+            alt="pr2"
+            style={{
+              position: "absolute",
+              top: "65%",
+              right: "40%",
+              opacity: 0,
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={pr3Ref}
+            src={pr3}
+            alt="pr3"
+            style={{
+              position: "absolute",
+              top: "77%",
+              right: "38%",
+              opacity: 0,
+              zIndex: 1,
+            }}
+          />
+          <img
+            ref={heartShapeRef}
+            src={heartShape}
+            alt="logo"
+            style={{
+              position: "absolute",
+              top: "15%",
+              right: "15%",
+              width: "119.82px",
+              height: "109.84px",
+            }}
+          />
+          <img
+            ref={hamburgerRef}
+            src={hamburger}
+            alt="logo"
+            style={{
+              position: "absolute",
+              top: "22px",
+              right: "5%",
+              cursor: "pointer",
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+            onClick={toggleMenu}
+          />
+          <Link to={"sign-up"}>
+            <button
+              ref={signInButtonRef}
+              style={{
+                position: "absolute",
+                top: "12px",
+                right: "18%",
+                border: "1px solid transparent",
+                borderImage:
+                  "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
+                borderImageSlice: "1",
+                borderImageRepeat: "stretch",
+                backgroundColor: "initial",
+                color: "#E7B960",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
+                gap: "8px",
+                padding: "05px 20px",
+                cursor: "pointer",
+                zIndex: 10,
+                marginTop: "10px",
+                opacity: 0,
+              }}
+              className="cormorant-font"
+            >
+              SIGN UP
+            </button>
+          </Link>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '20px',zIndex:200, position: 'absolute', right: '0'}}>
+            {/* <span><Link to={"/account"}>Account</Link></span> */}
+          </div>
+          <img
+            ref={shoppingCartRef}
+            src={shoppingCart}
+            alt="logo"
+            style={{
+              position: "absolute",
+              top: "12px",
+              right: "12%",
+              cursor: "pointer",
+              zIndex: 10,
+              opacity: 0,
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+            onClick={toggleCart}
+          />
+          <img
+            ref={shadeShapeRef}
+            src={shadeShape}
+            alt="logo"
+            style={{
+              position: "absolute",
+              top: "15%",
+              left: "15%",
+              width: "360.47px",
+              height: "289.84px",
+            }}
+          />
+          <div
+            ref={bgRef}
+            style={{
+              display: "flex",
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              overflow: "hidden",
+              // backgroundColor: "#00000",
+              margin: "auto",
+              backgroundImage: `url(${bgImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="hero-section"
+          >
+            {/* <img
             ref={slide1Ref}
             src={slide1}
             alt="logo"
@@ -1557,159 +1539,162 @@ const LandingPage = () => {
             }}
             className="hero-section"
           /> */}
-          <img
-            ref={scrollRef}
-            src={scroll}
-            alt="logo"
-            style={{
-              position: "absolute",
-              bottom: "-8%",
-              left: "49.7%",
-            }}
-            className="hero-section"
-          />
+            <img
+              ref={scrollRef}
+              src={scroll}
+              alt="logo"
+              style={{
+                position: "absolute",
+                bottom: "-8%",
+                left: "49.7%",
+              }}
+              className="hero-section"
+            />
 
-          <img
-            ref={welcomeTextRef}
-            src={welcomeTextImage}
-            alt="logo"
-            style={{
-              position: "absolute",
-              width: "70%",
-              top: "15%",
-              left: "15%",
-            }}
-            className="hero-section"
-          />
+            <img
+              ref={welcomeTextRef}
+              src={welcomeTextImage}
+              alt="logo"
+              style={{
+                position: "absolute",
+                width: "70%",
+                top: "15%",
+                left: "15%",
+              }}
+              className="hero-section"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          position: "absolute",
-          width: "100%",
-          height: "100vh",
-          overflow: "hidden",
-          margin: "auto",
-          backgroundImage: `url(${blackJackBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0,
-        }}
-        className="slider-section"
-        ref={bg2Ref}
-      ></div>
-      <div
-        style={{
-          display: "flex",
-          position: "absolute",
-          width: "100%",
-          height: "100vh",
-          overflow: "hidden",
-          margin: "auto",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="slider-section"
-      >
-        <Swiper
-          pagination={pagination}
-          modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
-          className="mySwiper"
-          effect="fade" // Set effect to fade
-          fadeEffect={{ crossFade: true }} // Enable cross fade effect
-          // autoplay={{
-          //   delay: 10000,
-          //   disableOnInteraction: false,
-          // }}
-          navigation={{
-            prevEl: ".custom-swiper-button-prev",
-            nextEl: ".custom-swiper-button-next",
-          }}
-          keyboard={{
-            enabled: true,
-          }}
-          ref={swiperRef}
-          style={{
-            opacity: 0,
-          }}
-        >
-          {/* Custom previous button */}
-          <div className="custom-swiper-button-prev">
-            <img src={leftArrow} alt="leftArrow" />
-          </div>
-
-          {/* Custom next button */}
-          <div className="custom-swiper-button-next">
-            <img src={rightArrow} alt="leftArrow" />
-          </div>
-          {SliderData.map((items, index) => (
-            <SwiperSlide key={index}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  alignItems: "flex-start",
-                  width: "30%",
-                  textAlign: "start",
-                  gap: "10px",
-                  marginLeft: "10vh",
-                  marginBottom: " 45vh",
-                  height: "100%",
-                }}
-              >
-                <span className="cormorant-font swipper-title">
-                  {items.title}
-                </span>
-                <span className="swipper-description">{items.description}</span>
-                <button className="cormorant-font swipper-btn">
-                  RENT NOW
-                  <img
-                    alt="heartsButton"
-                    src={heartsButton}
-                    style={{ width: "30px" }}
-                  />
-                </button>
-              </div>
-              <img
-                src={items.img}
-                alt="logo"
-                style={{
-                  width: items === slide2 ? "37.5rem" : "18.75rem",
-                  height: "18.75rem",
-                  display: "flex",
-                  margin: "auto",
-                  zIndex: 34,
-                }}
-                className="floating-img slider-img"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
         <div
           style={{
+            display: "flex",
+            position: "absolute",
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+            margin: "auto",
+            backgroundImage: `url(${blackJackBG})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             opacity: 0,
           }}
-          ref={bg4Ref}
+          className="slider-section"
+          ref={bg2Ref}
+        ></div>
+        <div
+          style={{
+            display: "flex",
+            position: "absolute",
+            width: "100%",
+            height: "100vh",
+            overflow: "hidden",
+            margin: "auto",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          className="slider-section"
         >
-          <img src={slideBase} alt="logo" className="swipper-base" />
+          <Swiper
+            pagination={pagination}
+            modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
+            className="mySwiper"
+            effect="fade" // Set effect to fade
+            fadeEffect={{ crossFade: true }} // Enable cross fade effect
+            // autoplay={{
+            //   delay: 10000,
+            //   disableOnInteraction: false,
+            // }}
+            navigation={{
+              prevEl: ".custom-swiper-button-prev",
+              nextEl: ".custom-swiper-button-next",
+            }}
+            keyboard={{
+              enabled: true,
+            }}
+            ref={swiperRef}
+            style={{
+              opacity: 0,
+            }}
+          >
+            {/* Custom previous button */}
+            <div className="custom-swiper-button-prev">
+              <img src={leftArrow} alt="leftArrow" />
+            </div>
+
+            {/* Custom next button */}
+            <div className="custom-swiper-button-next">
+              <img src={rightArrow} alt="leftArrow" />
+            </div>
+            {SliderData.map((items, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    alignItems: "flex-start",
+                    width: "30%",
+                    textAlign: "start",
+                    gap: "10px",
+                    marginLeft: "10vh",
+                    marginBottom: " 45vh",
+                    height: "100%",
+                  }}
+                >
+                  <span className="cormorant-font swipper-title">
+                    {items.title}
+                  </span>
+                  <span className="swipper-description">
+                    {items.description}
+                  </span>
+                  <button onClick={() => handleRent(index)} className="cormorant-font swipper-btn">
+                    RENT NOW
+                    <img
+                      alt="heartsButton"
+                      src={heartsButton}
+                      style={{ width: "30px" }}
+                    />
+                  </button>
+                </div>
+                <img
+                  src={items.img}
+                  alt="logo"
+                  style={{
+                    width: items === slide2 ? "37.5rem" : "18.75rem",
+                    height: "18.75rem",
+                    display: "flex",
+                    margin: "auto",
+                    zIndex: 34,
+                  }}
+                  className="floating-img slider-img"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div
+            style={{
+              opacity: 0,
+            }}
+            ref={bg4Ref}
+          >
+            <img src={slideBase} alt="logo" className="swipper-base" />
+          </div>
         </div>
       </div>
-    </div>
-    <div
+      <div
         ref={secondSectionRef}
         style={{
           color: "#FFF",
           zIndex: 4,
           position: "absolute",
           top: "8900px",
-          opacity:0,
-          width: "100%"
+          opacity: 0,
+          width: "100%",
         }}
       >
         <SecondSection />
-      </div></div>
+      </div>
+    </div>
   );
 };
 
