@@ -64,38 +64,11 @@ const ResetPassword = () => {
       </Link>
       <div className="glass-bg">
         {" "}
-        <form
-          onSubmit={onSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            width: "60%",
-          }}
-        >
-          <span
-            className="cormorant-font"
-            style={{
-              fontSize: "23px",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              textAlign: "center",
-              lineHeight: "89%",
-              color: "#D1A757",
-            }}
-          >
+        <form onSubmit={onSubmit} className="signup-form">
+          <span className="cormorant-font signup-form-title">
             Forgot password?
           </span>
-          <span
-            style={{
-              fontFamily: "gordita-font",
-              fontSize: "12px",
-              color: "#c7c7c7",
-              textAlign: "center",
-              fontWeight: 100,
-              lineHeight: "135%",
-            }}
-          >
+          <span className="forgot-password-subhead">
             Choose a new password for your account.
           </span>
           <div className="signup-form-group">
@@ -108,7 +81,7 @@ const ResetPassword = () => {
                 className="signup-form-control"
                 placeholder="Enter password"
               />
-              <span style={{ fontSize: "10px" }}>
+              <span style={{ fontSize: "12px" }}>
                 It must be at least 8 characters.
               </span>
             </div>
@@ -125,16 +98,7 @@ const ResetPassword = () => {
           </div>
 
           <button className="signup-btn">Submit</button>
-          <div
-            style={{
-              display: "flex",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              fontSize: "10px",
-            }}
-          >
+          <div className="signup-haveaccount">
             <span style={{ color: "#9F9694" }}>Remember Password?</span>
             <Link
               style={{

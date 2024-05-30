@@ -9,7 +9,7 @@ import {
 import { ExploreData } from "../../common/dummydata/DummyData";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../../state/actions"; 
+import { removeFromCart } from "../../state/actions";
 
 const SideCart = ({ toggleCart, cart }) => {
   const dispatch = useDispatch();
@@ -53,146 +53,40 @@ const SideCart = ({ toggleCart, cart }) => {
 
   return (
     <div
-      style={{
-        position: "fixed",
-        top: 0,
-        width: "50%",
-        height: cart ? "0" : "100vh",
-        overflow: "hidden",
-        display: cart ? "block" : "hidden",
-        transition: "transform 3s ease",
-        transform: !cart ? "translateX(100%)" : "translateX(200%)",
-        zIndex: 40,
-        backgroundColor: "#3C3529",
-      }}
+      className={`side-cart ${cart ? "show": "hide"}`}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: "22px",
-          right: "5%",
-          cursor: "pointer",
-          height: "30px",
-          width: "30px",
-          display: "flex",
-          zIndex: 40,
-        }}
-        onClick={toggleCart}
-      >
-        <img
-          src={close}
-          alt="close"
-          style={{
-            width: "30px",
-            margin: "auto",
-          }}
-        />
+      <div className="side-cart-close" onClick={toggleCart}>
+        <img src={close} alt="close" />
       </div>
-      <div style={{ padding: "22px 60px" }}>
-        <span
-          className="cormorant-font gradient-text"
-          style={{
-            fontSize: "30px",
-            fontWeight: 500,
-            fontStyle: "italic",
-            color: "#D1A757",
-          }}
-        >
+      <div className="side-cart-container">
+        <span className="side-cart-heading cormorant-font gradient-text">
           My Cart
         </span>
         {/* CONTENT */}
         {cartItems.length === 0 ? (
-          <div
-            style={{
-              padding: "60px 0 0 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: "40px",
-              height: "49vh",
-              overflowY: "scroll",
-            }}
-            className="noScrollBar"
-          >
-            <span
-              style={{ color: "#919385", fontSize: "20px" }}
-              className="cormorant-font"
-            >
+          <div className="side-cart-content-div noScrollBar">
+            <span className="side-cart-content-title cormorant-font">
               Looks like you haven’t added anything yet, let’s get you started!
             </span>
-            <button
-              className="cormorant-font cart-cs-btn"
-              style={{ width: "max-content" }}
-            >
+            <div className="cormorant-font side-cart-cs-btn">
               CONTINUE SHOPPING
-            </button>
-            <div
-              style={{
-                //   padding: "40px 60px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "25px",
-              }}
-            >
-              <span
-                className="cormorant-font"
-                style={{
-                  fontSize: "28px",
-                  fontWeight: 500,
-                  fontStyle: "italic",
-                  color: "#D1A757",
-                }}
-              >
+            </div>
+            <div className="side-cart-more-container">
+              <span className="cormorant-font side-cart-more-title">
                 More rented
               </span>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
-                  rowGap: "40px",
-                }}
+              <div className="side-cart-div-container"
               >
                 {ExploreData.map((items, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      border: "1px solid transparent",
-                      borderImage:
-                        "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                      borderImageSlice: "1",
-                      borderImageRepeat: "stretch",
-                      backgroundColor: "initial",
-                      color: "#E7B960",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "calc(53% - 20px)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        padding: "20px 5px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
+                  <div key={index} className="side-cart-more-div">
+                    <div className="side-cart-more-innnerdiv">
                       <img
-                        style={{ width: "140px", height: "140px" }}
+                        className="side-cart-more-img"
                         src={items.img}
                         alt=""
                       />
                     </div>
-                    <hr
-                      style={{
-                        width: "100%",
-                        marginLeft: 0,
-                        border: "1px solid transparent",
-                        borderImage:
-                          "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                        borderImageSlice: "1",
-                        borderImageRepeat: "stretch",
-                      }}
-                    />
+                    <hr className="side-cart-more-hr" />
                     <div
                       style={{
                         display: "flex",
@@ -209,21 +103,18 @@ const SideCart = ({ toggleCart, cart }) => {
                           gap: "5px",
                         }}
                       >
-                        <span
-                          style={{ fontSize: "18px" }}
-                          className="cormorant-font"
-                        >
+                        <span className="cormorant-font side-cart-more-innnerdivII-title">
                           {items.title}
                         </span>
                         <span
                           style={{ color: "#FFF" }}
-                          className="gordita-font"
+                          className="gordita-font side-cart-more-innnerdivII-subtitle"
                         >
                           ${items.price}
                         </span>
                       </div>
                       <img
-                        style={{ width: "30px", cursor: "pointer" }}
+                        className="side-cart-more-innnerdivII-btn"
                         src={addtocarticon}
                         alt=""
                       />
@@ -234,17 +125,7 @@ const SideCart = ({ toggleCart, cart }) => {
             </div>
           </div>
         ) : (
-          <div
-            style={{
-              padding: "60px 0 0 0",
-              display: "flex",
-              flexDirection: "column",
-              gap: "50px",
-              height: "49vh",
-              overflowY: "scroll",
-            }}
-            className="noScrollBar"
-          >
+          <div className="side-cart-content-div noScrollBar">
             {cartItems.map((items, index) => (
               <div
                 style={{
@@ -254,21 +135,7 @@ const SideCart = ({ toggleCart, cart }) => {
                 }}
               >
                 <div style={{ display: "flex", gap: "30px" }}>
-                  <div
-                    style={{
-                      border: "1px solid transparent",
-                      borderImage:
-                        "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                      borderImageSlice: "1",
-                      borderImageRepeat: "stretch",
-                      backgroundColor: "#393830",
-                      color: "#E7B960",
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "150px",
-                    }}
-                  >
-                    {" "}
+                  <div className="side-cart-div">
                     <img src={items.img} alt="" />
                   </div>
                   <div
@@ -278,57 +145,42 @@ const SideCart = ({ toggleCart, cart }) => {
                       justifyContent: "space-between",
                     }}
                   >
-                    <span style={{ color: "#D1A757", fontSize: "20px" }}>
-                    {items.title ? items.title : "N/A"}
+                    <span className="side-cart-div-title">
+                      {items.title ? items.title : "N/A"}
                     </span>
-                    <span style={{ color: "#919385", fontSize: "12px" }}>
-                    {items.category ? items.category : "N/A"}
+                    <span className="side-cart-div-subtitleI">
+                      {items.category ? items.category : "N/A"}
                     </span>
-                    <span style={{ color: "#919385", fontSize: "12px" }}>
+                    <span className="side-cart-div-subtitleII">
                       PRICE/h:{" "}
-                      <span style={{ color: "#fff", fontSize: "12px" }}>
-                      ${items.price ? items.price : "N/A"}
+                      <span className="side-cart-div-subtitleIII">
+                        ${items.price ? items.price : "N/A"}
                       </span>
                     </span>
-                    <span style={{ color: "#919385", fontSize: "12px" }}>
+                    <span className="side-cart-div-subtitleII">
                       TIME:{" "}
-                      <span style={{ color: "#fff", fontSize: "12px" }}>
+                      <span className="side-cart-div-subtitleIII">
                         03 Hours
                       </span>
                     </span>
-                    <span style={{ color: "#919385", fontSize: "12px" }}>
+                    <span className="side-cart-div-subtitleII">
                       TOTAL:{" "}
-                      <span style={{ color: "#fff", fontSize: "12px" }}>
-                      $   {items.price ? items.price * (count[items.id] || 1) : "N/A"}
+                      <span className="side-cart-div-subtitleIII">
+                        ${" "}
+                        {items.price
+                          ? items.price * (count[items.id] || 1)
+                          : "N/A"}
                       </span>
                     </span>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "20px",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div
-                        style={{
-                          border: "1px solid #676052",
-                          backgroundColor: "#393830",
-                          color: "#FFF",
-                          padding: "3px 10px",
-                          display: "flex",
-                          gap: "10px",
-                          alignItems: "center",
-                        }}
-                      >
+                    <div className="side-cart-div-ID-del">
+                      <div className="side-cart-div-ID-btn">
                         <img
-                          style={{ cursor: "pointer" }}
                           src={less}
                           alt=""
                           onClick={() => decrement(items.id)}
                         />{" "}
                         {count[items.id] || 1}
                         <img
-                          style={{ cursor: "pointer" }}
                           src={plus}
                           alt=""
                           onClick={() => increment(items.id)}
@@ -336,7 +188,7 @@ const SideCart = ({ toggleCart, cart }) => {
                       </div>
                       <div>
                         <img
-                          style={{ cursor: "pointer", width: "20px" }}
+                          className="side-cart-div-del-btn"
                           src={deleteIcon}
                           alt=""
                           onClick={() => removeItem(index)}
@@ -345,45 +197,15 @@ const SideCart = ({ toggleCart, cart }) => {
                     </div>
                   </div>
                 </div>
-                <hr
-                  style={{
-                    width: "100%",
-                    marginLeft: 0,
-                    border: "1px solid transparent",
-                    borderImage:
-                      "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                    borderImageSlice: "1",
-                    borderImageRepeat: "stretch",
-                  }}
-                />
+                <hr className="side-cart-more-hr" />
               </div>
             ))}
           </div>
         )}
       </div>
 
-      <div
-        style={{
-          position: "fixed",
-          bottom: "5%",
-          width: "100%",
-          padding: "40px 60px 0 60px",
-          borderTop: "1px solid transparent",
-          borderImage:
-            "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-          borderImageSlice: "1",
-          borderImageRepeat: "stretch",
-          backgroundColor: "#3C3529",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "79%",
-            gap: "20px",
-          }}
-        >
+      <div className="side-cart-fixed-bottom">
+        <div className="side-cart-fixed-bottom-inner">
           <div
             style={{
               display: "flex",
@@ -391,10 +213,17 @@ const SideCart = ({ toggleCart, cart }) => {
               justifyContent: "space-between",
             }}
           >
-            <span style={{ color: "#D1A757", fontSize: "16px" }}>Subtotal</span>
-            <span style={{ color: "#fff", fontSize: "16px" }}>${calculateSubtotal()}</span>
+            <span className="cormorant-font side-cart-fixed-bottom-inner-subtotal">
+              Subtotal
+            </span>
+            <span className="gordita-font side-cart-fixed-bottom-inner-total">
+              ${calculateSubtotal()}
+            </span>
           </div>
-          <button className="signup-btn" onClick={handleCheckout}>
+          <button
+            className="side-cart-fixed-bottom-inner-btn"
+            onClick={handleCheckout}
+          >
             Checkout
           </button>
         </div>

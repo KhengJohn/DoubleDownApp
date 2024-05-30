@@ -33,69 +33,34 @@ const ContactUs = () => {
         src={rightContactbg}
         alt=""
       />
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "auto",
-          width: "60%",
-        }}
-      >
+      <div className="contact-container">
         <span
-          className="cormorant-font gradient-text"
-          style={{
-            fontSize: "45px",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            textAlign: "center",
-            lineHeight: "89%",
-            fontStyle: "italic",
-          }}
-        >
+          className="contact-header cormorant-font gradient-text">
           Take a professional casino
           <br /> event planner today
         </span>
-        <span
-          style={{
-            fontFamily: "gordita-font",
-            fontSize: "14px",
-            color: "#c7c7c7",
-            textAlign: "center",
-            fontWeight: 100,
-            lineHeight: "135%",
-          }}
-        >
+        <span className="contact-p">
           To contact your casino party specializes please fill out the form and
           our team of <br />
           casino event planners with me with you within the day.
         </span>
-        <form
+        <form className="contact-form"
           onSubmit={onSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "30px",
-            width: "60%",
-          }}
         >
-          <div className="form-group">
-            <label for="exampleInputEmail1" className="form-label">
+          <div className="contact-form-group">
+            <label for="exampleInputEmail1" className="contact-form-label">
               Name
             </label>
             <input
               type="text"
-              className="contact-form-control"
+              className="contact-form-control contact-form-control-fn"
               id="contactUsName"
               aria-describedby="nameHelp"
               placeholder="Full Name"
             />
           </div>
-          <div className="form-group">
-            <label for="exampleInputPassword1" className="form-label">
+          <div className="contact-form-group">
+            <label for="exampleInputPassword1" className="contact-form-label">
               Date of Event
             </label>
             <input
@@ -105,8 +70,8 @@ const ContactUs = () => {
               placeholder="00/00/0000"
             />
           </div>
-          <div className="form-group">
-            <label for="exampleInputPassword1" className="form-label">
+          <div className="contact-form-group">
+            <label for="exampleInputPassword1" className="contact-form-label">
               City
             </label>
             <input
@@ -116,8 +81,8 @@ const ContactUs = () => {
               placeholder="Enter your city"
             />
           </div>
-          <div className="form-group">
-            <label for="exampleInputPassword1" className="form-label">
+          <div className="contact-form-group">
+            <label for="exampleInputPassword1" className="contact-form-label">
               Guest Count
             </label>
             <input
@@ -127,8 +92,8 @@ const ContactUs = () => {
               placeholder="00"
             />
           </div>
-          <div className="form-group">
-            <label for="exampleInputEmail1" className="form-label">
+          <div className="contact-form-group">
+            <label for="exampleInputEmail1" className="contact-form-label">
               Email
             </label>
             <input
@@ -139,8 +104,8 @@ const ContactUs = () => {
               placeholder="Email Address"
             />
           </div>
-          <div className="form-group">
-            <label for="phoneNumber" className="form-label">
+          <div className="contact-form-group">
+            <label for="phoneNumber" className="contact-form-label">
               Phone Number
             </label>
             <input
@@ -151,8 +116,8 @@ const ContactUs = () => {
               placeholder="Enter your Phone number"
             />
           </div>
-          <div className="form-group">
-            <label for="message" className="form-label">
+          <div className="contact-form-group">
+            <label for="message" className="contact-form-label">
               Message
             </label>
             <textarea

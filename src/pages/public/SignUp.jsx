@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   signupBg,
   googleIcon,
   rightImage,
   leftImage,
   logoT,
+  hidePassword,
 } from "../../common/assets/images";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
   };
   return (
     <div
@@ -64,66 +69,61 @@ const SignUp = () => {
         </div>
       </Link>
       <div className="glass-bg">
-        <form
-          onSubmit={onSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            width: "60%",
-          }}
-        >
-          <span
-            className="cormorant-font"
-            style={{
-              fontSize: "25px",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              textAlign: "center",
-              lineHeight: "89%",
-              color: "#D1A757",
-            }}
-          >
+        <form onSubmit={onSubmit} className="signup-form">
+          <span className="cormorant-font signup-form-title">
             Sign Up To
             <br /> Double Down
           </span>
-          <div className="signup-form-group">
-            <label for="exampleInputEmail1" className="signup-form-label">
-              Email
-            </label>
-            <input
-              type="email"
-              className="signup-form-control"
-              aria-describedby="nameHelp"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className="signup-form-group">
-            <label for="password" className="signup-form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="signup-form-control"
-              placeholder="Your password"
-            />
-          </div>
+          <div className="signup-form-group-div">
+            <div className="signup-form-group">
+              <label for="exampleInputEmail1" className="signup-form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="signup-form-control"
+                aria-describedby="nameHelp"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div className="signup-form-group">
+              <label for="password" className="signup-form-label">
+                Password
+              </label>
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="signup-form-control"
+                  placeholder="Your password"
+                />
+                <img
+                  onClick={handleTogglePasswordVisibility}
+                  style={{
+                    width: "30px",
+                    position: "absolute",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    right: "10px",
+                    cursor: "pointer",
+                  }}
+                  src={hidePassword}
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>{" "}
+          <Link className="signup-forgot-password" to={"/forgot-password"}>
+            <span>Forget your password?</span>
+          </Link>
           <button className="signup-btn">Sign Up</button>
-          <span className="signup-form-divider">Or sign up using</span>
+          <span className="signup-form-divider gordita-font">
+            Or sign up using
+          </span>
           <button className="signupGoogle-btn">
             <img src={googleIcon} alt="google" />
-            Sign Up with Google
+            Login with Google
           </button>
-          <div
-            style={{
-              display: "flex",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              fontSize: "10px",
-            }}
-          >
+          <div className="signup-haveaccount">
             <span style={{ color: "#9F9694" }}>Have an account?</span>
             <Link
               style={{

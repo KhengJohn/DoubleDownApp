@@ -17,42 +17,20 @@ const ProductCards = ({ SliderData }) => {
     dispatch(addToCart(SliderData[index])); // Dispatch the addToCart action with the item
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        rowGap: "40px",
-      }}
+    <div className="product-div-container"
     >
       {SliderData.map((items, index) => (
         <div
           key={index}
-          style={{
-            border: "1px solid transparent",
-            borderImage:
-              "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-            borderImageSlice: "1",
-            borderImageRepeat: "stretch",
-            backgroundColor: "initial",
-            color: "#E7B960",
-            display: "flex",
-            flexDirection: "column",
-            width: "calc(24% - 20px)",
-          }}
+          className="product-card-container"
         >
           <div
-            style={{
-              padding: "20px 5px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+          className="product-card-inner-container"
           >
             <img
-              style={{ width: "190px", height: "190px" }}
               src={items.img}
               alt=""
+              className="product-card-img"
             />
           </div>
           <hr
@@ -82,15 +60,15 @@ const ProductCards = ({ SliderData }) => {
                 gap: "5px",
               }}
             >
-              <span style={{ fontSize: "18px" }} className="cormorant-font">
+              <span className="product-card-title cormorant-font">
                 {items.title}
               </span>
-              <span style={{ color: "#FFF" }} className="gordita-font">
+              <span className="product-card-subtitle gordita-font">
                 ${items.price}
               </span>
             </div>
             <img
-              style={{ width: "30px", cursor: "pointer" }}
+            className="product-add-btn gordita-font"
               src={addtocarticon}
               alt=""
               onClick={() => handleAddToCart(index)}

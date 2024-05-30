@@ -21,23 +21,10 @@ const Tab1 = ({ tabsData }) => {
             key={index}
             style={{
               borderBottom: activeTab === index ? "2px solid transparent" : "0px solid transparent",
-              paddingBottom: "0.5rem",
-              paddingLeft: "1rem",
-              paddingRight: "1rem",
-              paddingTop: "0.5rem",
-              outline: "none",
-              cursor: "pointer",
-              backgroundColor: "initial",
-              border: "none",
-              borderImage:
-                "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-              borderImageSlice: "1",
-              borderImageRepeat: "stretch",
-              fontSize: "18px",
               fontWeight: activeTab === index ? 600 : 300,
             }}
             onClick={() => setActiveTab(index)}
-            className="gradient-text cormorant-font"
+            className="gradient-text cormorant-font tab-button"
           >
             {tab.title}
           </button>
@@ -50,7 +37,7 @@ const Tab1 = ({ tabsData }) => {
             key={tab.id}
             className={`tab-content ${activeTab === index ? "" : "hidden"}`}
           >
-            {activeTab === index && tab.content}{" "}
+            {activeTab === index && tab.content}
             {/* Only render content if tab is active */}
           </div>
         ))}

@@ -17,10 +17,46 @@ import {
 } from "../assets/images";
 
 export const ExploreData = [
-  { img: slide3, title: "Blackjack", price: 50 },
-  { img: slide2, title: "Texas Hold’em", price: 50 },
-  { img: slide1, title: "Roullete", price: 50 },
-  { img: slide4, title: "Blackjack", price: 50 },
+  {
+    id: 1,
+    count: 1,
+    img: slide2,
+    price: 50,
+    category: "Casino Games",
+    title: "Texas Hold 'em",
+    description:
+      " Join the ultimate poker showdown! Play your cards right and outsmart your opponents in Texas Hold'em.",
+  },
+  {
+    id: 2,
+    img: slide3,
+    count: 1,
+    price: 50,
+    category: "Casino Games",
+    title: "Black Jack",
+    description:
+      "Spice up family gatherings with our Blackjack card rental service! Bring the thrill of the casino to your event. Book now for unforgettable fun!",
+  },
+  {
+    id: 3,
+    img: slide4,
+    count: 1,
+    price: 50,
+    category: "Casino Games",
+    title: "Short Craps",
+    description:
+      " Experience the thrill of Craps in a fast-paced, action-packed game. Place your bets and roll the dice!  Book now for unforgettable fun!",
+  },
+  {
+    id: 4,
+    img: slide5,
+    count: 1,
+    price: 50,
+    category: "Casino Games",
+    title: "Large Craps",
+    description:
+      "Dive into the excitement of Craps with a wide range of betting options. Roll the dice and watch your fortunes change!",
+  },
 ];
 export const CasinoGamesData = [
   {

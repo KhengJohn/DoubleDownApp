@@ -1,17 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   signupBg,
   googleIcon,
   rightImage,
   leftImage,
   logoT,
+  hidePassword
 } from "../../common/assets/images";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-    const onSubmit = (e) => {
-        e.preventDefault();
-      };
+  const [showPassword, setShowPassword] = useState(false);
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
   return (
     <div
       style={{
@@ -66,28 +71,15 @@ const SignIn = () => {
       <div className="glass-bg">
         {" "}
         <form
-          onSubmit={onSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            width: "60%",
-          }}
+          onSubmit={onSubmit}   className="signup-form"
         >
           <span
-            className="cormorant-font"
-            style={{
-              fontSize: "25px",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              textAlign: "center",
-              lineHeight: "89%",
-              color: "#D1A757",
-            }}
+            className="cormorant-font signup-form-title"
           >
             Sign In To
             <br /> Double Down
           </span>
+          <div className="signup-form-group-div">
           <div className="signup-form-group">
             <label for="exampleInputEmail1" className="signup-form-label">
               Email
@@ -103,21 +95,29 @@ const SignIn = () => {
             <label for="password" className="signup-form-label">
               Password
             </label>
-            <input
-              type="password"
-              className="signup-form-control"
-              placeholder="Your password"
-            />
+            <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="signup-form-control"
+                  placeholder="Your password"
+                />
+                <img
+                  onClick={handleTogglePasswordVisibility}
+                  style={{
+                    width: "30px",
+                    position: "absolute",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    right: "10px",
+                    cursor: "pointer",
+                  }}
+                  src={hidePassword}
+                  alt=""
+                />
+              </div>
           </div>
-          <Link
-            style={{
-              display: "flex",
-              color: "#D1A757",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "10px",
-            }}
+          </div>
+          <Link className="signup-forgot-password"
             to={"/forgot-password"}
           >
             <span>Forget your password?</span>
@@ -128,15 +128,7 @@ const SignIn = () => {
             <img src={googleIcon} alt="google" />
             Sign In with Google
           </button>
-          <div
-            style={{
-              display: "flex",
-              textAlign: "center",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "10px",
-              fontSize: "10px",
-            }}
+          <div className="signup-haveaccount"
           >
             <span style={{ color: "#9F9694" }}>Have an account?</span>
             <Link

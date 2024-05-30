@@ -34,7 +34,7 @@ const NavBarWrapper = ({ children }) => {
               top: "16px",
               left: "3.5vw",
               transform: " rotate(-29.11deg)",
-              zIndex: 2,
+              zIndex: 3,
             }}
           />
           <img
@@ -45,7 +45,7 @@ const NavBarWrapper = ({ children }) => {
               top: "14px",
               left: "5vw",
               transform: " rotate(-29.11deg)",
-              zIndex: 1,
+              zIndex: 2,
             }}
           />
           <img
@@ -56,6 +56,7 @@ const NavBarWrapper = ({ children }) => {
               position: "absolute",
               top: "16px",
               left: "8vw",
+              zIndex: 2,
             }}
           />
         </div>
@@ -63,78 +64,21 @@ const NavBarWrapper = ({ children }) => {
       <img
         src={hamburger}
         alt="logo"
-        style={{
-          position: "absolute",
-          top: "28px",
-          right: "5%",
-          width: "50px",
-          zIndex: 10,
-          cursor: "pointer",
-          ":hover": {
-            cursor: "pointer",
-          },
-        }}
+        className="hamburger"
         onClick={toggleMenu}
       />
       <Link to={"/sign-up"}>
-        <button
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "18%",
-            border: "1px solid transparent",
-            borderImage:
-              "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
-            borderImageSlice: "1",
-            borderImageRepeat: "stretch",
-            backgroundColor: "initial",
-            color: "#E7B960",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-            gap: "8px",
-            padding: "05px 20px",
-            cursor: "pointer",
-            zIndex: 10,
-            marginTop: "10px",
-            opacity: 1,
-          }}
-          className="cormorant-font"
+        <button 
+          className="nav-sign-up cormorant-font"
         >
           SIGN UP
         </button>
       </Link>
-      <div
-        style={{
-          position: "absolute",
-          top: "12px",
-          right: "12%",
-          cursor: "pointer",
-          zIndex: 10,
-          opacity: 1,
-          ":hover": {
-            cursor: "pointer",
-          },
-        }}
+      <div className="nav-cart-btn"
       >
         <img src={shoppingCart} alt="logo" onClick={toggleCart} />
         {cartItems.length !== 0 && (
-          <span
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "100%",
-              background: "#B32323",
-              color: "#FFF",
-              fontSize: "7px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "absolute",
-              top: 2,
-              right: 0,
-              fontWeight: "bold",
-            }}
+          <span className="nav-cart-badge"
           >
             {cartItems.length}
           </span>

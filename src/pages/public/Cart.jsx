@@ -21,12 +21,7 @@ const Cart = () => {
     dispatch(removeFromCart(index)); // Dispatch action to remove item from cart
   };
   return (
-    <div
-      style={{
-        position: "relative",
-        padding: "100px 50px",
-      }}
-    >
+    <div className="black-bg-padding">
       <Link to={"/"}>
         <div className="logo-container">
           <img
@@ -63,29 +58,9 @@ const Cart = () => {
           />
         </div>
       </Link>
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "auto",
-          width: "100%",
-        }}
-      >
+      <div className="main-cart-container">
         <span
-          className="cormorant-font gradient-text"
-          style={{
-            fontSize: "45px",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            textAlign: "center",
-            lineHeight: "89%",
-            fontStyle: "italic",
-          }}
-        >
+          className="main-cart-heading cormorant-font gradient-text">
           Cart Order
         </span>
         <div
@@ -97,15 +72,7 @@ const Cart = () => {
           }}
         >
           <span
-            className="cormorant-font"
-            style={{
-              fontSize: "",
-              color: "#958D80",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              justifySelf: "start",
-            }}
+            className="main-cart-back cormorant-font"
           >
             <img src={backArrow} alt="" /> Back to Shop
           </span>
@@ -121,10 +88,9 @@ const Cart = () => {
             <div
               style={{
                 display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
+                width: "100%", 
                 flexDirection: "column",
-                gap: "10px",
+                gap: "30px",
               }}
             >
               <div
@@ -135,8 +101,8 @@ const Cart = () => {
                   style={{
                     display: "flex",
                     width: "100%",
-                    justifyContent: "space-between",
-                  }}
+                    justifyContent: "space-between", 
+                  }}className="main-cart-table-heading"
                 >
                   Game
                 </span>
@@ -147,21 +113,12 @@ const Cart = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>Price/h</span>
-                  <span>Total</span>
+                  <span className="main-cart-table-heading">Price/h</span>
+                  <span className="main-cart-table-heading">Total</span>
                   <span style={{ width: "40px" }}> </span>
                 </div>
               </div>
-              <hr
-                style={{
-                  width: "100%",
-                  marginLeft: 0,
-                  border: "1px solid transparent",
-                  borderImage:
-                    "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                  borderImageSlice: "1",
-                  borderImageRepeat: "stretch",
-                }}
+              <hr className="main-cart-t-hr"
               />
               {cartItems.map((items, index) => (
                 <div
@@ -204,8 +161,7 @@ const Cart = () => {
                             padding: "5px",
                           }}
                         >
-                          <img
-                            style={{ width: "90px", height: "90px" }}
+                          <img className="main-cart-img"
                             src={items.img}
                             alt=""
                           />
@@ -219,10 +175,10 @@ const Cart = () => {
                             gap: "5px",
                           }}
                         >
-                          <span style={{ fontSize: "18px" }}>
+                          <span className="main-cart-title">
                             {items.title}
                           </span>
-                          <span style={{ color: "#919385" }}>
+                          <span className="main-cart-category" style={{ color: "#919385" }}>
                             {items.category}
                           </span>
                         </div>
@@ -235,10 +191,10 @@ const Cart = () => {
                         justifyContent: "space-between",
                       }}
                     >
-                      <span className="gordita-font" style={{ color: "#FFF" }}>
+                      <span className="gordita-font main-cart-pt" style={{ color: "#FFF" }}>
                         ${items.price}
                       </span>
-                      <span className="gordita-font" style={{ color: "#FFF" }}>
+                      <span className="gordita-font main-cart-pt" style={{ color: "#FFF" }}>
                         ${items.price * items.count}
                       </span>
                       <div
@@ -252,8 +208,7 @@ const Cart = () => {
                           cursor: "pointer",
                         }}
                       >
-                        <img
-                          style={{ width: "15px" }}
+                        <img className="main-cart-delIcon" 
                           src={deleteIcon}
                           alt=""
                           onClick={() => removeItem(index)}
@@ -261,16 +216,7 @@ const Cart = () => {
                       </div>
                     </div>
                   </div>
-                  <hr
-                    style={{
-                      width: "100%",
-                      marginTop: "20px",
-                      border: "1px solid transparent",
-                      borderImage:
-                        "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                      borderImageSlice: "1",
-                      borderImageRepeat: "stretch",
-                    }}
+                  <hr className="main-cart-b-hr"
                   />
                 </div>
               ))}
@@ -282,60 +228,29 @@ const Cart = () => {
                 justifyContent: "space-between",
               }}
             >
-              <div
-                style={{
-                  padding: "20px",
-                  width: "100%",
-                  height: "min-content",
-                  marginTop: "15px",
-                  gap: "20px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
+              <div className="main-cart-total"
               >
-                <div
-                  style={{
-                    border: "1px solid transparent",
-                    borderImage:
-                      "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                    borderImageSlice: "1",
-                    borderImageRepeat: "stretch",
-                    padding: "20px",
-                    gap: "20px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
+                <div className="main-cart-total-div" 
                 >
                   <span
-                    style={{ fontSize: "22px", color: "#D1A757" }}
-                    className="cormorant-font"
+                    className="cormorant-font main-cart-total-heading"
                   >
                     Total
                   </span>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      color: "#9F9694",
-                    }}
-                    className="gordita-font"
+                  <div 
+                    className="gordita-font main-cart-total-subdiv"
                   >
                     <span>Taxes</span>
                     <span style={{ color: "#fff" }}>$11</span>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      color: "#9F9694",
-                    }}
-                    className="gordita-font"
+                  <div 
+                    className="gordita-font main-cart-total-subdiv"
                   >
                     <span>Total</span>
                     <span style={{ color: "#fff" }}>$281</span>
                   </div>
                 </div>
-                <button onClick={handleCheckout} className="signup-btn">
+                <button onClick={handleCheckout} className="main-cart-checkout-btn">
                   Checkout
                 </button>
               </div>
