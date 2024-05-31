@@ -66,3 +66,4 @@ export const addressIcon = `${process.env.PUBLIC_URL}/assets/images/pin 1.svg`;
 export const backArrow = `${process.env.PUBLIC_URL}/assets/images/backArrow.svg`;
 export const success = `${process.env.PUBLIC_URL}/assets/images/confirmation 1.svg`;
 export const hidePassword = `${process.env.PUBLIC_URL}/assets/images/hide-password.svg`;
+export const cardInputIcon = `${process.env.PUBLIC_URL}/assets/images/card-input-icon.svg`;

@@ -16,8 +16,7 @@ const SuccessfulPayment = () => {
   return (
     <div
       style={{
-        position: "relative",
-        paddingTop: "100px",
+        position: "relative", 
       }}
     >
       <Link to={"/"}>
@@ -66,30 +65,18 @@ const SuccessfulPayment = () => {
           alignItems: "center",
           margin: "auto",
           width: "100%",
+        height: '100vh'
         }}
       >
-        <span
-          className="cormorant-font gradient-text"
-          style={{
-            fontSize: "45px",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            textAlign: "center",
-            lineHeight: "89%",
-            fontStyle: "italic",
-          }}
+        <span className="main-cart-heading cormorant-font gradient-text"
         >
           thank you for
           <br />
           your rental
         </span>
-        <img src={success} alt="" />
-        <span
-          style={{
-            color: "#9F9694",
-            fontSize: "10px",
-          }}
-          className="gordita-font"
+        <img src={success} alt="" className=".success-img"/>
+        <span 
+          className="gordita-font checkout-infoII"
         >
           Your rental has been placed.
         </span>
@@ -97,7 +84,7 @@ const SuccessfulPayment = () => {
           <button
             style={{ width: "100%" }}
             onClick={handlePay}
-            className="signup-btn"
+            className="main-cart-checkout-btn"
           >
             Keep Exploring
           </button>

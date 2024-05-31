@@ -5,6 +5,7 @@ import {
   logoT,
   backArrow,
   warningIcon,
+  cardInputIcon,
 } from "../../common/assets/images";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -15,12 +16,7 @@ const Checkout = () => {
     navigate("/cart/success");
   };
   return (
-    <div
-      style={{
-        position: "relative",
-        padding: "100px 50px",
-      }}
-    >
+    <div className="black-bg-padding">
       <Link to={"/"}>
         <div className="logo-container">
           <img
@@ -57,29 +53,8 @@ const Checkout = () => {
           />
         </div>
       </Link>
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "auto",
-          width: "100%",
-        }}
-      >
-        <span
-          className="cormorant-font gradient-text"
-          style={{
-            fontSize: "45px",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            textAlign: "center",
-            lineHeight: "89%",
-            fontStyle: "italic",
-          }}
-        >
+      <div className="main-cart-container">
+        <span className="main-cart-heading cormorant-font gradient-text">
           Checkout
         </span>
         <div
@@ -90,17 +65,7 @@ const Checkout = () => {
             gap: "30px",
           }}
         >
-          <span
-            className="cormorant-font"
-            style={{
-              fontSize: "",
-              color: "#958D80",
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              justifySelf: "start",
-            }}
-          >
+          <span className="main-cart-back cormorant-font">
             <img src={backArrow} alt="" /> Back to Shop
           </span>
           <div
@@ -128,169 +93,151 @@ const Checkout = () => {
                   gap: "50px",
                 }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "20px",
-                  }}
-                >
-                  <span
-                    style={{ fontSize: "18px", color: "#D1A757" }}
-                    className="cormorant-font"
-                  >
+                <div className="checkout-content-container">
+                  <span className="cormorant-font checkout-for-title">
                     Personal Information
                   </span>
                   <div style={{ display: "flex", gap: "20px" }}>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         First Name
                       </label>
                       <input
                         type="text"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Last Name
                       </label>
                       <input
                         type="text"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
                   </div>
                   <div style={{ display: "flex", gap: "20px" }}>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Phone
                       </label>
                       <input
                         type="tel"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Email
                       </label>
                       <input
                         type="email"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
                   </div>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "20px",
-                  }}
-                >
-                  <span
-                    style={{ fontSize: "18px", color: "#D1A757" }}
-                    className="cormorant-font"
-                  >
+                <div className="checkout-content-container">
+                  <span className="cormorant-font checkout-for-title">
                     Delivery Details
                   </span>
                   <div style={{ display: "flex", gap: "20px" }}>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         City
                       </label>
                       <input
                         type="text"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Postcode
                       </label>
                       <input
                         type="text"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
                   </div>
 
-                  <div className="signup-form-group">
+                  <div className="checkout-form-group">
                     <label
                       for="exampleInputEmail1"
-                      className="signup-form-label"
+                      className="checkout-form-label"
                     >
                       Street Adress
                     </label>
                     <input
                       type="tel"
-                      className="signup-form-control"
+                      className="checkout-form-control"
                       aria-describedby="nameHelp"
                     />
                   </div>
-                  <div className="signup-form-group">
+                  <div className="checkout-form-group">
                     <label
                       for="exampleInputEmail1"
-                      className="signup-form-label"
+                      className="checkout-form-label"
                     >
                       Suburb
                     </label>
                     <input
                       type="email"
-                      className="signup-form-control"
+                      className="checkout-form-control"
                       aria-describedby="nameHelp"
                     />
                   </div>
 
                   <div style={{ display: "flex", gap: "20px" }}>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Date
                       </label>
                       <input
                         type="tel"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Time
                       </label>
                       <input
                         type="email"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                       />
                     </div>
@@ -301,172 +248,103 @@ const Checkout = () => {
             <div
               style={{
                 display: "flex",
-                width: "70%",
-                justifyContent: "space-between",
+                width: "55%",
               }}
             >
-              <div
-                style={{
-                  padding: "20px",
-                  width: "100%",
-                  height: "min-content",
-                  gap: "20px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    border: "1px solid transparent",
-                    borderImage:
-                      "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                    borderImageSlice: "1",
-                    borderImageRepeat: "stretch",
-                    padding: "20px",
-                    gap: "20px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <span
-                    style={{ fontSize: "22px", color: "#D1A757" }}
-                    className="cormorant-font"
-                  >
+              <div className="main-checkout-total">
+                <div className="main-checkout-total-div">
+                  <span className="cormorant-font main-cart-total-heading">
                     Total
                   </span>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      color: "#9F9694",
-                    }}
-                    className="gordita-font"
-                  >
+                  <div className="gordita-font main-checkout-total-subdiv">
                     <span>Taxes</span>
                     <span style={{ color: "#fff" }}>$11</span>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      color: "#9F9694",
-                    }}
-                    className="gordita-font"
-                  >
+                  <div className="gordita-font main-checkout-total-subdiv">
                     <span>Delivery</span>
                     <span style={{ color: "#fff" }}>$50</span>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      color: "#9F9694",
-                    }}
-                    className="gordita-font"
-                  >
+                  <div className="gordita-font main-checkout-total-subdiv">
                     <span>Sub-total</span>
                     <span style={{ color: "#fff" }}>$211</span>
                   </div>
-                  <span
-                    className="gordita-font"
-                    style={{
-                      display: "flex",
-                      alignItems: "start",
-                      gap: "8px",
-                      color: "#FFF",
-                      fontSize: "09px",
-                      lineHeight: "150%",
-                      backgroundColor: "rgba(231, 185, 96, 0.27)",
-                      padding: "10px",
-                    }}
-                  >
+                  <span className="gordita-font checkout-info">
                     <img style={{ width: "18px" }} src={warningIcon} alt="" />
                     50$ will be added for 1 Set delivery service (with 3 set in
                     the cart the delivery will be free).
                   </span>
                 </div>
-                <div
-                  style={{
-                    border: "1px solid transparent",
-                    borderImage:
-                      "linear-gradient(to right, #EFCE76 0%, #835A27 38%, #835A27 73%,#F4E285 100%) 1",
-                    borderImageSlice: "1",
-                    borderImageRepeat: "stretch",
-                    padding: "20px",
-                    gap: "20px",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <span
-                    style={{ fontSize: "22px", color: "#D1A757" }}
-                    className="cormorant-font"
-                  >
+                <div className="main-checkout-total-div">
+                  <span className="cormorant-font main-cart-total-heading">
                     Card Details
                   </span>
-                  <div className="signup-form-group">
+                  <div className="checkout-form-group">
                     <label
                       for="exampleInputEmail1"
-                      className="signup-form-label"
+                      className="checkout-form-label"
                     >
                       Card Number
                     </label>
-                    <input
-                      type="email"
-                      className="signup-form-control"
-                      aria-describedby="nameHelp"
-                      placeholder="1234 5678 9123 4567"
-                    />
+
+                    <div style={{ position: "relative" }}>
+                      <input
+                        type="text"
+                        className="checkout-form-control"
+                        aria-describedby="nameHelp"
+                        placeholder="1234 5678 9123 4567"
+                      />
+                      <img
+                        style={{
+                          width: "30px",
+                          position: "absolute",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                          right: "10px",
+                          cursor: "pointer",
+                        }}
+                        src={cardInputIcon}
+                        alt=""
+                      />
+                    </div>
                   </div>
 
                   <div style={{ display: "flex", gap: "20px" }}>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Expiry Date
                       </label>
                       <input
                         type="tel"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                         placeholder="MM/YY"
                       />
                     </div>
-                    <div className="signup-form-group">
+                    <div className="checkout-form-group">
                       <label
                         for="exampleInputEmail1"
-                        className="signup-form-label"
+                        className="checkout-form-label"
                       >
                         Card Code
                       </label>
                       <input
                         type="email"
-                        className="signup-form-control"
+                        className="checkout-form-control"
                         aria-describedby="nameHelp"
                         placeholder="CVC"
                       />
                     </div>
                   </div>
-                  <span
-                    className="gordita-font"
-                    style={{
-                      display: "flex",
-                      alignItems: "start",
-                      gap: "8px",
-                      color: "#9F9694",
-                      fontSize: "09px",
-                      lineHeight: "150%",
-                      padding: "10px",
-                    }}
-                  >
+                  <span className="gordita-font checkout-infoII">
                     Your personal data will be used to process your order,
                     support your experience throughout this website, and for
                     other purposes described in our privacy policy.
                   </span>
                 </div>
-                <button onClick={handlePay} className="signup-btn">
+                <button onClick={handlePay} className="main-cart-checkout-btn">
                   Pay Now
                 </button>
               </div>

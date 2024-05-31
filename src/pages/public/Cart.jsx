@@ -225,7 +225,6 @@ const Cart = () => {
               style={{
                 display: "flex",
                 width: "60%",
-                justifyContent: "space-between",
               }}
             >
               <div className="main-cart-total"
