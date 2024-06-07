@@ -20,14 +20,7 @@ import {
   slideBase,
   slide1,
   slide2,
-  slide3,
-  slide4,
-  slide5,
-  slide6,
-  slide7,
-  slide8,
-  slide9,
-  slide10,
+  rouletteIcon,
   heartsButton,
   shoppingCart,
   blackJackBG,
@@ -55,9 +48,12 @@ import SecondSection from "../components/home/SecondSection";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { SliderData } from "../common/dummydata/DummyData";
+import "../style/landingpage.css";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.normalizeScroll(true);
 
 const pagination = {
   clickable: true,
@@ -65,7 +61,6 @@ const pagination = {
     return '<span class="' + className + '">' + (index + 1) + "</span>";
   },
 };
-
 
 gsap.config({ trialWarn: false });
 
@@ -113,7 +108,12 @@ const LandingPage = () => {
   useGSAP(() => {
     // STOP SCROLLING
     // document.body.style.overflow = "hidden";
-
+     ScrollSmoother.create({
+      content: "#smooth-content",
+      smooth: 2,
+      effects: true,
+      normalizeScroll: true,
+    });
     const handleClickNext = () => {
       const prevButton = document.querySelector(".custom-swiper-button-next");
       if (prevButton) {
@@ -248,41 +248,23 @@ const LandingPage = () => {
     const signInButton = signInButtonRef.current;
     const secondSection = secondSectionRef.current;
 
-    ScrollTrigger.create({
-      trigger: ".cont",
-      start: "8900",
-      end: "9000",
-      scrub: true,
-      pin: secondSection,
-      animation: gsap
-        .timeline()
-        .to(secondSection, {
-          x: 0,
-          y: 0,
-          duration: 0.1,
-          opacity: 1,
-          zIndex: 12,
-        })
-        .to(secondSection, { opacity: 1 }),
-      toggleActions: "play none none none",
-    });
     // Set initial position of the Images
     gsap.set(leftImage, { xPercent: "-100", y: 0, rotationY: 0 });
     gsap.from(rightImage, { opacity: 0, rotationY: 0 });
     gsap.set(logoImage, { opacity: 0, y: 60 });
     gsap.set(logoImage2, { opacity: 0, x: 0, y: 0 });
-    gsap.from(pl1Image, { opacity: 0 });
-    gsap.from(pl2Image, { opacity: 0 });
-    gsap.from(pl3Image, { opacity: 0 });
-    gsap.from(pr1Image, { opacity: 0 });
-    gsap.from(pr2Image, { opacity: 0 });
-    gsap.from(pr3Image, { opacity: 0 });
+    gsap.from(pl1Image, { opacity: 0, zIndex: 19 });
+    gsap.from(pl2Image, { opacity: 0, zIndex: 19 });
+    gsap.from(pl3Image, { opacity: 0, zIndex: 19 });
+    gsap.from(pr1Image, { opacity: 0, zIndex: 19 });
+    gsap.from(pr2Image, { opacity: 0, zIndex: 19 });
+    gsap.from(pr3Image, { opacity: 0, zIndex: 19 });
     gsap.set(leftImage2, { x: 0, y: "-200%" });
     gsap.set(rightImage2, { x: 0, y: "-200%" });
     gsap.set(welcomeText, { opacity: 0 });
     gsap.set(bg, { opacity: 0, backgroundImage: `url(${bgImage})` });
     gsap.from(bg2, { opacity: 0, backgroundImage: `url(${blackJackBG})` });
-    gsap.from(swiper, { opacity: 0 });
+    gsap.set(".mySwiper", { opacity: 0, zIndex: 20 });
     gsap.set(bg3, { opacity: 0, x: 0, y: 0 });
     gsap.from(bg4, { opacity: 0 });
     gsap.set(shadeShape, { opacity: 0, filter: "blur(1px)", scale: 0.4 });
@@ -293,10 +275,123 @@ const LandingPage = () => {
     gsap.set(hamburger, { opacity: 0, scale: 0.4 });
     gsap.from(signInButton, { opacity: 0, scale: 0.4 });
     gsap.from(shoppingCart, { opacity: 0, scale: 0.4 });
+    let mm = gsap.matchMedia();
+    mm.add(
+      {
+        isMobile: "(max-width: 600px)",
+        isDesktop: "(max-width: 1600px)",
+        isLargeDesktop: "(min-width: 1799px)",
+      },
+      (context) => {
+        let { isMobile, isDesktop, isLargeDesktop } = context.conditions;
 
+        ScrollTrigger.create({
+          trigger: ".cont",
+          start: "8900",
+          end: "9990",
+          scrub: true,
+          pin: secondSection, 
+          animation: gsap
+            .timeline()
+            .to(secondSection, {
+              x: 0,
+              y: 0,
+              duration: 1,
+              opacity: 1,
+              zIndex: 1,
+              // height: "100vh",
+            })
+            .to(secondSection, { opacity: 1 }),
+          toggleActions: "play none none none",
+        });
+
+        var heartShapeTL = gsap.timeline({
+          onComplete: function () {
+            ScrollTrigger.create({
+              trigger: ".cont",
+              start: "top 1",
+              end: "8900",
+              scrub: true,
+              pin: heartShape,
+              animation: gsap
+                .timeline()
+                .to(heartShape, {
+                  opacity: 1,
+                  x: isDesktop ? "20vw" : "18vw",
+                  y: "3vh",
+                  scale: 1,
+                  zIndex: 1,
+                  rotate: 80,
+                  duration: 0.02,
+                })
+                .to(heartShape, { x: isDesktop ? "20vw" : "18vw", y: "3vh" })
+                .to(heartShape, {
+                  x: isDesktop ? "23vw" : "21vw",
+                  y: "3vh",
+                  opacity: 0,
+                  duration: 0.1,
+                }),
+              toggleActions: "play none none none",
+            });
+          },
+        });
+        heartShapeTL.to(heartShape, {
+          delay: 5,
+          opacity: 1,
+          duration: 2,
+          x: "1vw",
+          y: "1vh",
+          filter: "blur(0px)",
+          scale: 1,
+          zIndex: 1,
+        });
+        var shadeShapeTL = gsap.timeline({
+          onComplete: function () {
+            ScrollTrigger.create({
+              trigger: ".cont",
+              start: "top 1",
+              end: "8900",
+              scrub: true,
+              pin: shadeShape,
+              animation: gsap
+                .timeline()
+                .to(shadeShape, {
+                  opacity: 1,
+                  x: isDesktop ? "-33vw" : "-29vw",
+                  // y: isDesktop ? "39vh" : "25vh",
+                  rotate: -120,
+                  ease: "power2",
+                  duration: 0.02,
+                })
+                .to(shadeShape, {
+                  x: isDesktop ? "-33vw" : "-29vw",
+                  // y: isDesktop ? "39vh" : "25vh",
+                })
+                .to(shadeShape, {
+                  x: isDesktop ? "-33vw" : "-32vw",
+                  // y: isDesktop ? "39vh" : "25vh",
+                  opacity: 0,
+                  duration: 0.1,
+                }),
+              toggleActions: "play none none none",
+            });
+          },
+        });
+        shadeShapeTL.to(shadeShape, {
+          delay: 5,
+          opacity: 1,
+          duration: 2,
+          x: isDesktop ? "-15vw" : "-5vw",
+          y: isDesktop ? "39vh" : "25vh",
+          filter: "blur(0px)",
+          zIndex: 1,
+          scale: isDesktop ? 1 : isLargeDesktop ? 2 : 1,
+        });
+      }
+    );
     gsap.to(bg, {
       delay: 5,
-      opacity: 1,
+      opacity: 2,
       backgroundImage: `url(${bgImage})`,
       duration: 2,
       onComplete: () => {
@@ -304,11 +399,10 @@ const LandingPage = () => {
         gsap.to(bg, {
           opacity: 0,
           scrollTrigger: {
-            trigger: ".container",
+            trigger: ".cont",
             start: "top 1px",
             end: "900",
             scrub: true,
-            pinSpacing: false,
             pin: bg,
           },
         });
@@ -332,22 +426,30 @@ const LandingPage = () => {
       toggleActions: "play none none none",
     });
 
-    ScrollTrigger.create({
-      trigger: ".cont",
-      start: "top 1",
-      end: "8900",
-      scrub: true,
-      pin: swiper,
-      animation: gsap
-        .timeline()
-        .to(swiper, {
-          opacity: 1,
-          zIndex: 11,
-          duration: 0.01,
-        })
-        .to(swiper, { opacity: 1 })
-        .to(swiper, { opacity: 0, duration: 0.01 }),
-      toggleActions: "play none none none",
+    var swiperTL = gsap.timeline({
+      onComplete: function () {
+        ScrollTrigger.create({
+          trigger: ".cont",
+          start: "top",
+          end: "8900",
+          scrub: true,
+          // pin: ".mySwiper",
+          animation: gsap
+            .timeline()
+            .to(".mySwiper", {
+              opacity: 1,
+              duration: 0.01,
+            })
+            .to(".mySwiper", { opacity: 1 })
+            .to(".mySwiper", { opacity: 0, duration: 0.01 }),
+          toggleActions: "play none none none",
+        });
+      },
+    });
+    // SWIPER
+    swiperTL.to(".mySwiper", {
+      // delay: 5,
+      opacity: 1,
     });
 
     ScrollTrigger.create({
@@ -381,7 +483,6 @@ const LandingPage = () => {
             trigger: ".container",
             start: "top 1px",
             scrub: true,
-            pinSpacing: false,
             pin: hamburger,
           },
         });
@@ -444,52 +545,6 @@ const LandingPage = () => {
       x: 0,
       y: 0,
       scale: 1,
-    });
-
-    var shadeShapeTL = gsap.timeline({
-      onComplete: function () {
-        ScrollTrigger.create({
-          trigger: ".cont",
-          start: "top 1",
-          end: "8900",
-          scrub: true,
-          pin: shadeShape,
-          animation: gsap
-            .timeline()
-            .to(shadeShape, {
-              opacity: 1,
-              x: -160,
-              y: 230,
-              filter: "blur(0px)",
-              scale: 1,
-              zIndex: 1,
-              ease: "power2",
-              duration: 0.001,
-            })
-            .to(shadeShape, {
-              opacity: 1,
-              x: -399,
-              y: 250,
-              scale: 1,
-              rotate: -120,
-              ease: "power2",
-              duration: 0.1,
-            })
-            .to(shadeShape, { x: -399, y: 250 })
-            .to(shadeShape, { x: -459, y: 250, opacity: 0, duration: 0.1 }),
-          toggleActions: "play none none none",
-        });
-      },
-    });
-    shadeShapeTL.to(shadeShape, {
-      delay: 5,
-      opacity: 1,
-      duration: 2,
-      x: -160,
-      y: 230,
-      filter: "blur(0px)",
-      scale: 1,
-      zIndex: 1,
     });
 
     // gsap.to(slide1, {
@@ -559,8 +614,6 @@ const LandingPage = () => {
             end: "900",
             // toggleActions: 'play pause reverse none',
             scrub: true,
-
-            pinSpacing: false,
             pin: scroll,
             // onEnter: function() { gsap.to("#hh", { scaleX: 1, rotation: 0 }) },
 
@@ -569,62 +622,20 @@ const LandingPage = () => {
         });
       },
     });
-    var heartShapeTL = gsap.timeline({
-      onComplete: function () {
-        ScrollTrigger.create({
-          trigger: ".cont",
-          start: "top 1",
-          end: "8900",
-          scrub: true,
-          pin: heartShape,
-          animation: gsap
-            .timeline()
-            .to(heartShape, {
-              opacity: 1,
-              x: 20,
-              y: 20,
-              scale: 1,
-              duration: 0.001,
-            })
-            .to(heartShape, {
-              opacity: 1,
-              x: 230,
-              y: 28,
-              scale: 1,
-              zIndex: 1,
-              rotate: 80,
-              duration: 0.1,
-            })
-            .to(heartShape, { x: 230, y: 28 })
-            .to(heartShape, { x: 280, y: 28, opacity: 0, duration: 0.1 }),
-          toggleActions: "play none none none",
-        });
-      },
-    });
-    heartShapeTL.to(heartShape, {
-      delay: 5,
-      opacity: 1,
-      duration: 2,
-      x: 20,
-      y: 20,
-      filter: "blur(0px)",
-      scale: 1,
-      zIndex: 1,
-    });
 
     var leftImgTL = gsap.timeline({
       onComplete: function () {
         ScrollTrigger.create({
           trigger: ".cont",
           start: "top 1",
-          end: "9500",
+          end: "10500",
           scrub: true,
           pin: leftImage,
           animation: gsap
             .timeline()
             .to(leftImage, {
-              x: 170,
-              y: -240,
+              x: "18vw", //170
+              // y: "-42vh", //240
               scale: 2.7,
               rotationY: 160,
               // rotation: 190,
@@ -633,31 +644,33 @@ const LandingPage = () => {
               duration: 0.001,
               zIndex: 200,
             })
-
             .to(leftImage, {
               rotation: 94,
-              x: 140,
+              x: "13vw",
+              // y: "-44vh",
               scale: 1.7,
-              y: -260,
               filter: "blur(2px)",
-              duration: 0.1,
-              zIndex: 200,
+              duration: 0.02,
+              zIndex: 20,
             })
-            .to(leftImage, { x: 140, y: -260 })
             .to(leftImage, {
-              x: 40,
-              y: -264,
+              x: "13vw",
+              // y: "-44vh"
+            })
+            .to(leftImage, {
+              x: "8vw",
+              // y: "-46vh",
               opacity: 1,
-              duration:0.029,
+              duration: 0.029,
               scale: 0.8,
               zIndex: 40,
-              rotate: 70
+              rotate: 70,
             })
             .to(leftImage, {
-              x: 40,
-              y: -264,
-              opacity: 1,
-              duration:0.041,
+              x: "8vw",
+              // y: "-46vh",
+              opacity: 0,
+              duration: 0.061,
               zIndex: 40,
             }),
           toggleActions: "play none none none",
@@ -670,14 +683,14 @@ const LandingPage = () => {
         ScrollTrigger.create({
           trigger: ".cont",
           start: "top 1",
-          end: "9500",
+          end: "10500",
           scrub: true,
           pin: rightImage,
           animation: gsap
             .timeline()
             .to(rightImage, {
-              x: -120,
-              y: -100,
+              x: "-10vw", //120
+              // y: "-11vh",
               scale: 2.7,
               rotationY: 160,
               // rotation: 20,
@@ -689,21 +702,26 @@ const LandingPage = () => {
             })
             .to(rightImage, {
               rotation: 210,
-              x: -20,
+              x: "-1vw",
+              // y: "7vh",
               scale: 1.7,
               filter: "blur(1px)",
-              y: 40,
-              duration: 0.1,
+              duration: 0.02,
               zIndex: 200,
               opacity: 1,
             })
-            .to(rightImage, { opacity: 1, x: -20, y: 40 })
             .to(rightImage, {
               opacity: 1,
+              x: "-1vw",
+              // y: "7vh"
+            })
+            .to(rightImage, {
+              opacity: 0,
               zIndex: 200,
               x: 20,
-              y: 70,
-              duration: 0.012,
+              // y: 70,
+              duration: 0.061,
+
               filter: "blur(3px)",
             }),
           toggleActions: "play none none none",
@@ -716,8 +734,8 @@ const LandingPage = () => {
     // LEFT Animation
     leftImgTL
       .to(leftImage, {
-        x: 200,
-        y: -100,
+        x: "20vw",
+        y: "-12vh",
         autoAlpha: 1,
         duration: 2,
         rotationY: -200,
@@ -726,8 +744,8 @@ const LandingPage = () => {
         ease: "none",
       })
       .to(leftImage, {
-        x: 260,
-        y: -110,
+        x: "24vw",
+        y: "-14vh",
         scale: 1.2,
         duration: 0.5,
         ease: "none",
@@ -736,7 +754,7 @@ const LandingPage = () => {
       })
       .to(leftImage, {
         x: "47.5vw",
-        y: -240,
+        y: "-42vh",
         scale: 2.5,
         duration: 2,
         ease: "power2",
@@ -745,8 +763,8 @@ const LandingPage = () => {
         zIndex: 3,
       })
       .to(leftImage, {
-        x: 170,
-        y: -240,
+        x: "18vw",
+        y: "-42vh",
         scale: 2.7,
         duration: 2,
         rotationY: 160,
@@ -759,8 +777,8 @@ const LandingPage = () => {
     // Right Animation
     rightImgTL
       .to(rightImage, {
-        x: -200,
-        y: -100,
+        x: "-20vw",
+        y: "-11vh",
         autoAlpha: 1,
         duration: 2,
         rotationY: -200,
@@ -769,8 +787,8 @@ const LandingPage = () => {
         ease: "none",
       })
       .to(rightImage, {
-        x: -260,
-        y: -110,
+        x: "-24vw",
+        y: "-15vh",
         scale: 1.2,
         duration: 0.5,
         ease: "none",
@@ -779,7 +797,7 @@ const LandingPage = () => {
       })
       .to(rightImage, {
         x: "-47.5vw",
-        y: -250,
+        y: "-43vh",
         scale: 2.5,
         duration: 2,
         ease: "power2",
@@ -788,8 +806,8 @@ const LandingPage = () => {
         rotation: 354,
       })
       .to(rightImage, {
-        x: -120,
-        y: -100,
+        x: "-10vw",
+        y: "-11vh",
         scale: 2.7,
         duration: 2,
         rotationY: 160,
@@ -825,8 +843,6 @@ const LandingPage = () => {
                 start: "top 1px",
                 end: "top 1px",
                 scrub: true,
-                pinSpacing: false,
-                pin: true,
               },
             });
           },
@@ -848,7 +864,7 @@ const LandingPage = () => {
               x: 150,
               y: 180,
               scale: 0.8,
-              duration: 0.001,
+              duration: 0.0001,
               rotationY: 60,
               rotation: 40,
               filter: "blur(1px)",
@@ -862,8 +878,18 @@ const LandingPage = () => {
               duration: 0.1,
               opacity: 1,
             })
-            .to(pl1Image, { x: 210, y: 175, opacity: 1 })
-            .to(pl1Image, { x: 180, y: 105, opacity: 1,   duration:0.09, scale: 0.7 })
+            .to(pl1Image, {
+              x: 210,
+              y: 175,
+              opacity: 1,
+            })
+            .to(pl1Image, {
+              x: 180,
+              // y: 105,
+              opacity: 1,
+              duration: 0.09,
+              scale: 0.7,
+            })
             .to(pl1Image, { opacity: 0, duration: 0.001 }),
           toggleActions: "play none none none",
         });
@@ -1011,7 +1037,8 @@ const LandingPage = () => {
               duration: 0.001,
               filter: "blur(1px)",
               ease: "power2",
-              opacity: 1,scale: 0.8,
+              opacity: 1,
+              scale: 0.8,
             })
             .to(pr1Image, {
               x: -580,
@@ -1112,7 +1139,8 @@ const LandingPage = () => {
               duration: 0.001,
               filter: "blur(1px)",
               ease: "power2",
-              opacity: 1,scale: 0.8,
+              opacity: 1,
+              scale: 0.8,
             })
             .to(pr3Image, {
               x: 450,
@@ -1161,7 +1189,6 @@ const LandingPage = () => {
             trigger: ".container",
             start: "top 1px",
             scrub: true,
-            pinSpacing: false,
             pin: logoImage2,
           },
         });
@@ -1186,7 +1213,6 @@ const LandingPage = () => {
             trigger: ".container",
             start: "top 1px",
             scrub: true,
-            pinSpacing: false,
             pin: rightImage2,
           },
         });
@@ -1210,7 +1236,6 @@ const LandingPage = () => {
             trigger: ".container",
             start: "top 1px",
             scrub: true,
-            pinSpacing: false,
             pin: leftImage2,
           },
         });
@@ -1229,12 +1254,10 @@ const LandingPage = () => {
           ease: "power1.inOut",
           zIndex: 1,
           scrollTrigger: {
-            trigger: ".container",
+            trigger: ".cont",
             start: "top 1px",
             end: "900",
             scrub: true,
-            pinSpacing: false,
-            pin: true,
           },
         });
       },
@@ -1242,264 +1265,122 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        // height: "100%",
-        overflow: "hidden",
-        backgroundColor: "#000",
-      }}
-      className="cont"
-    >
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "8900px",
-          overflow: "hidden",
-          backgroundColor: "#000",
-          top: 0,
-        }}
-        className=".container"
-      >
+    <div id="smooth-content" className="landingpage-container cont">
+      <div className="first-div">
         <NavBar toggleMenu={toggleMenu} menu={menu} />
         <SideCart toggleCart={toggleCart} cart={cart} />
-        <div
+        <img
+          ref={hamburgerRef}
+          src={hamburger}
+          alt="logo"
           style={{
             position: "absolute",
-            top: "0",
-            left: "0",
-            width: "100%",
-            height: "100vh",
-            display: "flex",
+            top: "22px",
+            right: "5%",
+            cursor: "pointer",
+            ":hover": {
+              cursor: "pointer",
+            },
           }}
-        >
+          onClick={toggleMenu}
+        />
+        <Link to={"sign-up"}>
+          <button
+            ref={signInButtonRef}
+            style={{
+              position: "absolute",
+              top: "12px",
+              right: "18%",
+              border: "1px solid transparent",
+              borderImage:
+                "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
+              borderImageSlice: "1",
+              borderImageRepeat: "stretch",
+              backgroundColor: "initial",
+              color: "#E7B960",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-around",
+              gap: "8px",
+              padding: "05px 20px",
+              cursor: "pointer",
+              zIndex: 10,
+              marginTop: "10px",
+              opacity: 0,
+            }}
+            className="cormorant-font"
+          >
+            SIGN UP
+          </button>
+        </Link>
+        <img
+          ref={shoppingCartRef}
+          src={shoppingCart}
+          alt="logo"
+          style={{
+            position: "absolute",
+            top: "12px",
+            right: "12%",
+            cursor: "pointer",
+            zIndex: 10,
+            opacity: 0,
+            ":hover": {
+              cursor: "pointer",
+            },
+          }}
+          onClick={toggleCart}
+        />
+        <div className="welcome-animation">
           <img
             ref={leftImageRef2}
             src={leftImage}
             alt="Animated"
-            style={{
-              position: "absolute",
-              top: "16px",
-              left: "3.5vw",
-              transform: " rotate(-29.11deg)",
-              zIndex: 2,
-            }}
+            className="shade-logo-img"
           />
           <img
             ref={rightImageRef2}
             src={rightImage}
             alt="Animated"
-            style={{
-              position: "absolute",
-              top: "14px",
-              left: "5vw",
-              transform: " rotate(-29.11deg)",
-              zIndex: 1,
-            }}
+            className="heart-logo-img"
           />
           <img
             ref={leftImageRef}
             src={leftImage}
             alt="Animated"
-            style={{
-              position: "absolute",
-              bottom: "20%",
-              left: 0,
-              transform: " rotate(-29.11deg)",
-            }}
+            className="shade-card-img"
           />
           <img
             ref={rightImageRef}
             src={rightImage}
             alt="Animated"
-            style={{
-              position: "absolute",
-              bottom: "20%",
-              right: 0,
-              transform: " rotate(-29.11deg)",
-              x: "-100%",
-              y: 0,
-              opacity: 1,
-            }}
+            className="heart-card-img"
           />
           <img
             ref={logoImageRef}
             src={logo}
             alt="logo"
-            style={{ width: "300px", display: "flex", margin: "auto" }}
+            className="welcome-logo"
           />
-          <img
-            ref={logoImageRef2}
-            src={logoT}
-            alt="logo"
-            style={{
-              width: "150px",
-              position: "absolute",
-              top: "16px",
-              left: "8vw",
-            }}
-          />
-          <img
-            ref={pl1Ref}
-            src={pl1}
-            alt="pl1"
-            style={{
-              position: "absolute",
-              top: "25%",
-              left: "33%",
-              opacity: 0,
-              zIndex: 1,
-            }}
-          />
-          <img
-            ref={pl2Ref}
-            src={pl2}
-            alt="pl2"
-            style={{
-              position: "absolute",
-              top: "32%",
-              left: "40%",
-              opacity: 0,
-              zIndex: 1,
-            }}
-          />
-          <img
-            ref={pl3Ref}
-            src={pl3}
-            alt="pl3"
-            style={{
-              position: "absolute",
-              top: "45%",
-              left: "30%",
-              opacity: 0,
-              zIndex: 1,
-            }}
-          />
-          <img
-            ref={pr1Ref}
-            src={pr1}
-            alt="pr1"
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: "35%",
-              opacity: 0,
-              zIndex: 10,
-            }}
-          />
-          <img
-            ref={pr2Ref}
-            src={pr2}
-            alt="pr2"
-            style={{
-              position: "absolute",
-              top: "65%",
-              right: "40%",
-              opacity: 0,
-              zIndex: 1,
-            }}
-          />
-          <img
-            ref={pr3Ref}
-            src={pr3}
-            alt="pr3"
-            style={{
-              position: "absolute",
-              top: "77%",
-              right: "38%",
-              opacity: 0,
-              zIndex: 1,
-            }}
-          />
+          <img ref={logoImageRef2} src={logoT} alt="logo" className="lp-logo" />
+          <img ref={pl1Ref} src={pl1} alt="pl1" className="pl1" />
+          <img ref={pl2Ref} src={pl2} alt="pl2" className="pl2" />
+          <img ref={pl3Ref} src={pl3} alt="pl3" className="pl3" />
+          <img ref={pr1Ref} src={pr1} alt="pr1" className="pr1" />
+          <img ref={pr2Ref} src={pr2} alt="pr2" className="pr2" />
+          <img ref={pr3Ref} src={pr3} alt="pr3" className="pr3" />
           <img
             ref={heartShapeRef}
             src={heartShape}
             alt="logo"
-            style={{
-              position: "absolute",
-              top: "15%",
-              right: "15%",
-              width: "119.82px",
-              height: "109.84px",
-            }}
-          />
-          <img
-            ref={hamburgerRef}
-            src={hamburger}
-            alt="logo"
-            style={{
-              position: "absolute",
-              top: "22px",
-              right: "5%",
-              cursor: "pointer",
-              ":hover": {
-                cursor: "pointer",
-              },
-            }}
-            onClick={toggleMenu}
-          />
-          <Link to={"sign-up"}>
-            <button
-              ref={signInButtonRef}
-              style={{
-                position: "absolute",
-                top: "12px",
-                right: "18%",
-                border: "1px solid transparent",
-                borderImage:
-                  "linear-gradient(to right, #BE9F60 0%, #000 49%, #BE9F60 100%) 1",
-                borderImageSlice: "1",
-                borderImageRepeat: "stretch",
-                backgroundColor: "initial",
-                color: "#E7B960",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-around",
-                gap: "8px",
-                padding: "05px 20px",
-                cursor: "pointer",
-                zIndex: 10,
-                marginTop: "10px",
-                opacity: 0,
-              }}
-              className="cormorant-font"
-            >
-              SIGN UP
-            </button>
-          </Link>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '20px',zIndex:200, position: 'absolute', right: '0'}}>
-            {/* <span><Link to={"/account"}>Account</Link></span> */}
-          </div>
-          <img
-            ref={shoppingCartRef}
-            src={shoppingCart}
-            alt="logo"
-            style={{
-              position: "absolute",
-              top: "12px",
-              right: "12%",
-              cursor: "pointer",
-              zIndex: 10,
-              opacity: 0,
-              ":hover": {
-                cursor: "pointer",
-              },
-            }}
-            onClick={toggleCart}
+            className="heart-shape"
           />
           <img
             ref={shadeShapeRef}
             src={shadeShape}
             alt="logo"
-            style={{
-              position: "absolute",
-              top: "15%",
-              left: "15%",
-              width: "360.47px",
-              height: "289.84px",
-            }}
+            className="shade-shape"
           />
+          {/* WELCOME CONTAINER */}
           <div
             ref={bgRef}
             style={{
@@ -1508,7 +1389,6 @@ const LandingPage = () => {
               width: "100%",
               height: "100vh",
               overflow: "hidden",
-              // backgroundColor: "#00000",
               margin: "auto",
               backgroundImage: `url(${bgImage})`,
               backgroundSize: "cover",
@@ -1543,156 +1423,140 @@ const LandingPage = () => {
               ref={scrollRef}
               src={scroll}
               alt="logo"
-              style={{
-                position: "absolute",
-                bottom: "-8%",
-                left: "49.7%",
-              }}
-              className="hero-section"
+              className="scroll-img"
             />
 
             <img
               ref={welcomeTextRef}
               src={welcomeTextImage}
               alt="logo"
-              style={{
-                position: "absolute",
-                width: "70%",
-                top: "15%",
-                left: "15%",
-              }}
-              className="hero-section"
+              className="welcome-text"
             />
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            position: "absolute",
-            width: "100%",
-            height: "100vh",
-            overflow: "hidden",
-            margin: "auto",
-            backgroundImage: `url(${blackJackBG})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            opacity: 0,
-          }}
-          className="slider-section"
-          ref={bg2Ref}
-        ></div>
-        <div
-          style={{
-            display: "flex",
-            position: "absolute",
-            width: "100%",
-            height: "100vh",
-            overflow: "hidden",
-            margin: "auto",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          className="slider-section"
-        >
-          <Swiper
-            pagination={pagination}
-            modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
-            className="mySwiper"
-            effect="fade" // Set effect to fade
-            fadeEffect={{ crossFade: true }} // Enable cross fade effect
-            // autoplay={{
-            //   delay: 10000,
-            //   disableOnInteraction: false,
-            // }}
-            navigation={{
-              prevEl: ".custom-swiper-button-prev",
-              nextEl: ".custom-swiper-button-next",
-            }}
-            keyboard={{
-              enabled: true,
-            }}
-            ref={swiperRef}
-            style={{
-              opacity: 0,
-            }}
-          >
-            {/* Custom previous button */}
-            <div className="custom-swiper-button-prev">
-              <img src={leftArrow} alt="leftArrow" />
-            </div>
-
-            {/* Custom next button */}
-            <div className="custom-swiper-button-next">
-              <img src={rightArrow} alt="leftArrow" />
-            </div>
-            {SliderData.map((items, index) => (
-              <SwiperSlide key={index}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    alignItems: "flex-start",
-                    width: "30%",
-                    textAlign: "start",
-                    gap: "10px",
-                    marginLeft: "10vh",
-                    marginBottom: " 45vh",
-                    height: "100%",
-                  }}
-                >
-                  <span className="cormorant-font swipper-title">
-                    {items.title}
-                  </span>
-                  <span className="swipper-description">
-                    {items.description}
-                  </span>
-                  <button onClick={() => handleRent(index)} className="cormorant-font swipper-btn">
-                    RENT NOW
-                    <img
-                      alt="heartsButton"
-                      src={heartsButton}
-                      style={{ width: "30px" }}
-                    />
-                  </button>
-                </div>
-                <img
-                  src={items.img}
-                  alt="logo"
-                  style={{
-                    width: items === slide2 ? "37.5rem" : "18.75rem",
-                    height: "18.75rem",
-                    display: "flex",
-                    margin: "auto",
-                    zIndex: 34,
-                  }}
-                  className="floating-img slider-img"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {/* SWIPPER */}
           <div
             style={{
+              display: "flex",
+              position: "absolute",
+              width: "100%",
+              height: "100vh",
+              overflow: "hidden",
+              margin: "auto",
+              backgroundImage: `url(${blackJackBG})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               opacity: 0,
             }}
-            ref={bg4Ref}
+            className="slider-section"
+            ref={bg2Ref}
           >
-            <img src={slideBase} alt="logo" className="swipper-base" />
+            <Swiper
+              pagination={pagination}
+              modules={[Pagination, EffectFade, Autoplay, Navigation, Keyboard]}
+              className="mySwiper"
+              effect="fade" // Set effect to fade
+              fadeEffect={{ crossFade: true }} // Enable cross fade effect
+              // autoplay={{
+              //   delay: 10000,
+              //   disableOnInteraction: false,
+              // }}
+              navigation={{
+                prevEl: ".custom-swiper-button-prev",
+                nextEl: ".custom-swiper-button-next",
+              }}
+              keyboard={{
+                enabled: true,
+              }}
+              style={{
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* Custom previous button */}
+              <div className="custom-swiper-button-prev">
+                <img src={leftArrow} alt="leftArrow" />
+              </div>
+
+              {/* Custom next button */}
+              <div className="custom-swiper-button-next">
+                <img src={rightArrow} alt="leftArrow" />
+              </div>
+              {SliderData.map((items, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "flex-end",
+                      alignItems: "flex-start",
+                      width: "80%",
+                      textAlign: "start",
+                      gap: "10px",
+                      height: "80%",
+                      padding: "0 50px",
+                    }}
+                  >
+                    <span className="cormorant-font gradient-text swipper-title">
+                      {items.title}
+                    </span>
+                    <span className="swipper-description gordita-font">
+                      {items.description}
+                    </span>
+                    <button
+                      onClick={() => handleRent(index)}
+                      className="cormorant-font swipper-btn"
+                    >
+                      RENT NOW
+                      <img
+                        alt="heartsButton"
+                        src={index === 0 ? rouletteIcon : heartsButton}
+                        style={{ width: "30px" }}
+                      />
+                    </button>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: "flex-end",
+                    alignItems: 'start',
+                 marginBottom: 0, 
+                 height: '80%'
+                  }}>
+                    <img
+                      src={items.img}
+                      alt="logo"
+                      className="floating-img slider-img"
+                      style={{ justifySelf: 'flex-end', display: 'flex'}}
+                    /> 
+                   
+                  </div> 
+                </SwiperSlide>
+              ))} <img
+                      src={slideBase}
+                      alt="logo"
+                      className="swipper-base" 
+                    />
+            </Swiper>
           </div>
         </div>
-      </div>
-      <div
-        ref={secondSectionRef}
-        style={{
-          color: "#FFF",
-          zIndex: 4,
-          position: "absolute",
-          top: "8900px",
-          opacity: 0,
-          width: "100%",
-        }}
-      >
-        <SecondSection />
+        <div
+          ref={secondSectionRef}
+          style={{
+            color: "#FFF",
+            zIndex: 400,
+            position: "absolute",
+            top: "8900px",
+            opacity: 0,
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <SecondSection />
+        </div>
       </div>
     </div>
   );

@@ -12,11 +12,12 @@ import Account from "../pages/private/Account";
 import Cart from "../pages/public/Cart";
 import Checkout from "../pages/public/Checkout";
 import SuccessfulPayment from "../components/cart/SuccessfulPayment";
-
+import Test from "../pages/public/Test";
 const RouteIndex = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/test" element={<Test />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />

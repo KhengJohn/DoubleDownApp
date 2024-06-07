@@ -1,0 +1,256 @@
+.landingpage-container {
+  width: 100%;
+  height: 12850px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.first-div {
+  position: absolute;
+  width: 100%;
+  height: 8900px;
+  overflow: visible;
+  background-color: #000;
+  top: 0;
+}
+.welcome-animation {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shade-logo-img {
+  position: absolute;
+  top: 16px;
+  left: 3.5vw;
+  transform: rotate(-29.11deg);
+  z-index: 2;
+}
+
+.heart-logo-img {
+  position: absolute;
+  top: 14px;
+  left: 5vw;
+  transform: rotate(-29.11deg);
+  z-index: 1;
+}
+.shade-card-img {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  transform: rotate(-29.11deg);
+}
+
+.heart-card-img {
+  position: absolute;
+  bottom: 20%;
+  right: 0;
+  transform: rotate(-29.11deg);
+}
+
+.welcome-logo {
+  width: 300px;
+  display: flex;
+  margin: auto;
+}
+
+.lp-logo {
+  width: 150px;
+  position: absolute;
+  top: 16px;
+  left: 8vw;
+}
+.pl1 {
+  position: absolute;
+  top: 25vh;
+  left: 33vw;
+  opacity: 0;
+  z-index: 1;
+}
+.pl2 {
+  position: absolute;
+  top: 32%;
+  left: 40%;
+  opacity: 0;
+  z-index: 1;
+} 
+.pl3 {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  opacity: 0;
+  z-index: 1;
+} 
+.pr1 {
+  position: absolute;
+  top: 50%;
+  right: 35%;
+  opacity: 0;
+  z-index: 10;
+}
+.pr2 {
+  position: absolute;
+  top: 65%;
+  right: 40%;
+  opacity: 0;
+  z-index: 1;
+}
+.pr3 {
+  position: absolute;
+  top: 77%;
+  right: 38%;
+  opacity: 0;
+  z-index: 1;
+}
+.heart-shape{
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    width: 119.82px;
+    height: 109.84px;
+}
+.shade-shape{
+    position: absolute;
+    top: 15vh;
+    left: 15vw;
+    width: 360.47px;
+    height: 289.84px;
+}
+.scroll-img{
+    position: absolute;
+    bottom: -8%;
+    left: 49.7%;
+}
+.welcome-text{
+    width: 70%;
+    margin: auto;
+}
+
+@media (min-width: 1799px) {
+  .landingpage-container { 
+    height: 14900px; 
+  }
+    .scroll-img{
+        position: absolute;
+        bottom: -8%;
+        left: 49.7%;
+        width:20px ;
+        height: 317px;
+    }
+    .shade-shape{
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        width: 360.47px;
+        height: 289.84px;
+    }
+    .heart-shape{
+        position: absolute;
+        top: 25%;
+        right: 15%;
+        width: 119.82px;
+        height: 109.84px;
+    }
+    .custom-swiper-button-next {
+        position: absolute;
+        bottom: 0.6vh !important;
+        height: max-content;
+        width: max-content;
+        right: 41vw !important;
+        cursor: pointer !important;
+        z-index: 300;
+      }
+      .custom-swiper-button-next  img, .custom-swiper-button-prev img{
+        width: 20px;
+      }
+      .custom-swiper-button-prev {
+        position: absolute;
+        bottom: 0.6vh !important;
+        height: max-content;
+        width: max-content;
+        left: 41vw;
+        z-index: 300;
+        cursor: pointer !important;
+      } 
+
+      .swipper-base {
+        width:620px !important;
+        height: auto; 
+        z-index: 20;
+        opacity: 1;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        position: absolute;
+        bottom: 1.5rem;
+      }
+      
+      .swiper-slide {
+        text-align: center;
+        font-size: 1.125rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .swiper-slide .slider-img {
+        width: 543px !important; 
+        height: 500px !important;
+        display: flex;
+        margin-left: -0vw !important; 
+      }
+      
+      .swipper-title {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 60px !important; 
+      }
+      
+      .swipper-description {
+        font-weight: 100;
+        font-style: normal;
+        font-size: 22px !important;
+        color: #fff;
+      }
+      
+      .swipper-btn {
+        justify-content: space-around;
+        gap: 10px !important;
+        padding: 10px 40px !important;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 26px !important;
+      }
+      .swipper-btn img{
+        width: 50px !important;
+      }
+      .swiper-pagination-bullet {
+        width: 22px !important;
+        height: 22px !important;
+        text-align: center;
+        line-height: 1.0rem !important; 
+        opacity: 1;
+        background: linear-gradient(
+          to right,
+          #efce76 0%,
+          #835a27 38%,
+          #c09852 73%,
+          #f4e285 100%
+        );
+        color: #be9f60;
+        font-size: 0;
+      }
+      
+      .swiper-pagination-bullet-active { 
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 26px !important; 
+      }
+      
+}
