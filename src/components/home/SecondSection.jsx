@@ -14,9 +14,8 @@ import {
   lightBG,
 } from "../../common/assets/images";
 import { useGSAP } from "@gsap/react";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const SecondSection = () => {
   gsap.set(".I1", { scale: 0, y: -300, x: 0 });
   gsap.set(".I1B", { scale: 0, y: -300, x: 0 });
@@ -28,12 +27,6 @@ const SecondSection = () => {
   gsap.set(".B1", { scale: 1, y: -200, x: 0, opacity: 0 });
 
   useGSAP(() => {
-    ScrollSmoother.create({
-      content: "#smooth-content",
-      smooth: 2,
-      effects: true,
-      normalizeScroll: true,
-    });
     let mm = gsap.matchMedia();
     mm.add(
       {
@@ -51,8 +44,8 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
-            end: "+=250",
+            start: isDesktop ? "bottom" : "center",
+            end: isDesktop ? "+=250" : "+=250",
             scrub: 1,
             toggleActions: "play none none none", 
           },
@@ -65,7 +58,7 @@ const SecondSection = () => {
           duration: 1,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -78,7 +71,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -92,7 +85,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -106,7 +99,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -119,7 +112,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -133,7 +126,7 @@ const SecondSection = () => {
           x: isDesktop ? "-6vw" : "-12vw", //-60
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -147,7 +140,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -159,7 +152,7 @@ const SecondSection = () => {
           duration: 2,
           scrollTrigger: {
             trigger: ".three-items-div",
-            start: "bottom",
+            start: isDesktop ? "bottom" : "center",
             end: "+=250",
             scrub: 1,
             toggleActions: "play none none none",
@@ -168,9 +161,9 @@ const SecondSection = () => {
 
         ScrollTrigger.create({
           trigger: ".footer",
-          start: "155% top",
+          start:  isDesktop ?"155% top": "155% center",
           end: "+=200",
-          scrub: 1.5, 
+          scrub: 1.5,
           animation: gsap.timeline().to(".B1", {
             y: -70,
             x: 0,
@@ -180,9 +173,9 @@ const SecondSection = () => {
         });
         ScrollTrigger.create({
           trigger: ".footer",
-          start: "155% top",
+          start:  isDesktop ?"155% top": "155% center",
           end: "+=100",
-          scrub: 1.5, 
+          scrub: 1.5,
           toggleActions: "play",
           animation: gsap.timeline().to(".BI1", {
             y: 0,
@@ -193,7 +186,7 @@ const SecondSection = () => {
 
         ScrollTrigger.create({
           trigger: ".footer",
-          start: "155% top",
+          start:  isDesktop ?"155% top": "155% center",
           end: "+=100",
           scrub: 1.5,
           animation: gsap.timeline().to(".BI2", {
@@ -204,8 +197,6 @@ const SecondSection = () => {
         });
       }
     );
-
-    
   }, []);
 
   return (
@@ -213,7 +204,7 @@ const SecondSection = () => {
       style={{
         backgroundImage: `url(${lightBG})`,
       }}
-      className="scrollElement" id="smooth-content"
+      className="scrollElement"
     >
       <div
         style={{

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import {
   leftImage,
@@ -105,10 +105,10 @@ const LandingPage = () => {
   const signInButtonRef = useRef(null);
   const secondSectionRef = useRef(null);
 
+
   useGSAP(() => {
     // STOP SCROLLING
-    // document.body.style.overflow = "hidden";
-     ScrollSmoother.create({
+    ScrollSmoother.create({
       content: "#smooth-content",
       smooth: 2,
       effects: true,
@@ -290,7 +290,7 @@ const LandingPage = () => {
           start: "8900",
           end: "9990",
           scrub: true,
-          pin: secondSection, 
+          pin: secondSection,
           animation: gsap
             .timeline()
             .to(secondSection, {
@@ -310,7 +310,7 @@ const LandingPage = () => {
             ScrollTrigger.create({
               trigger: ".cont",
               start: "top 1",
-              end: "8900",
+              end: "9000",
               scrub: true,
               pin: heartShape,
               animation: gsap
@@ -350,7 +350,7 @@ const LandingPage = () => {
             ScrollTrigger.create({
               trigger: ".cont",
               start: "top 1",
-              end: "8900",
+              end: "9000",
               scrub: true,
               pin: shadeShape,
               animation: gsap
@@ -387,6 +387,199 @@ const LandingPage = () => {
           zIndex: 1,
           scale: isDesktop ? 1 : isLargeDesktop ? 2 : 1,
         });
+
+        var leftImgTL = gsap.timeline({
+          onComplete: function () {
+            ScrollTrigger.create({
+              trigger: ".cont",
+              start: "top 1",
+              end: "10500",
+              scrub: true,
+              pin: leftImage,
+              animation: gsap
+                .timeline()
+                .to(leftImage, {
+                  x: "18vw", //170
+                  // y: "-42vh", //240
+                  scale: 2.7,
+                  rotationY: 160,
+                  // rotation: 190,
+                  filter: "blur(1px)",
+                  ease: "power2",
+                  duration: 0.001,
+                  zIndex: 200,
+                })
+                .to(leftImage, {
+                  rotation: 94,
+                  x: "13vw",
+                  // y: "-44vh",
+                  scale: 1.7,
+                  filter: "blur(2px)",
+                  duration: 0.02,
+                  zIndex: 20,
+                })
+                .to(leftImage, {
+                  x: "13vw",
+                  // y: "-44vh"
+                })
+                .to(leftImage, {
+                  x: "8vw",
+                  // y: "-46vh",
+                  opacity: 1,
+                  duration: 0.029,
+                  scale: 0.8,
+                  zIndex: 40,
+                  rotate: 70,
+                })
+                .to(leftImage, {
+                  x: "8vw",
+                  // y: "-46vh",
+                  opacity: 0,
+                  duration: 0.061,
+                  zIndex: 40,
+                }),
+              toggleActions: "play none none none",
+            });
+          },
+        });
+        // LEFT Animation
+        leftImgTL
+          .to(leftImage, {
+            x: "20vw",
+            y: "-12vh",
+            autoAlpha: 1,
+            duration: 2,
+            rotationY: -200,
+            rotate: -9,
+            rotateZ: 39,
+            ease: "none",
+          })
+          .to(leftImage, {
+            x: "24vw",
+            y: "-14vh",
+            scale: 1.2,
+            duration: 0.5,
+            ease: "none",
+            rotationZ: 40,
+            rotate: 10,
+          })
+          .to(leftImage, {
+            x: isDesktop ? "47.5vw" : "49vw",
+            y: "-42vh",
+            scale: 2.5,
+            duration: 2,
+            ease: "power2",
+            rotationY: 340,
+            rotation: 340,
+            zIndex: 3,
+          })
+          .to(leftImage, {
+            x: "18vw",
+            y: "-42vh",
+            scale: 2.7,
+            duration: 2,
+            rotationY: 160,
+            rotation: 190,
+            filter: "blur(1px)",
+            ease: "power2",
+            zIndex: 3,
+          });
+
+          var rightImgTL = gsap.timeline({
+            onComplete: function () {
+              ScrollTrigger.create({
+                trigger: ".cont",
+                start: "top 1",
+                end: "10500",
+                scrub: true,
+                pin: rightImage,
+                animation: gsap
+                  .timeline()
+                  .to(rightImage, {
+                    x: "-10vw", //120
+                    // y: "-11vh",
+                    scale: 2.7,
+                    rotationY: 160,
+                    // rotation: 20,
+                    duration: 0.001,
+                    filter: "blur(1px)",
+                    ease: "power2",
+                    zIndex: 200,
+                    opacity: 1,
+                  })
+                  .to(rightImage, {
+                    rotation: 210,
+                    x: "-1vw",
+                    // y: "7vh",
+                    scale: 1.7,
+                    filter: "blur(1px)",
+                    duration: 0.02,
+                    zIndex: 200,
+                    opacity: 1,
+                  })
+                  .to(rightImage, {
+                    opacity: 1,
+                    x: "-1vw",
+                    // y: "7vh"
+                  })
+                  .to(rightImage, {
+                    opacity: 0,
+                    zIndex: 200,
+                    x: 20,
+                    // y: 70,
+                    duration: 0.061,
+      
+                    filter: "blur(3px)",
+                  }),
+                toggleActions: "play none none none",
+              });
+            },
+          });
+      
+      
+      
+          // Right Animation
+          rightImgTL
+            .to(rightImage, {
+              x: "-20vw",
+              y: "-11vh",
+              autoAlpha: 1,
+              duration: 2,
+              rotationY: -200,
+              rotate: -9,
+              rotateZ: 39,
+              ease: "none",
+            })
+            .to(rightImage, {
+              x: "-24vw",
+              y: "-15vh",
+              scale: 1.2,
+              duration: 0.5,
+              ease: "none",
+              rotationZ: 40,
+              rotate: 10,
+            })
+            .to(rightImage, {
+              x:isDesktop ?  "-47.5vw" : "-49vw",
+              y: "-43vh",
+              scale: 2.5,
+              duration: 2,
+              ease: "power2",
+              rotationY: 340,
+              zIndex: 2,
+              rotation: 354,
+            })
+            .to(rightImage, {
+              x: "-10vw",
+              y: "-11vh",
+              scale: 2.7,
+              duration: 2,
+              rotationY: 160,
+              rotation: -20,
+              filter: "blur(1px)",
+              ease: "power2",
+            });
+      
       }
     );
     gsap.to(bg, {
@@ -395,7 +588,6 @@ const LandingPage = () => {
       backgroundImage: `url(${bgImage})`,
       duration: 2,
       onComplete: () => {
-        document.body.style.overflow = "";
         gsap.to(bg, {
           opacity: 0,
           scrollTrigger: {
@@ -448,7 +640,7 @@ const LandingPage = () => {
     });
     // SWIPER
     swiperTL.to(".mySwiper", {
-      // delay: 5,
+      delay: 5,
       opacity: 1,
     });
 
@@ -494,7 +686,7 @@ const LandingPage = () => {
         ScrollTrigger.create({
           trigger: signInButton,
           start: "top 18",
-          end: "12900",
+          end: "15900",
           scrub: true,
           pin: signInButton,
           animation: gsap
@@ -523,7 +715,7 @@ const LandingPage = () => {
         ScrollTrigger.create({
           trigger: shoppingCart,
           start: "top 10",
-          end: "12900",
+          end: "15900",
           scrub: true,
           pin: shoppingCart,
           animation: gsap
@@ -622,200 +814,8 @@ const LandingPage = () => {
         });
       },
     });
-
-    var leftImgTL = gsap.timeline({
-      onComplete: function () {
-        ScrollTrigger.create({
-          trigger: ".cont",
-          start: "top 1",
-          end: "10500",
-          scrub: true,
-          pin: leftImage,
-          animation: gsap
-            .timeline()
-            .to(leftImage, {
-              x: "18vw", //170
-              // y: "-42vh", //240
-              scale: 2.7,
-              rotationY: 160,
-              // rotation: 190,
-              filter: "blur(1px)",
-              ease: "power2",
-              duration: 0.001,
-              zIndex: 200,
-            })
-            .to(leftImage, {
-              rotation: 94,
-              x: "13vw",
-              // y: "-44vh",
-              scale: 1.7,
-              filter: "blur(2px)",
-              duration: 0.02,
-              zIndex: 20,
-            })
-            .to(leftImage, {
-              x: "13vw",
-              // y: "-44vh"
-            })
-            .to(leftImage, {
-              x: "8vw",
-              // y: "-46vh",
-              opacity: 1,
-              duration: 0.029,
-              scale: 0.8,
-              zIndex: 40,
-              rotate: 70,
-            })
-            .to(leftImage, {
-              x: "8vw",
-              // y: "-46vh",
-              opacity: 0,
-              duration: 0.061,
-              zIndex: 40,
-            }),
-          toggleActions: "play none none none",
-        });
-      },
-    });
-
-    var rightImgTL = gsap.timeline({
-      onComplete: function () {
-        ScrollTrigger.create({
-          trigger: ".cont",
-          start: "top 1",
-          end: "10500",
-          scrub: true,
-          pin: rightImage,
-          animation: gsap
-            .timeline()
-            .to(rightImage, {
-              x: "-10vw", //120
-              // y: "-11vh",
-              scale: 2.7,
-              rotationY: 160,
-              // rotation: 20,
-              duration: 0.001,
-              filter: "blur(1px)",
-              ease: "power2",
-              zIndex: 200,
-              opacity: 1,
-            })
-            .to(rightImage, {
-              rotation: 210,
-              x: "-1vw",
-              // y: "7vh",
-              scale: 1.7,
-              filter: "blur(1px)",
-              duration: 0.02,
-              zIndex: 200,
-              opacity: 1,
-            })
-            .to(rightImage, {
-              opacity: 1,
-              x: "-1vw",
-              // y: "7vh"
-            })
-            .to(rightImage, {
-              opacity: 0,
-              zIndex: 200,
-              x: 20,
-              // y: 70,
-              duration: 0.061,
-
-              filter: "blur(3px)",
-            }),
-          toggleActions: "play none none none",
-        });
-      },
-    });
-
     var logoTL = gsap.timeline();
-
-    // LEFT Animation
-    leftImgTL
-      .to(leftImage, {
-        x: "20vw",
-        y: "-12vh",
-        autoAlpha: 1,
-        duration: 2,
-        rotationY: -200,
-        rotate: -9,
-        rotateZ: 39,
-        ease: "none",
-      })
-      .to(leftImage, {
-        x: "24vw",
-        y: "-14vh",
-        scale: 1.2,
-        duration: 0.5,
-        ease: "none",
-        rotationZ: 40,
-        rotate: 10,
-      })
-      .to(leftImage, {
-        x: "47.5vw",
-        y: "-42vh",
-        scale: 2.5,
-        duration: 2,
-        ease: "power2",
-        rotationY: 340,
-        rotation: 340,
-        zIndex: 3,
-      })
-      .to(leftImage, {
-        x: "18vw",
-        y: "-42vh",
-        scale: 2.7,
-        duration: 2,
-        rotationY: 160,
-        rotation: 190,
-        filter: "blur(1px)",
-        ease: "power2",
-        zIndex: 3,
-      });
-
-    // Right Animation
-    rightImgTL
-      .to(rightImage, {
-        x: "-20vw",
-        y: "-11vh",
-        autoAlpha: 1,
-        duration: 2,
-        rotationY: -200,
-        rotate: -9,
-        rotateZ: 39,
-        ease: "none",
-      })
-      .to(rightImage, {
-        x: "-24vw",
-        y: "-15vh",
-        scale: 1.2,
-        duration: 0.5,
-        ease: "none",
-        rotationZ: 40,
-        rotate: 10,
-      })
-      .to(rightImage, {
-        x: "-47.5vw",
-        y: "-43vh",
-        scale: 2.5,
-        duration: 2,
-        ease: "power2",
-        rotationY: 340,
-        zIndex: 2,
-        rotation: 354,
-      })
-      .to(rightImage, {
-        x: "-10vw",
-        y: "-11vh",
-        scale: 2.7,
-        duration: 2,
-        rotationY: 160,
-        rotation: -20,
-        filter: "blur(1px)",
-        ease: "power2",
-      });
-
+   
     // Logo Animation
     logoTL.to(logoImage, {
       opacity: 1,
@@ -1480,7 +1480,6 @@ const LandingPage = () => {
               <div className="custom-swiper-button-prev">
                 <img src={leftArrow} alt="leftArrow" />
               </div>
-
               {/* Custom next button */}
               <div className="custom-swiper-button-next">
                 <img src={rightArrow} alt="leftArrow" />
@@ -1488,18 +1487,7 @@ const LandingPage = () => {
               {SliderData.map((items, index) => (
                 <SwiperSlide key={index}>
                   <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "flex-end",
-                      alignItems: "flex-start",
-                      width: "80%",
-                      textAlign: "start",
-                      gap: "10px",
-                      height: "80%",
-                      padding: "0 50px",
-                    }}
-                  >
+                  className="slider-writeup">
                     <span className="cormorant-font gradient-text swipper-title">
                       {items.title}
                     </span>
@@ -1518,28 +1506,18 @@ const LandingPage = () => {
                       />
                     </button>
                   </div>
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: "flex-end",
-                    alignItems: 'start',
-                 marginBottom: 0, 
-                 height: '80%'
-                  }}>
+                  <div
+                  className="slider-img-cont">
                     <img
                       src={items.img}
                       alt="logo"
                       className="floating-img slider-img"
-                      style={{ justifySelf: 'flex-end', display: 'flex'}}
-                    /> 
-                   
-                  </div> 
-                </SwiperSlide>
-              ))} <img
-                      src={slideBase}
-                      alt="logo"
-                      className="swipper-base" 
+                      style={{ justifySelf: "flex-end", display: "flex" }}
                     />
+                  </div>
+                </SwiperSlide>
+              ))} 
+              <img src={slideBase} alt="logo" className="swipper-base" />
             </Swiper>
           </div>
         </div>
